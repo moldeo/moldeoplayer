@@ -1,0 +1,421 @@
+<?xml version="1.0" ?>
+<MOCONFIG majorversion="1" minorversion="0">
+    <DEFINITION name="__console__" class="moConsole" />
+    <UPDATE />
+    <CONFIGPARAMS>
+        <PARAM name="inlet" type="INLET" />
+        <PARAM name="outlet" type="OUTLET" />
+        <PARAM name="script" type="SCRIPT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="devices" type="TEXT">
+            <VAL>
+                <D type="TXT">keyboard</D>
+                <D type="TXT">keyboard</D>
+                <D type="TXT">keyboard</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">mouse</D>
+                <D type="TXT">mouse</D>
+                <D type="TXT">mouse</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">mixer</D>
+                <D type="TXT">mixer</D>
+                <D type="TXT">mixer</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+        </PARAM>
+        <PARAM name="preeffect" type="TEXT">
+            <VAL>
+                <D type="TXT">erase</D>
+                <D type="TXT">erase</D>
+                <D type="TXT">erase</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+        </PARAM>
+        <PARAM name="effect" type="TEXT">
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx1_1</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx2_2</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx3_3</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx4_4</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx5_5</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx6_6</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx7_7</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx8_8</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx9_9</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx10_0</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>	
+<VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx11_Q</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx12_W</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx13_E</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx14_R</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx15_T</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx16_Y</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx17_U</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx18_I</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx19_O</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx20_P</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>		
+ <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx21_A</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx22_S</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx23_D</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx24_F</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx25_G</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx26_H</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx27_J</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx28_K</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx29_L</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx30_N</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx31_Z</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx32_X</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx33_C</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx34_V</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx35_B</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx36_N</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx37_M</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx38_COMA</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">icon</D>
+                <D type="TXT">icon</D>
+                <D type="TXT">fx39_DOT</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">image</D>
+                <D type="TXT">image</D>
+                <D type="TXT">fx40_MINUS</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>			
+						
+			
+        </PARAM>
+        <PARAM name="posteffect" type="TEXT" />
+        <PARAM name="mastereffect" type="TEXT">
+			<VAL>
+				<D type="TXT">channel</D>
+                <D type="TXT">channel0</D>
+                <D type="TXT">channel0</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>			
+			</VAL>
+			<VAL>
+                <D type="TXT">masterchannel</D>
+                <D type="TXT">masterchannel</D>
+                <D type="TXT">masterchannel</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">panel</D>
+                <D type="TXT">panel</D>
+                <D type="TXT">panel</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">presetpanel</D>
+                <D type="TXT">presetpanel</D>
+                <D type="TXT">presetpanel</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>
+            <VAL>
+                <D type="TXT">ligia</D>
+                <D type="TXT">ligia</D>
+                <D type="TXT">ligia</D>
+                <D type="NUM">0</D>
+                <D type="NUM">1</D>
+            </VAL>		
+		</PARAM>
+        <PARAM name="resources" type="TEXT" />
+        <PARAM name="mastereffects_on" type="NUM">
+            <VAL>
+                <D type="NUM">0</D>
+            </VAL>
+        </PARAM>
+        <PARAM name="fulldebug" type="NUM">
+            <VAL>
+                <D type="NUM">0</D>
+            </VAL>
+        </PARAM>
+        <PARAM name="consolescript" type="SCRIPT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="outputmode" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="outputresolution" type="TEXT">
+            <VAL>
+				<D type="TXT">1024</D>
+				<D type="TXT">768</D>
+            </VAL>
+        </PARAM>
+        <PARAM name="rendermode" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="renderresolution" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="clip1" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="clip2" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+        <PARAM name="clip3" type="TEXT">
+            <VAL>
+                <D type="TXT"></D>
+            </VAL>
+        </PARAM>
+    </CONFIGPARAMS>
+    <PRECONFIGS />
+</MOCONFIG>
