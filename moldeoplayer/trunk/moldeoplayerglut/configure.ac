@@ -18,7 +18,7 @@ AC_PROG_CXXCPP
 AC_PROG_CXX_C_O
 
 #dnl check for libmoldeo
-PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
+PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeotest] ,has_libmoldeo=yes)
 
 
 #dnl check for sdl-net
