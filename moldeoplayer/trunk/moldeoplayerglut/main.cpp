@@ -124,12 +124,13 @@ int main(int argc, char** argv) {
 
   glutInit(&argc, argv);                 // Initialize GLUT
 
-  glutInitWindowPosition(0, 0); // Position the window's initial top-left corner
+  glutInitWindowPosition(0,0); // Position the window's initial top-left corner
   glutInitWindowSize(screen_width, screen_height);   // Set the window's initial width & height
 
   glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-    
-  glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
+  glutGameModeString("1440x900:32");
+  glutEnterGameMode();
+   //glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
   glutDisplayFunc(MoldeoDisplay);
   
 #ifndef MOLDEOTEST
@@ -141,7 +142,7 @@ int main(int argc, char** argv) {
                               //moText("../../data/samples/ParticlesBounce"), moText("../../data/samples/ParticlesBounce/particles_bounce.mol"),
                               //moText("ChannelControl2"), moText("ChannelControl2/channelcontrol2.mol"),
                               //moText("../../data/samples/Cameras"), moText("../../data/samples/Cameras/cameras.mol"),
-                              moText("Tuio"), moText("Tuio/Tuio.mol"),
+                              moText("../../data/samples/Tuio"), moText("../../data/samples/Tuio/Tuio.mol"),
                               NULL /*IODeviceManager*/, NULL/*ResourceManager*/,
                               RENDERMANAGER_MODE_NORMAL /*render mode*/,
                               screen_width, screen_height, render_width, render_height
