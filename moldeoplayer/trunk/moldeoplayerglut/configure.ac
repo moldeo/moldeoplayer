@@ -16,35 +16,39 @@ AM_PROG_LIBTOOL
 AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_CXX_C_O
+
 CPPFLAGS='-I/opt/local/include'
 LDFLAGS='-L/opt/local/lib'
+
 #dnl check for libmoldeo
 PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
-LDFLAGS="$LDFLAGS -framework OpenGL -framework Cocoa"
-LDFLAGS="$LDFLAGS -framework GLUT"
-
-
-GST_CFLAGS='-I/Library/Frameworks/GStreamer.framework/Headers'
-GST_LIBS='-framework GStreamer'
-AC_SUBST(GST_CFLAGS)
-AC_SUBST(GST_LIBS)
-
-
-#dnl check for sdl-net
-#AC_CHECK_HEADER(SDL/SDL_net.h, , AC_MSG_ERROR([SDL_net header not found.]))
-#AC_CHECK_LIB(SDL_net, SDLNet_Init, AC_SUBST([SDL_NET_LIBS], [-lSDL_net]), AC_MSG_ERROR([SDL_net not found.]), [${SDL_LIBS} ${WIN32_LIBS}])
-
-#dnl check for glew
-#AC_CHECK_HEADER(GL/glew.h, , AC_MSG_ERROR([glew header not found.]))
-#AC_CHECK_LIB(GLEW, glewInit, AC_SUBST([GLEW_LIBS], [-lGLEW]), AC_MSG_ERROR([glew not found.]), )
+#LDFLAGS="$LDFLAGS -framework OpenGL -framework Cocoa"
+#LDFLAGS="$LDFLAGS -framework GLUT"
 
 #dnl check for glut
-#AC_CHECK_HEADER(GL/glut.h, , AC_MSG_ERROR([glut header not found.]))
-#AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
+AC_CHECK_HEADER(GL/glut.h, , AC_MSG_ERROR([glut header not found.]))
+AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
 
-#dnl check for gle
-#AC_CHECK_HEADER(GL/gle.h, , AC_MSG_ERROR([gle header not found.]))
-#AC_CHECK_LIB(gle, gleDestroyGC, AC_SUBST([GLE_LIBS], [-lgle]), AC_MSG_ERROR([gle not found.]), )
+
+
+dnl check for gstreamer
+GST_VERSION_MAJOR=0
+GST_VERSION_MINOR=10
+GST_VERSION_RELEASE=19
+GSTPLUG_VERSION_RELEASE=7
+GSTREAMER_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GST_VERSION_RELEASE
+GSTPLUGINS_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GSTPLUG_VERSION_RELEASE
+GST_MAJORMINOR=$GST_VERSION_MAJOR.$GST_VERSION_MINOR
+
+PKG_CHECK_MODULES(GST, gstreamer-$GST_MAJORMINOR >= $GSTREAMER_REQ,
+  HAVE_GSTREAMER=yes)
+AC_SUBST(GST_CFLAGS)
+AC_SUBST(GST_LIBS)
+#GST_CFLAGS='-I/Library/Frameworks/GStreamer.framework/Headers'
+#GST_LIBS='-framework GStreamer'
+#AC_SUBST(GST_CFLAGS)
+#AC_SUBST(GST_LIBS)
+
 
 AC_SUBST(CPPFLAGS)
 AC_SUBST(CXXFLAGS)
