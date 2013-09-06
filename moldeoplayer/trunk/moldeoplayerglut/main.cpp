@@ -4,6 +4,11 @@
  //#define MOLDEOTEST
 #include "gst/gst.h"
 
+#include <time.h>
+void delay(int secs) {
+    for(int i = (time(NULL) + secs); time(NULL) != i; time(NULL));
+}
+
 #ifdef MOLDEOTEST
 //#include "moldeotest.h"
 #else
@@ -15,17 +20,22 @@ moConsole* gpConsole = NULL;
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 
-#define FREEGLUT_STATIC
-#include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+#ifdef MO_MACOSX
+    #include <GLUT/glut.h>  // GLUT, includes glu.h and gl.h
+#endif
+
+#ifdef MO_LINUX
+    #define FREEGLUT_STATIC
+    #include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
+#endif
 
 
 /* Handler for window-repaint event. Call back when the window first appears and
    whenever the window needs to be re-painted. */
 void display() {
-   //glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-   //glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
+   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+   glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
     //glClear(GL_DEPTH_BUFFER);
 
    // Draw a Red 1x1 Square centered at origin
@@ -73,7 +83,7 @@ void key(unsigned char key, int x, int y)
     switch (key)
     {
         case  32:
-            glutFullScreenToggle();
+            glutFullScreen();
             break;
         case 27 :
             exit(0);
@@ -99,6 +109,8 @@ int main(int argc, char** argv) {
   int render_width, render_height ,screen_width, screen_height;
 
   /*Initialization*/
+    
+  gst_init(NULL,NULL);
 
   render_width = 1280;
   render_height = 768;
@@ -108,19 +120,20 @@ int main(int argc, char** argv) {
 
   gst_init(NULL,NULL);
   gst_version (&major, &minor, &micro, &nano);
+  cout << "Gstreamer version " << major << "." << minor << "." << micro << "." << nano << endl;
 
   glutInit(&argc, argv);                 // Initialize GLUT
 
-  glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
+  glutInitWindowPosition(0, 0); // Position the window's initial top-left corner
   glutInitWindowSize(screen_width, screen_height);   // Set the window's initial width & height
 
   glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-
-
+    
   glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
   glutDisplayFunc(MoldeoDisplay);
-
+  
 #ifndef MOLDEOTEST
+
   bool res = Moldeo.Init( app_path,
                               //moText("../../data/samples/ChannelControl2"), moText("../../data/samples/ChannelControl2/channelcontrol2.mol"),
                               //moText("../../data/samples/Rain_Particles"), moText("../../data/samples/Rain_Particles/Rain_Particles.mol"),
@@ -128,11 +141,12 @@ int main(int argc, char** argv) {
                               //moText("../../data/samples/ParticlesBounce"), moText("../../data/samples/ParticlesBounce/particles_bounce.mol"),
                               //moText("ChannelControl2"), moText("ChannelControl2/channelcontrol2.mol"),
                               //moText("../../data/samples/Cameras"), moText("../../data/samples/Cameras/cameras.mol"),
-                              moText("../../data/samples/Tuio"), moText("../../data/samples/Tuio/Tuio.mol"),
+                              moText("Tuio"), moText("Tuio/Tuio.mol"),
                               NULL /*IODeviceManager*/, NULL/*ResourceManager*/,
                               RENDERMANAGER_MODE_NORMAL /*render mode*/,
                               screen_width, screen_height, render_width, render_height
                            );
+    
   if (!res) {
     cout << "error couldnt init console" << endl;
     exit(1);
@@ -148,6 +162,9 @@ int main(int argc, char** argv) {
   Moldeo.ConsolePlay();
   gpConsole = &Moldeo;
 #endif
+    
+    //delay(2000);
+    
   /*DISPLAY*/
    // Register display callback handler for window re-paint
 
