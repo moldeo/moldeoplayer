@@ -15,6 +15,7 @@ bin_PROGRAMS = moldeoplayerglfw
 moldeoplayerglfw_SOURCES = main.cpp
 
 moldeoplayerglfw_CPPFLAGS = \
+    ${GLFW3_CFLAGS} \
     ${FT2_CFLAGS} \
 	${GST_CFLAGS} \
 	${GTK2_CFLAGS} \
@@ -25,9 +26,12 @@ moldeoplayerglfw_CPPFLAGS = \
     ${LIBMOLDEO_CFLAGS}
 
 #moldeoplayerglfw_LDFLAGS = -framework OpenGL -framework GLUT -framework Cocoa
+#moldeoplayerglfw_LDFLAGS = -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 
 moldeoplayerglfw_LDADD = \
-   ${FT2_LIBS} \
+    ${GLFW3_LIBS} \
+    -lX11 -lXxf86vm -lXrandr -lpthread -lXi\
+    ${FT2_LIBS} \
 	${GTK2_LIBS} \
 	${SDL_LIBS} \
 	${TINYXML_LIBS} \

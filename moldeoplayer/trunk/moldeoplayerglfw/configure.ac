@@ -28,8 +28,7 @@ PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
 #dnl check for glut
 #AC_CHECK_HEADER(GL/glut.h, , AC_MSG_ERROR([glut header not found.]))
 #AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
-
-
+PKG_CHECK_MODULES([GLFW3], [glfw3] ,has_glfw3=yes)
 
 dnl check for gstreamer
 GST_VERSION_MAJOR=0
