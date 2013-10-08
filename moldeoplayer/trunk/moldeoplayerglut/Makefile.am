@@ -7,12 +7,12 @@ cursorsdir = ${datadir}/cursors
 fontsdir = ${datadir}/fonts
 iconsdir = ${datadir}/icons
 
-AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\"
-AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\"
+AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
+AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
 
 bin_PROGRAMS = moldeoplayerglut
 
-moldeoplayerglut_SOURCES = main.cpp
+moldeoplayerglut_SOURCES = main.cpp moGLUT_IODeviceManager.h
 
 moldeoplayerglut_CPPFLAGS = \
     ${FT2_CFLAGS} \

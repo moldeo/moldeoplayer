@@ -30,6 +30,8 @@ moConsole* gpConsole = NULL;
     #include <GL/freeglut.h>  // GLUT, includes glu.h and gl.h
 #endif
 
+#include "moGLUT_IODeviceManager.h"
+moGLUT_IODeviceManager* pIODeviceManager = NULL;
 
 /* Handler for window-repaint event. Call back when the window first appears and
    whenever the window needs to be re-painted. */
@@ -78,24 +80,84 @@ void MoldeoDisplay() {
   #endif
 }
 
-void key(unsigned char key, int x, int y)
-{
-    switch (key)
-    {
-        case  32:
-            glutFullScreen();
-            break;
-        case 27 :
-            exit(0);
-            break;
-        default:
-            break;
+
+
+moText config("");
+moText molproject("");
+moText molfolder("");
+moText gamemode("");
+moText mwindow("");
+int render_width, render_height ,screen_width, screen_height;
+
+
+int processarguments( int argc, char** argv ) {
+
+    if (argc<2) {
+			cout << "Missing arguments!!! usage: moldeoplayerglut [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+			exit(0);
+		}
+
+    while( argc >= 2 ) {
+		--argc;
+
+        moText arglast(argv[argc]);
+        moText argprev;
+
+        if (argc>0) argprev = argv[argc-1];
+
+        moText  arg0(argv[0]);
+
+		cout <<  "Argument id" << (argc) << " : " << moText(arglast) << endl;
+
+		if( argprev == moText("-mol") )  {
+
+		    molproject = moText( arglast );
+            moFile file( molproject );
+            molfolder = file.GetPath();
+		    cout << "Argument -mol found! : " << molproject << " folder:" << molfolder << endl;
+			--argc;
+
+        } else if (  argprev == moText("-window") ) {
+
+		    mwindow = moText( arglast );
+            cout << "Windowed mode -window found! : " << mwindow << endl;
+            moTextArray resolution = mwindow.Explode( moText("x") );
+            if (resolution.Count()>1) {
+                screen_width = atoi((char*)resolution[0]);
+                screen_height = atoi((char*)resolution[1]);
+                render_width = screen_width;
+                render_height = screen_height;
+            }
+            --argc;
+
+        } else if (  argprev == moText("-gamemode") ) {
+
+		    gamemode = moText( arglast );
+            cout << "Game mode -gamemode found! : " << gamemode << endl;
+            moTextArray gmode = gamemode.Explode( moText(":") );
+            if (gmode.Count()>1) {
+                moText resolutions = gmode[0];
+                moTextArray resolution = resolutions.Explode( moText("x") );
+                if (resolution.Count()>1) {
+                    screen_width = atoi((char*)resolution[0]);
+                    screen_height = atoi((char*)resolution[1]);
+                    render_width = screen_width;
+                    render_height = screen_height;
+                }
+            }
+            --argc;
+
+        } else if (  arglast == moText("--help") ) {
+
+            cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+
+		} else {
+			cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+			exit(0);
+		}
     }
 
-    glutPostRedisplay();
 }
-
-
 
 /* Main function: GLUT runs as a console application starting at main()  */
 int main(int argc, char** argv) {
@@ -106,16 +168,17 @@ int main(int argc, char** argv) {
   #ifndef MOLDEOTEST
   moConsole   Moldeo;
   #endif
-  int render_width, render_height ,screen_width, screen_height;
 
-  /*Initialization*/
-    
+  /*Initialization default*/
+  screen_width = 640;
+  screen_height = 480;
+  render_width = screen_width;
+  render_height = screen_height;
+
+  processarguments( argc, argv );
+
   gst_init(NULL,NULL);
 
-  render_width = 1280;
-  render_height = 768;
-  screen_width = 1280;
-  screen_height = 768;
   getcwd(app_path,1000);
 
   gst_init(NULL,NULL);
@@ -128,26 +191,29 @@ int main(int argc, char** argv) {
   glutInitWindowSize(screen_width, screen_height);   // Set the window's initial width & height
 
   glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-  glutGameModeString("1440x900:32");
-  glutEnterGameMode();
-   //glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
+
+  if (mwindow!=moText("")) {
+      glutCreateWindow( molproject ); // Create a window with the given title
+  } else if (gamemode!=moText("")) {
+      glutGameModeString(gamemode);
+      glutEnterGameMode();
+  } else {
+      glutCreateWindow( molproject );
+  }
+
   glutDisplayFunc(MoldeoDisplay);
-  
+
 #ifndef MOLDEOTEST
 
+  pIODeviceManager = new moGLUT_IODeviceManager();
+
   bool res = Moldeo.Init( app_path,
-                              //moText("../../data/samples/ChannelControl2"), moText("../../data/samples/ChannelControl2/channelcontrol2.mol"),
-                              //moText("../../data/samples/Rain_Particles"), moText("../../data/samples/Rain_Particles/Rain_Particles.mol"),
-                              //moText("../../data/samples/MoviePlayer"), moText("../../data/samples/MoviePlayer/MoviePlayer.mol"),
-                              //moText("../../data/samples/ParticlesBounce"), moText("../../data/samples/ParticlesBounce/particles_bounce.mol"),
-                              //moText("ChannelControl2"), moText("ChannelControl2/channelcontrol2.mol"),
-                              //moText("../../data/samples/Cameras"), moText("../../data/samples/Cameras/cameras.mol"),
-                              moText("../../data/samples/Tuio"), moText("../../data/samples/Tuio/Tuio.mol"),
-                              NULL /*IODeviceManager*/, NULL/*ResourceManager*/,
-                              RENDERMANAGER_MODE_NORMAL /*render mode*/,
-                              screen_width, screen_height, render_width, render_height
-                           );
-    
+                          molfolder, molproject,
+                          pIODeviceManager /*IODeviceManager*/, NULL/*ResourceManager*/,
+                          RENDERMANAGER_MODE_NORMAL /*render mode*/,
+                          screen_width, screen_height, render_width, render_height
+                         );
+
   if (!res) {
     cout << "error couldnt init console" << endl;
     exit(1);
@@ -156,16 +222,25 @@ int main(int argc, char** argv) {
 #endif
 
   glutReshapeFunc( ResizeWindow );
-  glutKeyboardFunc(key);
+
+  glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
+
+  glutKeyboardUpFunc( moGLUT_IODeviceManager::KeyUp );
+  glutKeyboardFunc( moGLUT_IODeviceManager::Key );
+  glutSpecialFunc(  moGLUT_IODeviceManager::SpecialFunc);
+  glutMouseFunc( moGLUT_IODeviceManager::Mouse );
+  glutMotionFunc( moGLUT_IODeviceManager::Motion );
+  glutPassiveMotionFunc( moGLUT_IODeviceManager::PassiveMotion );
+  glutMouseWheelFunc(  moGLUT_IODeviceManager::Wheel  );
 
 #ifndef MOLDEOTEST
   /*PLAY*/
   Moldeo.ConsolePlay();
   gpConsole = &Moldeo;
 #endif
-    
+
     //delay(2000);
-    
+
   /*DISPLAY*/
    // Register display callback handler for window re-paint
 
