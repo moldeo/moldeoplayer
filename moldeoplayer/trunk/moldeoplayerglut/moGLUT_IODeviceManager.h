@@ -2,10 +2,10 @@
 #ifndef _MO_GLUT_IODEVICEMANAGER_H__
 #define _MO_GLUT_IODEVICEMANAGER_H__
 
-#include <GL/glut.h>
+
 #include <SDL/SDL.h>
 #include "moIODeviceManager.h"
-#include "moIODeviceManager.h"
+
 #define SDL_NLK_CAPS 0x01
 #define SDL_NLK_NUM  0x02
 
@@ -14,21 +14,21 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
   public:
 
     moGLUT_IODeviceManager() : moIODeviceManager() {
-
+/*
       m_Dpy = NULL;
       m_Win = NULL;
-      m_Win2 = NULL;
+      m_Win2 = NULL;*/
       m_CachedEvents.Init();
     }
 
     virtual ~moGLUT_IODeviceManager() {
     }
 
-    virtual bool Init( Display *dpy=NULL, Window win=0, Window win2=0, int p_DISABLE_LOCK_KEYS=0 ) {
-
+    virtual bool Init( void* dpy /*Display *dpy=NULL, Window win=0, Window win2=0, int p_DISABLE_LOCK_KEYS=0*/ ) {
+/*
       m_Dpy = dpy;
       m_Win = win;
-
+*/
       m_MouseX = 0;
       m_MouseY = 0;
 
@@ -568,7 +568,7 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 */
 
     }
-
+/*
     Display   *m_Dpy;
     Window     m_Win;
     Window     m_Win2;
@@ -579,7 +579,7 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
     SDLMod    SDL_ModState;
     Uint8 SDL_NoLockKeys;
-
+*/
 
     static moLock     m_DataLock;
     static moEventList m_CachedEvents;

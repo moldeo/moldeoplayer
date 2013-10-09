@@ -206,6 +206,7 @@ int main(int argc, char** argv) {
 #ifndef MOLDEOTEST
 
   pIODeviceManager = new moGLUT_IODeviceManager();
+  pIODeviceManager->Init(NULL);
 
   bool res = Moldeo.Init( app_path,
                           molfolder, molproject,
@@ -231,7 +232,7 @@ int main(int argc, char** argv) {
   glutMouseFunc( moGLUT_IODeviceManager::Mouse );
   glutMotionFunc( moGLUT_IODeviceManager::Motion );
   glutPassiveMotionFunc( moGLUT_IODeviceManager::PassiveMotion );
-  glutMouseWheelFunc(  moGLUT_IODeviceManager::Wheel  );
+  /*glutMouseWheelFunc(  moGLUT_IODeviceManager::Wheel  );*/
 
 #ifndef MOLDEOTEST
   /*PLAY*/
