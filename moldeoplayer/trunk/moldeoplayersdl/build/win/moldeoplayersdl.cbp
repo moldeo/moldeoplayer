@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="moldeoplayersdl" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../../../../binaries/bin/win/moldeoplayersdld" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../../binaries/bin/win/" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Option parameters='-mol &quot;D:\0_DESARROLLO\0_MOLDEO\0_desarrollo\SVNSOURCEFORGE\binaries\data\samples\ShaderExample\shader_example.mol&quot; -window 1024x768' />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_NONSTDC_NO_DEPRECATE" />
+					<Add option="-DGST_DISABLE_LOADSAVE" />
+					<Add option="-DGST_DISABLE_REGISTRY" />
+					<Add option='-DMCONTROLSDATADIR=\&quot;../../data\&quot;' />
+				</Compiler>
+				<Linker>
+					<Add library="moldeod" />
+					<Add library="gstreamer-0.10" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="../../../../../binaries/bin/win/moldeoplayersdl" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../../binaries/bin/win/" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_NONSTDC_NO_DEPRECATE" />
+					<Add option="-DGST_DISABLE_LOADSAVE" />
+					<Add option="-DGST_DISABLE_REGISTRY" />
+					<Add option='-DMCONTROLSDATADIR=\&quot;../../data\&quot;' />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="moldeo" />
+					<Add library="gstreamer-0.10" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Debug;Release;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../../" />
+			<Add directory="../../../../../externlibs/SDL/include" />
+			<Add directory="../../../../../externlibs/glew/include" />
+			<Add directory="../../../../../binaries/include" />
+			<Add directory="../../../../../externlibs/lua/include" />
+			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/include/gstreamer-0.10" />
+			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/include/glib-2.0" />
+			<Add directory="../../../moldeoplayersdl" />
+		</Compiler>
+		<Linker>
+			<Add library="opengl32" />
+			<Add library="glu32" />
+			<Add library="winmm" />
+			<Add library="gdi32" />
+			<Add library="mingw32" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+			<Add directory="../../../../../externlibs/glew/lib" />
+			<Add directory="../../../../../binaries/lib/win" />
+			<Add directory="C:/gstreamer-sdk/0.10/x86/lib" />
+			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/lib" />
+			<Add directory="../../../../../externlibs/SDL/lib" />
+		</Linker>
+		<Unit filename="../../main.cpp" />
+		<Unit filename="../../moSDL_IODeviceManager.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
