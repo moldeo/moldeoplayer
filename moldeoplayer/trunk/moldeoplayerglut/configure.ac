@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player Glut], [0.7.9.8], [info@moldeointeractive.com.ar], [moldeodirector])
+AC_INIT([Moldeo Player Glut], [0.8.1.0], [info@moldeointeractive.com.ar], [moldeodirector])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])

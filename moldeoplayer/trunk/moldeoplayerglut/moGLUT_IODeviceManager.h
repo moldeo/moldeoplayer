@@ -3,11 +3,64 @@
 #define _MO_GLUT_IODEVICEMANAGER_H__
 
 
-#include <SDL/SDL.h>
-#include "moIODeviceManager.h"
+#ifdef MO_WIN32
+    #include "SDL_keysym.h"
+#else
+    #include "SDL/SDL_keysym.h"
+#endif
+
+
+enum { SDL_NOEVENT = 0,			/* Unused (do not remove) */
+       SDL_ACTIVEEVENT,			/* Application loses/gains visibility */
+       SDL_KEYDOWN,			/* Keys pressed */
+       SDL_KEYUP,			/* Keys released */
+       SDL_MOUSEMOTION,			/* Mouse moved */
+       SDL_MOUSEBUTTONDOWN,		/* Mouse button pressed */
+       SDL_MOUSEBUTTONUP,		/* Mouse button released */
+       SDL_JOYAXISMOTION,		/* Joystick axis motion */
+       SDL_JOYBALLMOTION,		/* Joystick trackball motion */
+       SDL_JOYHATMOTION,		/* Joystick hat position change */
+       SDL_JOYBUTTONDOWN,		/* Joystick button pressed */
+       SDL_JOYBUTTONUP,			/* Joystick button released */
+       SDL_QUIT,			/* User-requested quit */
+       SDL_SYSWMEVENT,			/* System specific event */
+       SDL_EVENT_RESERVEDA,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVEDB,		/* Reserved for future use.. */
+       SDL_VIDEORESIZE,			/* User resized video mode */
+       SDL_VIDEOEXPOSE,			/* Screen needs to be redrawn */
+       SDL_EVENT_RESERVED2,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVED3,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVED4,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVED5,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVED6,		/* Reserved for future use.. */
+       SDL_EVENT_RESERVED7,		/* Reserved for future use.. */
+       /* Events SDL_USEREVENT through SDL_MAXEVENTS-1 are for your use */
+       SDL_USEREVENT = 24,
+       /* This last event is only for bounding internal arrays
+	  It is the number of bits in the event mask datatype -- Uint32
+        */
+       SDL_NUMEVENTS = 32
+};
+#define SDL_BUTTON(X)		(SDL_PRESSED << ((X)-1))
+#define SDL_BUTTON_LEFT		1
+#define SDL_BUTTON_MIDDLE	2
+#define SDL_BUTTON_RIGHT	3
+#define SDL_BUTTON_WHEELUP	4
+#define SDL_BUTTON_WHEELDOWN	5
+#define SDL_BUTTON_LMASK	SDL_BUTTON(SDL_BUTTON_LEFT)
+#define SDL_BUTTON_MMASK	SDL_BUTTON(SDL_BUTTON_MIDDLE)
+#define SDL_BUTTON_RMASK	SDL_BUTTON(SDL_BUTTON_RIGHT)
+
+typedef struct SDL_keysym {
+	int scancode;			/* hardware specific scancode */
+	SDLKey sym;			/* SDL virtual keysym */
+	SDLMod mod;			/* current key modifiers */
+	int unicode;			/* translated character */
+} SDL_keysym;
 
 #define SDL_NLK_CAPS 0x01
 #define SDL_NLK_NUM  0x02
+
 
 class moGLUT_IODeviceManager : public moIODeviceManager {
 
@@ -24,6 +77,8 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
     virtual ~moGLUT_IODeviceManager() {
     }
 
+
+
     virtual bool Init( void* dpy /*Display *dpy=NULL, Window win=0, Window win2=0, int p_DISABLE_LOCK_KEYS=0*/ ) {
 /*
       m_Dpy = dpy;
@@ -37,141 +92,88 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
       return (m_bInitialized=true);
     }
 
+
+/*
     static SDLKey  GLUT_TranslateSpecialKey( unsigned int key ) {
 
     }
-
+*/
     static bool GLUT_CheckModState( int state, SDL_keysym &keysym ) {
 
-      if (state=SDL_KEYDOWN) {
+       keysym.mod = KMOD_NONE;
+       int mod = glutGetModifiers();
 
-        keysym.mod = KMOD_NONE;
-
-        int mod = glutGetModifiers();
+      if (state==SDL_KEYDOWN) {
 
         if (mod & GLUT_ACTIVE_ALT) {
-          cout << "ALT ACTIVE" << endl;
+          cout << "ALT ACTIVE ON" << endl;
           keysym.mod =  (SDLMod) ( (int)keysym.mod & (int)KMOD_ALT );
+          int key = SDLK_LSHIFT;
+           m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_SHIFT, 0, 0 );
+        } else {
+          cout << "ALT ACTIVE STOP" << endl;
+          int key = SDLK_LSHIFT;
+           m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_SHIFT, 0, 0 );
         }
+/*
         if (mod & GLUT_ACTIVE_CTRL) {
-          cout << "CTRL ACTIVE" << endl;
-          keysym.mod|= (SDLMod)KMOD_CTRL;
+          cout << "CTRL ACTIVE ON" << endl;
+          keysym.mod = (SDLMod)((int)keysym.mod | (int)KMOD_CTRL);
+          int key = SDLK_LCTRL;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_CTRL, 0, 0 );
+        } else {
+          cout << "CTRL ACTIVE STOP" << endl;
+          int key = SDLK_LCTRL;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_CTRL, 0, 0 );
         }
         if (mod & GLUT_ACTIVE_SHIFT) {
-          cout << "SHIFT ACTIVE" << endl;
-          keysym.mod|= (SDLMod)KMOD_SHIFT;
-        }
-      }
-/*
-      int repeatable;
-      Uint16 modstate;
-
-        // Set up the keysym
-        modstate = (Uint16)SDL_ModState;
-
-        repeatable = 0;
-
-        if ( state == SDL_KEYDOWN ) {
-          keysym->mod = (SDLMod)modstate;
-          switch (keysym->sym) {
-            case SDLK_UNKNOWN:
-              break;
-            case SDLK_NUMLOCK:
-              modstate ^= KMOD_NUM;
-              if ( SDL_NoLockKeys & SDL_NLK_NUM )
-                break;
-              if ( ! (modstate&KMOD_NUM) )
-                state = SDL_RELEASED;
-              keysym->mod = (SDLMod)modstate;
-              break;
-            case SDLK_CAPSLOCK:
-              modstate ^= KMOD_CAPS;
-              if ( SDL_NoLockKeys & SDL_NLK_CAPS )
-                break;
-              if ( ! (modstate&KMOD_CAPS) )
-                state = SDL_RELEASED;
-              keysym->mod = (SDLMod)modstate;
-              break;
-            case SDLK_LCTRL:
-              modstate |= KMOD_LCTRL;
-              break;
-            case SDLK_RCTRL:
-              modstate |= KMOD_RCTRL;
-              break;
-            case SDLK_LSHIFT:
-              modstate |= KMOD_LSHIFT;
-              break;
-            case SDLK_RSHIFT:
-              modstate |= KMOD_RSHIFT;
-              break;
-            case SDLK_LALT:
-              modstate |= KMOD_LALT;
-              break;
-            case SDLK_RALT:
-              modstate |= KMOD_RALT;
-              break;
-            case SDLK_LMETA:
-              modstate |= KMOD_LMETA;
-              break;
-            case SDLK_RMETA:
-              modstate |= KMOD_RMETA;
-              break;
-            case SDLK_MODE:
-              modstate |= KMOD_MODE;
-              break;
-            default:
-              repeatable = 1;
-              break;
-          }
+          cout << "SHIFT ACTIVE DOWN" << endl;
+          keysym.mod = (SDLMod)((int)keysym.mod | (int)KMOD_SHIFT);
+          int key = SDLK_LSHIFT;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_SHIFT, 0, 0 );
         } else {
-          switch (keysym->sym) {
-            case SDLK_UNKNOWN:
-              break;
-            case SDLK_NUMLOCK:
-              if ( SDL_NoLockKeys & SDL_NLK_NUM )
-                break;
-              // Only send keydown events
-              return(0);
-            case SDLK_CAPSLOCK:
-              if ( SDL_NoLockKeys & SDL_NLK_CAPS )
-                break;
-              // Only send keydown events
-              return(0);
-            case SDLK_LCTRL:
-              modstate &= ~KMOD_LCTRL;
-              break;
-            case SDLK_RCTRL:
-              modstate &= ~KMOD_RCTRL;
-              break;
-            case SDLK_LSHIFT:
-              modstate &= ~KMOD_LSHIFT;
-              break;
-            case SDLK_RSHIFT:
-              modstate &= ~KMOD_RSHIFT;
-              break;
-            case SDLK_LALT:
-              modstate &= ~KMOD_LALT;
-              break;
-            case SDLK_RALT:
-              modstate &= ~KMOD_RALT;
-              break;
-            case SDLK_LMETA:
-              modstate &= ~KMOD_LMETA;
-              break;
-            case SDLK_RMETA:
-              modstate &= ~KMOD_RMETA;
-              break;
-            case SDLK_MODE:
-              modstate &= ~KMOD_MODE;
-              break;
-            default:
-              break;
-          }
-          keysym->mod = (SDLMod)modstate;
+            cout << "SHIFT ACTIVE UP!?" << endl;
+            int key = SDLK_LSHIFT;
+            m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_SHIFT, 0, 0 );
+        }
+*/
+      } else if (state==SDL_KEYUP) {
+
+        if (mod & GLUT_ACTIVE_ALT) {
+          cout << "ALT ACTIVE ON" << endl;
+          keysym.mod =  (SDLMod) ( (int)keysym.mod & (int)KMOD_ALT );
+          int key = SDLK_LSHIFT;
+           m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_SHIFT, 0, 0 );
+        } else {
+          cout << "ALT ACTIVE STOP" << endl;
+          int key = SDLK_LSHIFT;
+           m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_SHIFT, 0, 0 );
         }
 
-        SDL_ModState = (SDLMod)modstate;
+/*
+        if (mod & GLUT_ACTIVE_CTRL) {
+          cout << "CTRL ACTIVE ON" << endl;
+          keysym.mod = (SDLMod)((int)keysym.mod | (int)KMOD_CTRL);
+          int key = SDLK_LCTRL;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_CTRL, 0, 0 );
+        } else {
+          cout << "CTRL ACTIVE STOP" << endl;
+          int key = SDLK_LCTRL;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_CTRL, 0, 0 );
+        }
+        if (mod & GLUT_ACTIVE_SHIFT) {
+          cout << "SHIFT ACTIVE DOWN 2" << endl;
+          keysym.mod = (SDLMod)((int)keysym.mod | (int)KMOD_SHIFT);
+          int key = SDLK_LSHIFT;
+          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, KMOD_SHIFT, 0, 0 );
+        } else {
+            cout << "SHIFT ACTIVE UP 2!?" << endl;
+            int key = SDLK_LSHIFT;
+            m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, KMOD_SHIFT, 0, 0 );
+        }
 */
+      }
+
         return true;
 
     }
@@ -182,33 +184,7 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
       m_DataLock.Lock();
 
       //convert glut key to SDL... key
-/*
 
-/// KEYBOARD
-              case KeyPress:
-              case KeyRelease:
-
-                sdl_keysym.scancode = xev.xkey.keycode;
-                sdl_keysym.sym = X11_TranslateKeycode( m_Dpy, xev.xkey.keycode );
-
-                //keysim = XkbKeycodeToKeysym( m_Dpy, xev.xkey.keycode, 0, 0)
-                charcount = XLookupString(&xev.xkey, buffer, bufsize, &xkeysym, &compose);
-                key_string1 = XKeysymToString(XkbKeycodeToKeysym( m_Dpy, xev.xkey.keycode, 0, 0));
-                moDebugManager::Message( "Key (2:press/3:release):" + IntToStr(xev.type) + " keysim STR: " + moText(key_string1) + +" Xkeysim code:" + IntToStr(xkeysym) + " keycode: " + IntToStr(xev.xkey.keycode) + " sdl sym:" + IntToStr(sdl_keysym.sym) );
-
-                X11_CheckModState( xev.type, &sdl_keysym );
-
-                moDebugManager::Message( " Mod:" + IntToStr(sdl_keysym.mod) );
-
-                //Events->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, event.key.keysym.sym, event.key.keysym.mod,0,0);
-                (xev.type == KeyPress ) ? GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, sdl_keysym.sym,
-                                                          ///mod
-                                                          sdl_keysym.mod,0,0) :
-                                          GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYUP, sdl_keysym.sym,
-                                                          ///mod
-                                                          sdl_keysym.mod,0,0);
-                break;
-*/
       SDL_keysym sdl_keysym;
       sdl_keysym.mod = KMOD_NONE;
       sdl_keysym.unicode = 0;
@@ -224,7 +200,7 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
       m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, sdl_keysym.mod );
 
-      //cout << "cached event: key: " << key << " int: " << (int)key << " sdlmod:" << sdl_keysym.mod << endl;
+      cout << "moGLUT_IODeviceManager::Key(...) cached event: key: " << key << " int: " << (int)key << " sdlmod:" << sdl_keysym.mod << endl;
 
       switch (key)
       {
@@ -244,20 +220,22 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
       m_DataLock.Unlock();
     }
 
+
     static void KeyUp( unsigned char key, int xmouse, int ymouse ) {
 
-          SDLKey sym = SDLK_UNKNOWN;
-          SDLMod mod = KMOD_NONE;
-          SDL_keysym sdl_keysym;
+        //SDLKey sym = SDLK_UNKNOWN;
+        SDLMod mod = KMOD_NONE;
+        //SDL_keysym sdl_keysym;
 
 
-          m_DataLock.Lock();
+        m_DataLock.Lock();
 
-          //cout << "moGLUT_IODeviceManager::KeyUp( unsigned char key, int xmouse, int ymouse )" << endl;
-          //cout << "cached event: key: " << key << " int: " << (int)key << endl;
-          m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, mod );
+        //cout << "moGLUT_IODeviceManager::KeyUp( unsigned char key, int xmouse, int ymouse )" << endl;
+        //cout << "cached event: key: " << key << " int: " << (int)key << endl;
+        m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYUP, key, mod );
 
-          m_DataLock.Unlock();
+        m_DataLock.Unlock();
+
     }
 
     static void SpecialFunc( int key, int xmouse, int ymouse ) {
@@ -269,11 +247,11 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
       //cout << "moGLUT_IODeviceManager::SpecialFunc( unsigned char key, int xmouse, int ymouse )" << endl;
 
-      if (mod & GLUT_ACTIVE_ALT) cout << "ALT ACTIVE" << endl;
-      if (mod & GLUT_ACTIVE_CTRL) cout << "CTRL ACTIVE" << endl;
-      if (mod & GLUT_ACTIVE_SHIFT) cout << "SHIFT ACTIVE" << endl;
+      if (mod & GLUT_ACTIVE_ALT)    cout << "ALT ACTIVE: missing up event: " << key << endl;
+      if (mod & GLUT_ACTIVE_CTRL)   cout << "CTRL ACTIVE: missing up event: " << key << endl;
+      if (mod & GLUT_ACTIVE_SHIFT)  cout << "SHIFT ACTIVE: missing up event: " << key <<  endl;
 
-      m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, key, mod, xmouse, ymouse );
+      //m_CachedEvents.Add( MO_IODEVICE_KEYBOARD, SDL_KEYDOWN, key, mod, 0, 0 );
 
       //cout << "cached event: key: " << key << " int: " << (int)key << endl;
 
@@ -283,27 +261,7 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
     static void Mouse( int button, int state, int x, int y ) {
         m_DataLock.Lock();
-      /*
-/// MOUSE
-              case MotionNotify:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION,  xev.xmotion.x - m_MouseX, xev.xmotion.y - m_MouseY );
-                m_MouseX = xev.xmotion.x;
-                m_MouseY = xev.xmotion.y;
-                moDebugManager::Message( "X Event MotionNotify X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonPress:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonRelease:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-      */
+
       switch(button) {
         case GLUT_LEFT_BUTTON:
           button = SDL_BUTTON_LEFT;
@@ -333,27 +291,6 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
     static void Motion( int x, int y ) {
 
-/*
-/// MOUSE
-              case MotionNotify:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION,  xev.xmotion.x - m_MouseX, xev.xmotion.y - m_MouseY );
-                m_MouseX = xev.xmotion.x;
-                m_MouseY = xev.xmotion.y;
-                moDebugManager::Message( "X Event MotionNotify X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonPress:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonRelease:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-*/
 
       m_DataLock.Lock();
 
@@ -433,167 +370,17 @@ class moGLUT_IODeviceManager : public moIODeviceManager {
 
         m_DataLock.Unlock();
 
-
-
-/* X11 implementation:*/
-/*
-
-      XEvent			xev;
-      char buffer[20];
-      int bufsize = 20;
-      KeySym xkeysym;
-      XComposeStatus compose;
-      int charcount;
-
-      SDLKey sym = SDLK_UNKNOWN;
-      SDLMod mod = KMOD_NONE;
-      SDL_keysym sdl_keysym;
-
-      //XK_Num_Lock
-
-      int pending;
-      char	*key_string1;
-
-
-      pending = 0;
-      while ( X11_Pending(m_Dpy) ) {
-        //call XNextEvent
-        //X11_DispatchEvent(this);
-        XNextEvent(m_Dpy, &xev);
-
-        moDebugManager::Message( "X Event :" + IntToStr( xev.type ) );
-
-        if ( xev.type == KeyRelease
-             && X11_KeyRepeat( m_Dpy, &xev) ) {
-
-        } else {
-
-            sdl_keysym.mod = KMOD_NONE;
-            sdl_keysym.unicode = 0;
-
-            sdl_keysym.scancode = 0;
-            sdl_keysym.sym = SDLK_UNKNOWN;
-
-            switch( xev.type ) {
-
-
-              case ConfigureNotify:
-                if (xev.xconfigure.display==m_Dpy) {
-
-                  if (xev.xconfigure.window==m_Win && gpConsole) {
-                    gpConsole->GetResourceManager()->GetRenderMan()->SetView( xev.xconfigure.width, xev.xconfigure.height );
-                    moDebugManager::Message( "X Event ConfigureNotify m_Win width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
-                  }
-
-                  if (xev.xconfigure.window==m_Win2 && gpConsole) {
-                    gpConsole->GetResourceManager()->GetRenderMan()->SetInterfaceView( xev.xconfigure.width, xev.xconfigure.height );
-                    moDebugManager::Message( "X Event ConfigureNotify m_Win2 width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
-                  }
-
-                }
-                break;
-
-
-              // RESIZE EVENTS
-              case ResizeRequest:
-                if (xev.xresizerequest.display==m_Dpy) {
-
-                  if (xev.xresizerequest.window==m_Win && gpConsole) {
-                    gpConsole->GetResourceManager()->GetRenderMan()->SetView( xev.xresizerequest.width, xev.xresizerequest.height );
-                    moDebugManager::Message( "X Event ResizeRequest m_Win width:" + IntToStr(xev.xresizerequest.width) + " height:" + IntToStr(xev.xresizerequest.height) );
-                  }
-
-                  if (xev.xresizerequest.window==m_Win2 && gpConsole) {
-                    gpConsole->GetResourceManager()->GetRenderMan()->SetInterfaceView( xev.xresizerequest.width, xev.xresizerequest.height );
-                    moDebugManager::Message( "X Event ResizeRequest m_Win2 width:" + IntToStr(xev.xresizerequest.width) + " height:" + IntToStr(xev.xresizerequest.height) );
-                  }
-
-                }
-                break;
-
-              /// MOUSE
-              case MotionNotify:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION,  xev.xmotion.x - m_MouseX, xev.xmotion.y - m_MouseY );
-                m_MouseX = xev.xmotion.x;
-                m_MouseY = xev.xmotion.y;
-                moDebugManager::Message( "X Event MotionNotify X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonPress:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-              case ButtonRelease:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
-                m_MouseX = xev.xbutton.x;
-                m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
-                break;
-
-              /// KEYBOARD
-              case KeyPress:
-              case KeyRelease:
-
-                sdl_keysym.scancode = xev.xkey.keycode;
-                sdl_keysym.sym = X11_TranslateKeycode( m_Dpy, xev.xkey.keycode );
-
-                //keysim = XkbKeycodeToKeysym( m_Dpy, xev.xkey.keycode, 0, 0)
-                charcount = XLookupString(&xev.xkey, buffer, bufsize, &xkeysym, &compose);
-                key_string1 = XKeysymToString(XkbKeycodeToKeysym( m_Dpy, xev.xkey.keycode, 0, 0));
-                moDebugManager::Message( "Key (2:press/3:release):" + IntToStr(xev.type) + " keysim STR: " + moText(key_string1) + +" Xkeysim code:" + IntToStr(xkeysym) + " keycode: " + IntToStr(xev.xkey.keycode) + " sdl sym:" + IntToStr(sdl_keysym.sym) );
-
-                X11_CheckModState( xev.type, &sdl_keysym );
-
-                moDebugManager::Message( " Mod:" + IntToStr(sdl_keysym.mod) );
-
-                //Events->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, event.key.keysym.sym, event.key.keysym.mod,0,0);
-                (xev.type == KeyPress ) ? GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, sdl_keysym.sym,
-                                                          ///mod
-                                                          sdl_keysym.mod,0,0) :
-                                          GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYUP, sdl_keysym.sym,
-                                                          ///mod
-                                                          sdl_keysym.mod,0,0);
-                break;
-
-            }
-
-
-
-        }
-
-
-        ++pending;
-      }
-*/
-
     }
-/*
-    Display   *m_Dpy;
-    Window     m_Win;
-    Window     m_Win2;
-
-
-    SDLKey ODD_keymap[256];
-    SDLKey MISC_keymap[256];
-
-    SDLMod    SDL_ModState;
-    Uint8 SDL_NoLockKeys;
-*/
 
     static moLock     m_DataLock;
-    static moEventList m_CachedEvents;
     static int   m_MouseX;
     static int   m_MouseY;
-
-    int   m_SDL_DISABLE_LOCK_KEYS;
+    static moEventList m_CachedEvents;
 };
 
-moEventList moGLUT_IODeviceManager::m_CachedEvents;
-moLock moGLUT_IODeviceManager::m_DataLock;
-int   moGLUT_IODeviceManager::m_MouseX;
-int   moGLUT_IODeviceManager::m_MouseY;
-
-
+    moEventList moGLUT_IODeviceManager::m_CachedEvents;
+    moLock moGLUT_IODeviceManager::m_DataLock;
+    int   moGLUT_IODeviceManager::m_MouseX = 0;
+    int   moGLUT_IODeviceManager::m_MouseY = 0;
 
 #endif
