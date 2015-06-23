@@ -18,12 +18,10 @@ AC_PROG_CXX_C_O
 
 
 AC_CONFIG_SUBDIRS(
-	data
 	moldeoplayerglut
 	moldeoplayersdl
 	moldeoplayersdl2
 	#moldeoplayerx11
-
 )
 
 dnl autoscan results
