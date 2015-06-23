@@ -422,7 +422,7 @@ int main(int argc, char** argv) {
 
   if (mwindow!=moText("")) {
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
-      displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
+      displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height,
                                        SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       if (displayWindow==NULL) {
@@ -433,7 +433,7 @@ int main(int argc, char** argv) {
   } else if (gamemode!=moText("")) {
 
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_FULLSCREEN ) == NULL) {
-      displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
+      displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height,
                                        SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_GAMEMODE;
       if (displayWindow==NULL) {
@@ -560,7 +560,7 @@ int main(int argc, char** argv) {
         while(event!=NULL) {
           if ( event->deviceid == MO_IODEVICE_KEYBOARD || event->deviceid==999 ) {
             if (event->devicecode == SDL_KEYDOWN || event->devicecode==0) {
-              if ( event->reservedvalue0 == SDLK_F12 || event->reservedvalue3 == MO_MESSAGE ) {
+              if ( event->reservedvalue0 == SDLK_ESCAPE || event->reservedvalue3 == MO_MESSAGE ) {
                 SwitchPresentation( Moldeo );
               }
             }
