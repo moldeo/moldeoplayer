@@ -301,7 +301,7 @@ moConfig checkConfig;
       while(event!=NULL) {
         if ( event->deviceid == MO_IODEVICE_KEYBOARD || event->deviceid==999 ) {
           if (event->devicecode == SDL_KEYDOWN || event->devicecode==0) {
-            if ( event->reservedvalue0 == SDLK_F12 || event->reservedvalue3 == MO_MESSAGE ) {
+            if ( event->reservedvalue0 == SDLK_ESCAPE || event->reservedvalue3 == MO_MESSAGE ) {
               //SwitchPresentation( Moldeo );
               //SDL_SetVideoMode( screen_width, screen_height, SDL_FULLSCREEN|SDL_OPENGL);
               //SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_NOFRAME );
