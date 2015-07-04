@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../../../../../binaries/bin/win/moldeoplayersdld" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../../../../binaries/bin/win/" />
+				<Option output="../../../../bin/win/moldeoplayersdld" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../bin/win/" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -29,8 +29,8 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="../../../../../binaries/bin/win/moldeoplayersdl" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../../../../binaries/bin/win/" />
+				<Option output="../../../../bin/win/moldeoplayersdl" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../../../bin/win/" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -57,12 +57,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="../../" />
-			<Add directory="../../../../../externlibs/SDL/include" />
-			<Add directory="../../../../../externlibs/glew/include" />
-			<Add directory="../../../../../binaries/include" />
-			<Add directory="../../../../../externlibs/lua/include" />
-			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/include/gstreamer-0.10" />
-			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/include/glib-2.0" />
+			<Add directory="$(externlibs)/SDL/include" />
+			<Add directory="$(externlibs)/glew/include" />
+			<Add directory="../../../../include" />
+			<Add directory="$(externlibs)/lua/include" />
+			<Add directory="$(gstreamersdkdir)/include/gstreamer-0.10" />
+			<Add directory="$(gstreamersdkdir)/include/glib-2.0" />
 			<Add directory="../../../moldeoplayersdl" />
 		</Compiler>
 		<Linker>
@@ -73,11 +73,11 @@
 			<Add library="mingw32" />
 			<Add library="SDLmain" />
 			<Add library="SDL" />
-			<Add directory="../../../../../externlibs/glew/lib" />
-			<Add directory="../../../../../binaries/lib/win" />
-			<Add directory="C:/gstreamer-sdk/0.10/x86/lib" />
-			<Add directory="$(OSSBUILD_GSTREAMER_SDK_DIR)/lib" />
-			<Add directory="../../../../../externlibs/SDL/lib" />
+			<Add directory="$(externlibs)/glew/lib" />
+			<Add directory="../../../../lib/win" />
+			<Add directory="$(gstreamersdkdir)/lib" />
+			<Add directory="$(externlibs)/lib" />
+			<Add directory="$(externlibs)/SDL/lib" />
 		</Linker>
 		<Unit filename="../../main.cpp" />
 		<Unit filename="../../moSDL_IODeviceManager.h" />

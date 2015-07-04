@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1434588408 source:d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\moldeoplayer\trunk\moldeoplayersdl2\main.cpp
+1435354768 source:d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\moldeoplayer\moldeoplayersdl2\main.cpp
 	<unistd.h>
 	<stdio.h>
 	<stdlib.h>
@@ -11,7 +11,7 @@
 	"SDL.h"
 	"moSDL_IODeviceManager.h"
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gst.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gst.h
 	<glib.h>
 	<gst/glib-compat.h>
 	<gst/gstenumtypes.h>
@@ -61,7 +61,7 @@
 	<gst/gstparse.h>
 	<gst/gstcompat.h>
 
-1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib.h
+1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib.h
 	<glib/galloca.h>
 	<glib/garray.h>
 	<glib/gasyncqueue.h>
@@ -123,233 +123,233 @@
 	<glib/gvariant.h>
 	<glib/gwin32.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\galloca.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\galloca.h
 	<glib/gtypes.h>
 	<alloca.h>
 	<malloc.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gtypes.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtypes.h
 	<glibconfig.h>
 	<glib/gmacros.h>
 
-1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glibconfig.h
+1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glibconfig.h
 	<glib/gmacros.h>
 	<limits.h>
 	<float.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmacros.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmacros.h
 	<stddef.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\garray.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\garray.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gasyncqueue.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gasyncqueue.h
 	<glib/gthread.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gthread.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gthread.h
 	<glib/gerror.h>
 	<glib/gtypes.h>
 	<glib/gutils.h>
 	<glib/gatomic.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gerror.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gerror.h
 	<stdarg.h>
 	<glib/gquark.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gquark.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gquark.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gutils.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gutils.h
 	<glib/gtypes.h>
 	<stdarg.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gatomic.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gatomic.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gbacktrace.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbacktrace.h
 	<glib/gtypes.h>
 	<signal.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gbase64.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbase64.h
 	<glib/gtypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gbitlock.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbitlock.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gbookmarkfile.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbookmarkfile.h
 	<glib/gerror.h>
 	<time.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gcache.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gcache.h
 	<glib/glist.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\glist.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\glist.h
 	<glib/gmem.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmem.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmem.h
 	<glib/gslice.h>
 	<glib/gtypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gslice.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gslice.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gchecksum.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gchecksum.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gcompletion.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gcompletion.h
 	<glib/glist.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gconvert.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gconvert.h
 	<glib/gerror.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gdataset.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdataset.h
 	<glib/gquark.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gdate.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdate.h
 	<time.h>
 	<glib/gtypes.h>
 	<glib/gquark.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gdir.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdir.h
 	<glib/gerror.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gfileutils.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gfileutils.h
 	<glib/gerror.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\ghash.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghash.h
 	<glib/gtypes.h>
 	<glib/glist.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\ghook.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghook.h
 	<glib/gmem.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\ghostutils.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghostutils.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\giochannel.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\giochannel.h
 	<glib/gconvert.h>
 	<glib/gmain.h>
 	<glib/gstring.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmain.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmain.h
 	<glib/gpoll.h>
 	<glib/gslist.h>
 	<glib/gthread.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gpoll.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gpoll.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gslist.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gslist.h
 	<glib/gmem.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gstring.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gstring.h
 	<glib/gtypes.h>
 	<glib/gunicode.h>
 	<glib/gutils.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gunicode.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gunicode.h
 	<glib/gerror.h>
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gkeyfile.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gkeyfile.h
 	<glib/gerror.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmappedfile.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmappedfile.h
 	<glib/gerror.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmarkup.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmarkup.h
 	<stdarg.h>
 	<glib/gerror.h>
 	<glib/gslist.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gmessages.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmessages.h
 	<stdarg.h>
 	<glib/gtypes.h>
 	<glib/gmacros.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gnode.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gnode.h
 	<glib/gmem.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\goption.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\goption.h
 	<glib/gerror.h>
 	<glib/gquark.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gpattern.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gpattern.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gprimes.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gprimes.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gqsort.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gqsort.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gqueue.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gqueue.h
 	<glib/glist.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\grand.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\grand.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\grel.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\grel.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gregex.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gregex.h
 	<glib/gerror.h>
 	<glib/gstring.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gscanner.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gscanner.h
 	<glib/gdataset.h>
 	<glib/ghash.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gsequence.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gsequence.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gshell.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gshell.h
 	<glib/gerror.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gspawn.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gspawn.h
 	<glib/gerror.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gstrfuncs.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gstrfuncs.h
 	<stdarg.h>
 	<glib/gmacros.h>
 	<glib/gtypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gtestutils.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtestutils.h
 	<glib/gmessages.h>
 	<glib/gstring.h>
 	<glib/gtypes.h>
 	<glib/gerror.h>
 	<glib/gslist.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gthreadpool.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gthreadpool.h
 	<glib/gthread.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gtimer.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtimer.h
 	<glib/gtypes.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gtree.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtree.h
 	<glib/gnode.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gurifuncs.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gurifuncs.h
 	<glib/gtypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gvarianttype.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gvarianttype.h
 	<glib/gmessages.h>
 	<glib/gtypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gvariant.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gvariant.h
 	<glib/gvarianttype.h>
 	<glib/gstring.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib\gwin32.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gwin32.h
 	<glib/gtypes.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\glib-compat.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\glib-compat.h
 
-1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstenumtypes.h
+1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstenumtypes.h
 	<glib-object.h>
 
-1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\glib-object.h
+1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib-object.h
 	<gobject/gboxed.h>
 	<gobject/genums.h>
 	<gobject/gobject.h>
@@ -364,69 +364,69 @@
 	<gobject/gvaluearray.h>
 	<gobject/gvaluetypes.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gboxed.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gboxed.h
 	<gobject/gtype.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gtype.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtype.h
 	<glib.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\genums.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\genums.h
 	<gobject/gtype.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gobject.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gobject.h
 	<gobject/gtype.h>
 	<gobject/gvalue.h>
 	<gobject/gparam.h>
 	<gobject/gclosure.h>
 	<gobject/gsignal.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gvalue.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvalue.h
 	<gobject/gtype.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gparam.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gparam.h
 	<gobject/gvalue.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gclosure.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gclosure.h
 	<gobject/gtype.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gsignal.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gsignal.h
 	<gobject/gclosure.h>
 	<gobject/gvalue.h>
 	<gobject/gparam.h>
 	<gobject/gmarshal.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gmarshal.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gmarshal.h
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gparamspecs.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gparamspecs.h
 	<gobject/gvalue.h>
 	<gobject/genums.h>
 	<gobject/gboxed.h>
 	<gobject/gobject.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gsourceclosure.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gsourceclosure.h
 	<gobject/gclosure.h>
 
-1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gtypemodule.h
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtypemodule.h
 	<gobject/gobject.h>
 	<gobject/genums.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gtypeplugin.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtypeplugin.h
 	<gobject/gtype.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gvaluearray.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvaluearray.h
 	<gobject/gvalue.h>
 
-1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gobject\gvaluetypes.h
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvaluetypes.h
 	<gobject/gvalue.h>
 
-1268074470 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstversion.h
+1268074470 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstversion.h
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstbin.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbin.h
 	<gst/gstelement.h>
 	<gst/gstiterator.h>
 	<gst/gstbus.h>
 
-1261064854 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstelement.h
+1261064854 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstelement.h
 	<gst/gstconfig.h>
 	<gst/gstobject.h>
 	<gst/gstpad.h>
@@ -441,14 +441,14 @@
 	<gst/gstmessage.h>
 	<gst/gsttaglist.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstconfig.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstconfig.h
 	<libxml/parser.h>
 
-1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstobject.h
+1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstobject.h
 	<gst/gstconfig.h>
 	<glib-object.h>
 
-1258316026 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpad.h
+1258316026 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpad.h
 	<gst/gstconfig.h>
 	<gst/gstobject.h>
 	<gst/gstbuffer.h>
@@ -459,33 +459,33 @@
 	<gst/gsttask.h>
 	<gst/gstpadtemplate.h>
 
-1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstbuffer.h
+1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbuffer.h
 	<gst/gstminiobject.h>
 	<gst/gstclock.h>
 	<gst/gstcaps.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstminiobject.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstminiobject.h
 	<gst/gstconfig.h>
 	<glib-object.h>
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstclock.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstclock.h
 	<gst/gstobject.h>
 
-1263332868 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstcaps.h
+1263332868 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstcaps.h
 	<gst/gstconfig.h>
 	<gst/gststructure.h>
 	<gst/glib-compat.h>
 
-1257137396 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gststructure.h
+1257137396 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gststructure.h
 	<gst/gstconfig.h>
 	<glib-object.h>
 	<gst/gstclock.h>
 	<gst/glib-compat.h>
 
-1264881240 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstbufferlist.h
+1264881240 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbufferlist.h
 	<gst/gstbuffer.h>
 
-1262641268 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstevent.h
+1262641268 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstevent.h
 	<gst/gstminiobject.h>
 	<gst/gstformat.h>
 	<gst/gstobject.h>
@@ -493,34 +493,34 @@
 	<gst/gststructure.h>
 	<gst/gsttaglist.h>
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstformat.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstformat.h
 	<glib.h>
 	<gst/gstiterator.h>
 
-1251720018 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstiterator.h
+1251720018 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstiterator.h
 	<glib-object.h>
 	<gst/gstconfig.h>
 
-1262789182 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttaglist.h
+1262789182 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttaglist.h
 	<gst/gstbuffer.h>
 	<gst/gststructure.h>
 	<gst/glib-compat.h>
 
-1260263958 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstquery.h
+1260263958 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstquery.h
 	<glib.h>
 	<gst/gstiterator.h>
 	<gst/gstminiobject.h>
 	<gst/gststructure.h>
 	<gst/gstformat.h>
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttask.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttask.h
 	<gst/gstobject.h>
 	<gst/gsttaskpool.h>
 
-1262789560 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttaskpool.h
+1262789560 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttaskpool.h
 	<gst/gstobject.h>
 
-1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpadtemplate.h
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpadtemplate.h
 	<gst/gstconfig.h>
 	<gst/gstobject.h>
 	<gst/gstbuffer.h>
@@ -529,18 +529,18 @@
 	<gst/gstquery.h>
 	<gst/gsttask.h>
 
-1263317718 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstbus.h
+1263317718 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbus.h
 	<gst/gstmessage.h>
 	<gst/gstclock.h>
 
-1263655688 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstmessage.h
+1263655688 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmessage.h
 	<gst/gstminiobject.h>
 	<gst/gstobject.h>
 	<gst/gstelement.h>
 	<gst/gsttaglist.h>
 	<gst/gststructure.h>
 
-1252665626 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstelementfactory.h
+1252665626 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstelementfactory.h
 	<gst/gstconfig.h>
 	<gst/gstelement.h>
 	<gst/gstobject.h>
@@ -548,7 +548,7 @@
 	<gst/gstpluginfeature.h>
 	<gst/gstiterator.h>
 
-1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstplugin.h
+1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstplugin.h
 	<gst/gstconfig.h>
 	<time.h>
 	<sys/types.h>
@@ -558,128 +558,128 @@
 	<gst/gstmacros.h>
 	<gst/gststructure.h>
 
-1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\glib-2.0\gmodule.h
+1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gmodule.h
 	<glib.h>
 
-1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstmacros.h
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmacros.h
 
-1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpluginfeature.h
+1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpluginfeature.h
 	<glib-object.h>
 	<gst/gstobject.h>
 
-1264111558 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstindex.h
+1264111558 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstindex.h
 	<gst/gstobject.h>
 	<gst/gstformat.h>
 	<gst/gstpluginfeature.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstindexfactory.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstindexfactory.h
 	<gst/gstobject.h>
 	<gst/gstformat.h>
 	<gst/gstpluginfeature.h>
 
-1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstchildproxy.h
+1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstchildproxy.h
 	<glib-object.h>
 	<gst/gst.h>
 
-1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstdebugutils.h
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstdebugutils.h
 	<glib.h>
 	<glib-object.h>
 	<gst/gstconfig.h>
 	<gst/gstbin.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsterror.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsterror.h
 	<glib.h>
 	<glib-object.h>
 	<errno.h>
 
-1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstghostpad.h
+1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstghostpad.h
 	<gst/gstpad.h>
 
-1259700818 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstinfo.h
+1259700818 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstinfo.h
 	<glib.h>
 	<glib-object.h>
 	<gst/gstconfig.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstinterface.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstinterface.h
 	<gst/gstelement.h>
 
-1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstmarshal.h
+1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmarshal.h
 	<glib-object.h>
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstparamspecs.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstparamspecs.h
 	<gst/gstvalue.h>
 
-1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstvalue.h
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstvalue.h
 	<gst/gstconfig.h>
 	<gst/gstcaps.h>
 	<gst/gststructure.h>
 
-1245484338 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpipeline.h
+1245484338 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpipeline.h
 	<gst/gstbin.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpoll.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpoll.h
 	<glib.h>
 	<glib-object.h>
 	<gst/gstclock.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstpreset.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpreset.h
 	<glib-object.h>
 	<gst/gst.h>
 
-1262789226 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstregistry.h
+1262789226 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstregistry.h
 	<gst/gstconfig.h>
 	<gst/gstplugin.h>
 	<gst/gstpluginfeature.h>
 
-1245601380 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstsegment.h
+1245601380 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstsegment.h
 	<gst/gstevent.h>
 	<gst/gstformat.h>
 
-1251527298 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstsystemclock.h
+1251527298 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstsystemclock.h
 	<gst/gstclock.h>
 
-1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttagsetter.h
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttagsetter.h
 	<gst/gst.h>
 
-1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttrace.h
+1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttrace.h
 	<glib.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttypefind.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttypefind.h
 	<gst/gstcaps.h>
 	<gst/gstplugin.h>
 	<gst/gstpluginfeature.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsttypefindfactory.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttypefindfactory.h
 	<gst/gstcaps.h>
 	<gst/gstplugin.h>
 	<gst/gstpluginfeature.h>
 	<gst/gsttypefind.h>
 
-1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gsturi.h
+1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsturi.h
 	<glib.h>
 	<gst/gstelement.h>
 	<gst/gstpluginfeature.h>
 
-1258556602 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstutils.h
+1258556602 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstutils.h
 	<glib.h>
 	<gst/gstbin.h>
 	<gst/gstparse.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstparse.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstparse.h
 	<gst/gstelement.h>
 
-1251139816 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstxml.h
+1251139816 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstxml.h
 	<gst/gstconfig.h>
 	<gst/gstelement.h>
 
-1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\\include\gstreamer-0.10\gst\gstcompat.h
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstcompat.h
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moldeo.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moldeo.h
 	"moTypes.h"
 	"moConsole.h"
 	"moldeo.h"
 
-1434732065 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motypes.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motypes.h
 	<math.h>
 	<limits.h>
 	<iostream>
@@ -1066,27 +1066,27 @@
 	<mir_toolkit/mir_client_library.h>
 	"close_code.h"
 
-1416773657 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moport.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moport.h
 	<stdio.h>
 	<cstdio>
 	<string>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motext.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motext.h
 	"moTypes.h"
 	"moArray.h"
 	<stdio.h>
 	<string.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moarray.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moarray.h
 	"moArrayH.h"
 	<stdarg.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moarrayh.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moarrayh.h
 	"moTypes.h"
 	"moArray.h"
 	"moArray.cpp"
 
-1434591158 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moconsole.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconsole.h
 	<moTypes.h>
 	<moText.h>
 	<moResourceManager.h>
@@ -1098,13 +1098,13 @@
 	<moIODeviceManager.h>
 	<moTimeManager.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moresourcemanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moresourcemanager.h
 	"moTypes.h"
 	"moArray.h"
 	"moMoldeoObject.h"
 	"moResourcePlugin.h"
 
-1434381362 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momoldeoobject.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momoldeoobject.h
 	"moTypes.h"
 	"moText.h"
 	"moAbstract.h"
@@ -1115,18 +1115,18 @@
 	"moConnectors.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moabstract.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moabstract.h
 	"moTypes.h"
 	"moText.h"
 	"moLock.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\molock.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\molock.h
 	"moTypes.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moscript.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moscript.h
 	"moLuaBase.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moluabase.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moluabase.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moText.h"
@@ -1160,11 +1160,11 @@
 1135707120 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\lua\include\lualib.h
 	"lua.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moeventlist.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeventlist.h
 	"moValue.h"
 	"moLock.h"
 
-1435634185 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\movalue.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movalue.h
 	"moTypes.h"
 	"moTempo.h"
 	"moText.h"
@@ -1174,48 +1174,48 @@
 	"moMathVector3.h"
 	"moMathVector4.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motempo.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motempo.h
 	"moTimer.h"
 
-1426176468 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motimer.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motimer.h
 	"moTypes.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathfunction.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathfunction.h
 	"moTypes.h"
 	"moArray.h"
 	"moAbstract.h"
 	"moMath.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momath.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momath.h
 	"moTypes.h"
 	"moAbstract.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathvector.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector.h
 	"moMath.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathvector3.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector3.h
 	"moMath.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathvector4.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector4.h
 	"moMath.h"
 
-1435532635 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moconfig.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconfig.h
 	"moTypes.h"
 	"moText.h"
 	"moParam.h"
 	"moArray.h"
 	"moPreConfig.h"
 
-1435634185 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moparam.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moparam.h
 	"moTypes.h"
 	"moText.h"
 	"moValue.h"
 
-1420710004 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mopreconfig.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreconfig.h
 	"moTypes.h"
 	"moValue.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moconnectors.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconnectors.h
 	"moTypes.h"
 	"moText.h"
 	"moAbstract.h"
@@ -1223,16 +1223,16 @@
 	"moConfig.h"
 	"moArray.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moresourceplugin.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moresourceplugin.h
 	"moBasePlugin.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mobaseplugin.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mobaseplugin.h
 	"moText.h"
 	<windows.h>
 	<dlfcn.h>
 
-1424737149 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moeffectmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffectmanager.h
 	"moTypes.h"
 	"moArray.h"
 	"moEffect.h"
@@ -1245,7 +1245,7 @@
 	"moMasterPlugin.h"
 	"moResourceManager.h"
 
-1434381362 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moeffect.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffect.h
 	"moAbstract.h"
 	"moTempo.h"
 	"moArray.h"
@@ -1269,14 +1269,14 @@
 	"moRenderManager.h"
 	"moGUIManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathfunctionindex.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathfunctionindex.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moConfig.h"
 	"moParam.h"
 	"moMathManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momathmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathmanager.h
 	"moTypes.h"
 	"moText.h"
 	"moConfig.h"
@@ -1285,7 +1285,7 @@
 	"moMath.h"
 	"moMathFunction.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moiodevicemanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moiodevicemanager.h
 	"moTypes.h"
 	"moText.h"
 	"moMoldeoObject.h"
@@ -1294,20 +1294,20 @@
 	"moRenderManager.h"
 	"moIODevicePlugin.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\modevicecode.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modevicecode.h
 	"moTypes.h"
 	"moAbstract.h"
 
-1426622035 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\morendermanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\morendermanager.h
 	<moTextureManager.h>
 	<moBuckets.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motexturemanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexturemanager.h
 	"moTexture.h"
 	"moResourceManager.h"
 	<moFileManager.h>
 
-1434991924 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motexture.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexture.h
 	"moTypes.h"
 	"moText.h"
 	"moParam.h"
@@ -1321,53 +1321,53 @@
 	"moGLManager.h"
 	"moTextureFilter.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mobuckets.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mobuckets.h
 	"moTypes.h"
 	"moLock.h"
 
-1417185583 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\movideograph.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movideograph.h
 	"moTypes.h"
 	"moText.h"
 	"moBuckets.h"
 	"moArray.h"
 	"moAbstract.h"
 
-1429557244 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mogsgraph.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mogsgraph.h
 	"moConfig.h"
 	"moTypes.h"
 	"moThread.h"
 	"moBuckets.h"
 	"moVideoGraph.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mothread.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mothread.h
 	"moTypes.h"
 	"moLock.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\modsgraph.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modsgraph.h
 	"moTypes.h"
 	"streams.h"
 	"qedit.h"
 	"dvdmedia.h"
 	"moVideoGraph.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motextureindex.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motextureindex.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moConfig.h"
 	"moParam.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mofbo.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofbo.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moGLManager.h"
 
-1426355953 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moglmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moglmanager.h
 	"moTypes.h"
 	"moText.h"
 	"moFBO.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motexturefilter.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexturefilter.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moConfig.h"
@@ -1382,28 +1382,28 @@
 	"moGLManager.h"
 	"moRenderManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moshader.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshader.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moConfig.h"
 	"moArray.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moshaderglsl.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshaderglsl.h
 	"moShader.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motextfilterparam.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motextfilterparam.h
 	"moShader.h"
 	"moShaderCG.h"
 	"moShaderGLSL.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moshadercg.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshadercg.h
 	"moShader.h"
 	<cg.h>
 	<cgGL.h>
 	<Cg/cg.h>
 	<Cg/cgGL.h>
 
-1429607086 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\movideomanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movideomanager.h
 	<moGsGraph.h>
 	<moDsGraph.h>
 	<moFBO.h>
@@ -1415,14 +1415,14 @@
 	"moIODeviceManager.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\modebugmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modebugmanager.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moText.h"
 	"moParam.h"
 	"moResourceManager.h"
 
-1426698721 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\modatamanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modatamanager.h
 	"moBasePlugin.h"
 	<moConsoleState.h>
 	<moActions.h>
@@ -1431,33 +1431,33 @@
 	<moEventList.h>
 	<moResourceManager.h>
 
-1426106891 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moconsolestate.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconsolestate.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moTempo.h"
 	"moEffectState.h"
 
-1426176468 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moeffectstate.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffectstate.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moTempo.h"
 	"moMoldeoObject.h"
 
-1426176468 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moactions.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moactions.h
 	"moTypes.h"
 	"moValue.h"
 	<iostream>
 	<map>
 	<string>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\motimemanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motimemanager.h
 	"moTimer.h"
 	"moText.h"
 	"moConfig.h"
 	"moLock.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moshadermanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshadermanager.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moText.h"
@@ -1470,7 +1470,7 @@
 	"moGLManager.h"
 	"moFBManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mofbmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofbmanager.h
 	"moTypes.h"
 	"moText.h"
 	"moLock.h"
@@ -1479,7 +1479,7 @@
 	"moResourceManager.h"
 	"moGLManager.h"
 
-1426702156 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mofilemanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofilemanager.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moText.h"
@@ -1488,26 +1488,26 @@
 	"moParam.h"
 	"io.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moiodeviceplugin.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moiodeviceplugin.h
 	"moTypes.h"
 	"moArray.h"
 	"moBasePlugin.h"
 	"moIODeviceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mopresets.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopresets.h
 	"moTypes.h"
 	"moConfig.h"
 	"moEffectState.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momotion.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momotion.h
 	"moParam.h"
 	"moTypes.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mofontmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofontmanager.h
 	"moTypes.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mosoundmanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mosoundmanager.h
 	<moTypes.h>
 	<moText.h>
 	<moConfig.h>
@@ -1516,7 +1516,7 @@
 	<moDataManager.h>
 	<moGsGraph.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moscriptmanager.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moscriptmanager.h
 	"moTypes.h"
 	"moAbstract.h"
 	"moText.h"
@@ -1524,7 +1524,7 @@
 	"moLunaClasses.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\molunaclasses.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\molunaclasses.h
 	"moLuna.h"
 	"moMath.h"
 	"moMathFunction.h"
@@ -1533,7 +1533,7 @@
 	"moVideoManager.h"
 	"moResourceManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moluna.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moluna.h
 	"moTypes.h"
 	<string>
 	<vector>
@@ -1542,46 +1542,46 @@
 	"lauxlib.h"
 	"lualib.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mop5.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mop5.h
 	"moAbstract.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mo3dmodelmanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mo3dmodelmanager.h
 	<moTypes.h>
 	<moEffectState.h>
 	"moMathVector.h"
 	"moMathVector3.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moguimanager.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moguimanager.h
 	<mo3dModelManager.h>
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moposteffect.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moposteffect.h
 	"moEffect.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mopreeffect.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreeffect.h
 	"moEffect.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momastereffect.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momastereffect.h
 	"moEffect.h"
 	"moConsoleState.h"
 	"moEffectManager.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\moplugin.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moplugin.h
 	"moBasePlugin.h"
 	"moEffect.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mopostplugin.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopostplugin.h
 	"moBasePlugin.h"
 	"moPostEffect.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\mopreplugin.h
+1435960465 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreplugin.h
 	"moBasePlugin.h"
 	"moPreEffect.h"
 
-1415737665 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\binaries\include\momasterplugin.h
+1435960464 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momasterplugin.h
 	"moBasePlugin.h"
 	"moMasterEffect.h"
 
-1411672892 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\moldeoplayer\trunk\moldeoplayersdl2\mosdl_iodevicemanager.h
+1413835361 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\moldeoplayer\moldeoplayersdl2\mosdl_iodevicemanager.h
 	"SDL.h"
 	"SDL.h"
 
