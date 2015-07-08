@@ -1,1 +1,1588 @@
 # depslib dependency file v1.0
+1435354768 source:d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\moldeoplayer\moldeoplayersdl2\main.cpp
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<fstream>
+	<iostream>
+	"gst/gst.h"
+	"moldeo.h"
+	"SDL.h"
+	"moSDL_IODeviceManager.h"
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gst.h
+	<glib.h>
+	<gst/glib-compat.h>
+	<gst/gstenumtypes.h>
+	<gst/gstversion.h>
+	<gst/gstbin.h>
+	<gst/gstbuffer.h>
+	<gst/gstbufferlist.h>
+	<gst/gstcaps.h>
+	<gst/gstchildproxy.h>
+	<gst/gstclock.h>
+	<gst/gstdebugutils.h>
+	<gst/gstelement.h>
+	<gst/gsterror.h>
+	<gst/gstevent.h>
+	<gst/gstghostpad.h>
+	<gst/gstindex.h>
+	<gst/gstindexfactory.h>
+	<gst/gstinfo.h>
+	<gst/gstinterface.h>
+	<gst/gstiterator.h>
+	<gst/gstmarshal.h>
+	<gst/gstmessage.h>
+	<gst/gstminiobject.h>
+	<gst/gstobject.h>
+	<gst/gstpad.h>
+	<gst/gstparamspecs.h>
+	<gst/gstpipeline.h>
+	<gst/gstplugin.h>
+	<gst/gstpoll.h>
+	<gst/gstpreset.h>
+	<gst/gstquery.h>
+	<gst/gstregistry.h>
+	<gst/gstsegment.h>
+	<gst/gststructure.h>
+	<gst/gstsystemclock.h>
+	<gst/gsttaglist.h>
+	<gst/gsttagsetter.h>
+	<gst/gsttask.h>
+	<gst/gsttaskpool.h>
+	<gst/gsttrace.h>
+	<gst/gsttypefind.h>
+	<gst/gsttypefindfactory.h>
+	<gst/gsturi.h>
+	<gst/gstutils.h>
+	<gst/gstvalue.h>
+	<gst/gstxml.h>
+	<gst/gstparse.h>
+	<gst/gstcompat.h>
+
+1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib.h
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gcache.h>
+	<glib/gchecksum.h>
+	<glib/gcompletion.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdir.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ghash.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/grel.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gwin32.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\galloca.h
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtypes.h
+	<glibconfig.h>
+	<glib/gmacros.h>
+
+1270684734 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glibconfig.h
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmacros.h
+	<stddef.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\garray.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gasyncqueue.h
+	<glib/gthread.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gthread.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+	<glib/gutils.h>
+	<glib/gatomic.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gerror.h
+	<stdarg.h>
+	<glib/gquark.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gquark.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gutils.h
+	<glib/gtypes.h>
+	<stdarg.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gatomic.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbacktrace.h
+	<glib/gtypes.h>
+	<signal.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbase64.h
+	<glib/gtypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbitlock.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gbookmarkfile.h
+	<glib/gerror.h>
+	<time.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gcache.h
+	<glib/glist.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\glist.h
+	<glib/gmem.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmem.h
+	<glib/gslice.h>
+	<glib/gtypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gslice.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gchecksum.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gcompletion.h
+	<glib/glist.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gconvert.h
+	<glib/gerror.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdataset.h
+	<glib/gquark.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdate.h
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gdir.h
+	<glib/gerror.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gfileutils.h
+	<glib/gerror.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghash.h
+	<glib/gtypes.h>
+	<glib/glist.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghook.h
+	<glib/gmem.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\ghostutils.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\giochannel.h
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmain.h
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gpoll.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gslist.h
+	<glib/gmem.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gstring.h
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gutils.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gunicode.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gkeyfile.h
+	<glib/gerror.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmappedfile.h
+	<glib/gerror.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmarkup.h
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gmessages.h
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gnode.h
+	<glib/gmem.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\goption.h
+	<glib/gerror.h>
+	<glib/gquark.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gpattern.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gprimes.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gqsort.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gqueue.h
+	<glib/glist.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\grand.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\grel.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gregex.h
+	<glib/gerror.h>
+	<glib/gstring.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gscanner.h
+	<glib/gdataset.h>
+	<glib/ghash.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gsequence.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gshell.h
+	<glib/gerror.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gspawn.h
+	<glib/gerror.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gstrfuncs.h
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtestutils.h
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gtypes.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gthreadpool.h
+	<glib/gthread.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtimer.h
+	<glib/gtypes.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gtree.h
+	<glib/gnode.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gurifuncs.h
+	<glib/gtypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gvarianttype.h
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gvariant.h
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib\gwin32.h
+	<glib/gtypes.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\glib-compat.h
+
+1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstenumtypes.h
+	<glib-object.h>
+
+1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\glib-object.h
+	<gobject/gboxed.h>
+	<gobject/genums.h>
+	<gobject/gobject.h>
+	<gobject/gparam.h>
+	<gobject/gparamspecs.h>
+	<gobject/gsignal.h>
+	<gobject/gsourceclosure.h>
+	<gobject/gtype.h>
+	<gobject/gtypemodule.h>
+	<gobject/gtypeplugin.h>
+	<gobject/gvalue.h>
+	<gobject/gvaluearray.h>
+	<gobject/gvaluetypes.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gboxed.h
+	<gobject/gtype.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtype.h
+	<glib.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\genums.h
+	<gobject/gtype.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gobject.h
+	<gobject/gtype.h>
+	<gobject/gvalue.h>
+	<gobject/gparam.h>
+	<gobject/gclosure.h>
+	<gobject/gsignal.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvalue.h
+	<gobject/gtype.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gparam.h
+	<gobject/gvalue.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gclosure.h
+	<gobject/gtype.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gsignal.h
+	<gobject/gclosure.h>
+	<gobject/gvalue.h>
+	<gobject/gparam.h>
+	<gobject/gmarshal.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gmarshal.h
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gparamspecs.h
+	<gobject/gvalue.h>
+	<gobject/genums.h>
+	<gobject/gboxed.h>
+	<gobject/gobject.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gsourceclosure.h
+	<gobject/gclosure.h>
+
+1270684732 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtypemodule.h
+	<gobject/gobject.h>
+	<gobject/genums.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gtypeplugin.h
+	<gobject/gtype.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvaluearray.h
+	<gobject/gvalue.h>
+
+1267058344 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gobject\gvaluetypes.h
+	<gobject/gvalue.h>
+
+1268074470 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstversion.h
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbin.h
+	<gst/gstelement.h>
+	<gst/gstiterator.h>
+	<gst/gstbus.h>
+
+1261064854 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstelement.h
+	<gst/gstconfig.h>
+	<gst/gstobject.h>
+	<gst/gstpad.h>
+	<gst/gstbus.h>
+	<gst/gstclock.h>
+	<gst/gstelementfactory.h>
+	<gst/gstplugin.h>
+	<gst/gstpluginfeature.h>
+	<gst/gstindex.h>
+	<gst/gstindexfactory.h>
+	<gst/gstiterator.h>
+	<gst/gstmessage.h>
+	<gst/gsttaglist.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstconfig.h
+	<libxml/parser.h>
+
+1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstobject.h
+	<gst/gstconfig.h>
+	<glib-object.h>
+
+1258316026 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpad.h
+	<gst/gstconfig.h>
+	<gst/gstobject.h>
+	<gst/gstbuffer.h>
+	<gst/gstbufferlist.h>
+	<gst/gstcaps.h>
+	<gst/gstevent.h>
+	<gst/gstquery.h>
+	<gst/gsttask.h>
+	<gst/gstpadtemplate.h>
+
+1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbuffer.h
+	<gst/gstminiobject.h>
+	<gst/gstclock.h>
+	<gst/gstcaps.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstminiobject.h
+	<gst/gstconfig.h>
+	<glib-object.h>
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstclock.h
+	<gst/gstobject.h>
+
+1263332868 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstcaps.h
+	<gst/gstconfig.h>
+	<gst/gststructure.h>
+	<gst/glib-compat.h>
+
+1257137396 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gststructure.h
+	<gst/gstconfig.h>
+	<glib-object.h>
+	<gst/gstclock.h>
+	<gst/glib-compat.h>
+
+1264881240 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbufferlist.h
+	<gst/gstbuffer.h>
+
+1262641268 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstevent.h
+	<gst/gstminiobject.h>
+	<gst/gstformat.h>
+	<gst/gstobject.h>
+	<gst/gstclock.h>
+	<gst/gststructure.h>
+	<gst/gsttaglist.h>
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstformat.h
+	<glib.h>
+	<gst/gstiterator.h>
+
+1251720018 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstiterator.h
+	<glib-object.h>
+	<gst/gstconfig.h>
+
+1262789182 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttaglist.h
+	<gst/gstbuffer.h>
+	<gst/gststructure.h>
+	<gst/glib-compat.h>
+
+1260263958 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstquery.h
+	<glib.h>
+	<gst/gstiterator.h>
+	<gst/gstminiobject.h>
+	<gst/gststructure.h>
+	<gst/gstformat.h>
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttask.h
+	<gst/gstobject.h>
+	<gst/gsttaskpool.h>
+
+1262789560 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttaskpool.h
+	<gst/gstobject.h>
+
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpadtemplate.h
+	<gst/gstconfig.h>
+	<gst/gstobject.h>
+	<gst/gstbuffer.h>
+	<gst/gstcaps.h>
+	<gst/gstevent.h>
+	<gst/gstquery.h>
+	<gst/gsttask.h>
+
+1263317718 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstbus.h
+	<gst/gstmessage.h>
+	<gst/gstclock.h>
+
+1263655688 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmessage.h
+	<gst/gstminiobject.h>
+	<gst/gstobject.h>
+	<gst/gstelement.h>
+	<gst/gsttaglist.h>
+	<gst/gststructure.h>
+
+1252665626 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstelementfactory.h
+	<gst/gstconfig.h>
+	<gst/gstelement.h>
+	<gst/gstobject.h>
+	<gst/gstplugin.h>
+	<gst/gstpluginfeature.h>
+	<gst/gstiterator.h>
+
+1259326604 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstplugin.h
+	<gst/gstconfig.h>
+	<time.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<gmodule.h>
+	<gst/gstobject.h>
+	<gst/gstmacros.h>
+	<gst/gststructure.h>
+
+1267058348 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\glib-2.0\gmodule.h
+	<glib.h>
+
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmacros.h
+
+1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpluginfeature.h
+	<glib-object.h>
+	<gst/gstobject.h>
+
+1264111558 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstindex.h
+	<gst/gstobject.h>
+	<gst/gstformat.h>
+	<gst/gstpluginfeature.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstindexfactory.h
+	<gst/gstobject.h>
+	<gst/gstformat.h>
+	<gst/gstpluginfeature.h>
+
+1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstchildproxy.h
+	<glib-object.h>
+	<gst/gst.h>
+
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstdebugutils.h
+	<glib.h>
+	<glib-object.h>
+	<gst/gstconfig.h>
+	<gst/gstbin.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsterror.h
+	<glib.h>
+	<glib-object.h>
+	<errno.h>
+
+1246607882 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstghostpad.h
+	<gst/gstpad.h>
+
+1259700818 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstinfo.h
+	<glib.h>
+	<glib-object.h>
+	<gst/gstconfig.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstinterface.h
+	<gst/gstelement.h>
+
+1268450632 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstmarshal.h
+	<glib-object.h>
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstparamspecs.h
+	<gst/gstvalue.h>
+
+1259149980 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstvalue.h
+	<gst/gstconfig.h>
+	<gst/gstcaps.h>
+	<gst/gststructure.h>
+
+1245484338 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpipeline.h
+	<gst/gstbin.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpoll.h
+	<glib.h>
+	<glib-object.h>
+	<gst/gstclock.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstpreset.h
+	<glib-object.h>
+	<gst/gst.h>
+
+1262789226 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstregistry.h
+	<gst/gstconfig.h>
+	<gst/gstplugin.h>
+	<gst/gstpluginfeature.h>
+
+1245601380 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstsegment.h
+	<gst/gstevent.h>
+	<gst/gstformat.h>
+
+1251527298 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstsystemclock.h
+	<gst/gstclock.h>
+
+1243279956 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttagsetter.h
+	<gst/gst.h>
+
+1256676218 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttrace.h
+	<glib.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttypefind.h
+	<gst/gstcaps.h>
+	<gst/gstplugin.h>
+	<gst/gstpluginfeature.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsttypefindfactory.h
+	<gst/gstcaps.h>
+	<gst/gstplugin.h>
+	<gst/gstpluginfeature.h>
+	<gst/gsttypefind.h>
+
+1263501230 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gsturi.h
+	<glib.h>
+	<gst/gstelement.h>
+	<gst/gstpluginfeature.h>
+
+1258556602 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstutils.h
+	<glib.h>
+	<gst/gstbin.h>
+	<gst/gstparse.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstparse.h
+	<gst/gstelement.h>
+
+1251139816 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstxml.h
+	<gst/gstconfig.h>
+	<gst/gstelement.h>
+
+1242916984 c:\program files (x86)\ossbuild\gstreamer\v0.10.6\sdk\include\gstreamer-0.10\gst\gstcompat.h
+
+1436362337 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moldeo.h
+	"moTypes.h"
+	"moConsole.h"
+	"moldeo.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motypes.h
+	<math.h>
+	<limits.h>
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<float.h>
+	<time.h>
+	<string.h>
+	<vector>
+	<fstream>
+	"SDL.h"
+	"SDL_thread.h"
+	"SDL_mutex.h"
+	"SDL_net.h"
+	"SDL_image.h"
+	<GL/glew.h>
+	"OpenGL/gl.h"
+	"OpenGL/glu.h"
+	"OpenGL/glext.h"
+	"GLUT/glut.h"
+	"X11/X.h"
+	<SDL/SDL.h>
+	<SDL/SDL_thread.h>
+	<SDL/SDL_mutex.h>
+	<SDL/SDL_net.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_syswm.h>
+	<GL/glew.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glext.h>
+	<GL/glut.h>
+	<windows.h>
+	<SDL.h>
+	<SDL_thread.h>
+	<SDL_mutex.h>
+	<SDL_syswm.h>
+	<GL/glew.h>
+	"GL/gl.h"
+	"GL/glu.h"
+	"GL/glext.h"
+	"moPort.h"
+	"moText.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1409518655 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\begin_code.h
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\close_code.h
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937196 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1344268747 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\glew\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1394937197 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\sdl2\i686-w64-mingw32\include\sdl2\sdl_syswm.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	<windows.h>
+	<Inspectable.h>
+	<X11/Xlib.h>
+	<X11/Xatom.h>
+	<directfb.h>
+	<Cocoa/Cocoa.h>
+	<UIKit/UIKit.h>
+	<mir_toolkit/mir_client_library.h>
+	"close_code.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moport.h
+	<stdio.h>
+	<cstdio>
+	<string>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motext.h
+	"moTypes.h"
+	"moArray.h"
+	<stdio.h>
+	<string.h>
+	<sstream>
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moarray.h
+	"moArrayH.h"
+	<stdarg.h>
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moarrayh.h
+	"moTypes.h"
+	"moArray.h"
+	"moArray.cpp"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconsole.h
+	<moTypes.h>
+	<moText.h>
+	<moResourceManager.h>
+	<moEffectManager.h>
+	<moConfig.h>
+	<moPresets.h>
+	<moConsoleState.h>
+	<moIODevicePlugin.h>
+	<moIODeviceManager.h>
+	<moTimeManager.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moresourcemanager.h
+	"moTypes.h"
+	"moArray.h"
+	"moMoldeoObject.h"
+	"moResourcePlugin.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momoldeoobject.h
+	"moTypes.h"
+	"moText.h"
+	"moAbstract.h"
+	"moScript.h"
+	"moEventList.h"
+	"moConfig.h"
+	"moArray.h"
+	"moConnectors.h"
+	"moResourceManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moabstract.h
+	"moTypes.h"
+	"moText.h"
+	"moLock.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\molock.h
+	"moTypes.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moscript.h
+	"moLuaBase.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moluabase.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moText.h"
+	<lua.h>
+	<lauxlib.h>
+	<lualib.h>
+
+1174666350 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1174701714 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<unistd.h>
+	<io.h>
+	<stdio.h>
+	<stdio.h>
+	<readline/readline.h>
+	<readline/history.h>
+	<assert.h>
+	<math.h>
+	<unistd.h>
+
+1144870274 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1135707120 d:\0_desarrollo\0_moldeo\0_desarrollo\svnsourceforge\externlibs\lua\include\lualib.h
+	"lua.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeventlist.h
+	"moValue.h"
+	"moLock.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movalue.h
+	"moTypes.h"
+	"moTempo.h"
+	"moText.h"
+	"moArray.h"
+	"moMathFunction.h"
+	"moMathVector.h"
+	"moMathVector3.h"
+	"moMathVector4.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motempo.h
+	"moTimer.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motimer.h
+	"moTypes.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathfunction.h
+	"moTypes.h"
+	"moArray.h"
+	"moAbstract.h"
+	"moMath.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momath.h
+	"moTypes.h"
+	"moAbstract.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector.h
+	"moMath.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector3.h
+	"moMath.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathvector4.h
+	"moMath.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconfig.h
+	"moTypes.h"
+	"moText.h"
+	"moParam.h"
+	"moArray.h"
+	"moPreConfig.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moparam.h
+	"moTypes.h"
+	"moText.h"
+	"moValue.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreconfig.h
+	"moTypes.h"
+	"moValue.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconnectors.h
+	"moTypes.h"
+	"moText.h"
+	"moAbstract.h"
+	"moEventList.h"
+	"moConfig.h"
+	"moArray.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moresourceplugin.h
+	"moBasePlugin.h"
+	"moResourceManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mobaseplugin.h
+	"moText.h"
+	<windows.h>
+	<dlfcn.h>
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffectmanager.h
+	"moTypes.h"
+	"moArray.h"
+	"moEffect.h"
+	"moPostEffect.h"
+	"moPreEffect.h"
+	"moMasterEffect.h"
+	"moPlugin.h"
+	"moPostPlugin.h"
+	"moPrePlugin.h"
+	"moMasterPlugin.h"
+	"moResourceManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffect.h
+	"moAbstract.h"
+	"moTempo.h"
+	"moArray.h"
+	"moMathFunctionIndex.h"
+	"moIODeviceManager.h"
+	"moConfig.h"
+	"moEffectState.h"
+	"moPreConfig.h"
+	"moPresets.h"
+	"moMotion.h"
+	"moText.h"
+	"moMoldeoObject.h"
+	"moResourceManager.h"
+	"moRenderManager.h"
+	"moMathManager.h"
+	"moTextureManager.h"
+	"moFontManager.h"
+	"moSoundManager.h"
+	"moScriptManager.h"
+	"mo3dModelManager.h"
+	"moRenderManager.h"
+	"moGUIManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathfunctionindex.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moConfig.h"
+	"moParam.h"
+	"moMathManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momathmanager.h
+	"moTypes.h"
+	"moText.h"
+	"moConfig.h"
+	"moLock.h"
+	"moResourceManager.h"
+	"moMath.h"
+	"moMathFunction.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moiodevicemanager.h
+	"moTypes.h"
+	"moText.h"
+	"moMoldeoObject.h"
+	"moDeviceCode.h"
+	"moEventList.h"
+	"moRenderManager.h"
+	"moIODevicePlugin.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modevicecode.h
+	"moTypes.h"
+	"moAbstract.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\morendermanager.h
+	<moTextureManager.h>
+	<moBuckets.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexturemanager.h
+	"moTexture.h"
+	"moResourceManager.h"
+	<moFileManager.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexture.h
+	"moTypes.h"
+	"moText.h"
+	"moParam.h"
+	"moBuckets.h"
+	"moVideoGraph.h"
+	"moGsGraph.h"
+	"moDsGraph.h"
+	"moMathVector3.h"
+	"moTextureIndex.h"
+	"moFBO.h"
+	"moGLManager.h"
+	"moTextureFilter.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mobuckets.h
+	"moTypes.h"
+	"moLock.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movideograph.h
+	"moTypes.h"
+	"moText.h"
+	"moBuckets.h"
+	"moArray.h"
+	"moAbstract.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mogsgraph.h
+	"moConfig.h"
+	"moTypes.h"
+	"moThread.h"
+	"moBuckets.h"
+	"moVideoGraph.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mothread.h
+	"moTypes.h"
+	"moLock.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modsgraph.h
+	"moTypes.h"
+	"streams.h"
+	"qedit.h"
+	"dvdmedia.h"
+	"moVideoGraph.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motextureindex.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moConfig.h"
+	"moParam.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofbo.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moGLManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moglmanager.h
+	"moTypes.h"
+	"moText.h"
+	"moFBO.h"
+	"moResourceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motexturefilter.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moConfig.h"
+	"moParam.h"
+	"moShader.h"
+	"moShaderGLSL.h"
+	"moTextFilterParam.h"
+	"moVideoManager.h"
+	"moVideoManager.h"
+	"moShaderManager.h"
+	"moTextureManager.h"
+	"moGLManager.h"
+	"moRenderManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshader.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moConfig.h"
+	"moArray.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshaderglsl.h
+	"moShader.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motextfilterparam.h
+	"moShader.h"
+	"moShaderCG.h"
+	"moShaderGLSL.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshadercg.h
+	"moShader.h"
+	<cg.h>
+	<cgGL.h>
+	<Cg/cg.h>
+	<Cg/cgGL.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\movideomanager.h
+	<moGsGraph.h>
+	<moDsGraph.h>
+	<moFBO.h>
+	<moTexture.h>
+	<moVideoGraph.h>
+	<moDebugManager.h>
+	<moDataManager.h>
+	<moTimeManager.h>
+	"moIODeviceManager.h"
+	"moResourceManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modebugmanager.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moText.h"
+	"moParam.h"
+	"moResourceManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\modatamanager.h
+	"moBasePlugin.h"
+	<moConsoleState.h>
+	<moActions.h>
+	<moValue.h>
+	<moParam.h>
+	<moEventList.h>
+	<moResourceManager.h>
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moconsolestate.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moTempo.h"
+	"moEffectState.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moeffectstate.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moTempo.h"
+	"moMoldeoObject.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moactions.h
+	"moTypes.h"
+	"moValue.h"
+	<iostream>
+	<map>
+	<string>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\motimemanager.h
+	"moTimer.h"
+	"moText.h"
+	"moConfig.h"
+	"moLock.h"
+	"moResourceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moshadermanager.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moText.h"
+	"moParam.h"
+	"moConfig.h"
+	"moShader.h"
+	"moShaderGLSL.h"
+	"moShaderCG.h"
+	"moResourceManager.h"
+	"moGLManager.h"
+	"moFBManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofbmanager.h
+	"moTypes.h"
+	"moText.h"
+	"moLock.h"
+	"moFBO.h"
+	"moTexture.h"
+	"moResourceManager.h"
+	"moGLManager.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofilemanager.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moText.h"
+	"moResourceManager.h"
+	"moBuckets.h"
+	"moParam.h"
+	"io.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moiodeviceplugin.h
+	"moTypes.h"
+	"moArray.h"
+	"moBasePlugin.h"
+	"moIODeviceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopresets.h
+	"moTypes.h"
+	"moConfig.h"
+	"moEffectState.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momotion.h
+	"moParam.h"
+	"moTypes.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mofontmanager.h
+	"moTypes.h"
+	"moResourceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mosoundmanager.h
+	<moTypes.h>
+	<moText.h>
+	<moConfig.h>
+	<moResourceManager.h>
+	<moFileManager.h>
+	<moDataManager.h>
+	<moGsGraph.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moscriptmanager.h
+	"moTypes.h"
+	"moAbstract.h"
+	"moText.h"
+	"moParam.h"
+	"moLunaClasses.h"
+	"moResourceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\molunaclasses.h
+	"moLuna.h"
+	"moMath.h"
+	"moMathFunction.h"
+	"moP5.h"
+	"moSoundManager.h"
+	"moVideoManager.h"
+	"moResourceManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moluna.h
+	"moTypes.h"
+	<string>
+	<vector>
+	<list>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mop5.h
+	"moAbstract.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mo3dmodelmanager.h
+	<moTypes.h>
+	<moEffectState.h>
+	"moMathVector.h"
+	"moMathVector3.h"
+
+1436362335 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moguimanager.h
+	<mo3dModelManager.h>
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moposteffect.h
+	"moEffect.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreeffect.h
+	"moEffect.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momastereffect.h
+	"moEffect.h"
+	"moConsoleState.h"
+	"moEffectManager.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\moplugin.h
+	"moBasePlugin.h"
+	"moEffect.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopostplugin.h
+	"moBasePlugin.h"
+	"moPostEffect.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\mopreplugin.h
+	"moBasePlugin.h"
+	"moPreEffect.h"
+
+1436362336 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\include\momasterplugin.h
+	"moBasePlugin.h"
+	"moMasterEffect.h"
+
+1413835361 d:\0_desarrollo\0_moldeo\0_desarrollo\github\moldeo\moldeoinstaller\moldeoplayer\moldeoplayersdl2\mosdl_iodevicemanager.h
+	"SDL.h"
+	"SDL.h"
+
