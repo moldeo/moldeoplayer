@@ -26,7 +26,8 @@ void delay(int secs) {
 #include "moldeo.h"
 
 moConsole* gpConsole = NULL;
-
+//#define RENDERMODE RENDERMANAGER_MODE_FRAMEBUFFER
+#define RENDERMODE RENDERMANAGER_MODE_NORMAL
 
 #ifdef MO_MACOSX
 #endif
@@ -301,7 +302,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         if ( 1 == SetScreenDisplay(-1) ) {
           if (Moldeo.GetResourceManager()) {
             Moldeo.GetResourceManager()->GetRenderMan()->Finish();
-            Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMANAGER_MODE_NORMAL,
+            Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMODE,
                                                               screen_width, screen_height,
                                                               render_width, render_height );
           }
@@ -333,7 +334,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         SDL_ShowCursor(SDL_ENABLE);
         if (Moldeo.GetResourceManager()) {
           Moldeo.GetResourceManager()->GetRenderMan()->Finish();
-          Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMANAGER_MODE_NORMAL,
+          Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMODE,
                                                             screen_width, screen_height,
                                                             render_width, render_height );
         }
@@ -503,7 +504,7 @@ int main(int argc, char** argv) {
   bool res = Moldeo.Init( app_path,
                           molfolder, molproject,
                           pIODeviceManager /*IODeviceManager*/, NULL/*ResourceManager*/,
-                          RENDERMANAGER_MODE_NORMAL /*render mode*/,
+                          RENDERMODE /*render mode*/,
                           screen_width,
                           screen_height,
                           render_width,
@@ -549,7 +550,7 @@ int main(int argc, char** argv) {
               render_width = screen_width;
               render_height = screen_height;
               Moldeo.GetResourceManager()->GetRenderMan()->Finish();
-              Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMANAGER_MODE_NORMAL,
+              Moldeo.GetResourceManager()->GetRenderMan()->Init( RENDERMODE,
                                                                 screen_width, screen_height,
                                                                 render_width, render_height );
             }
