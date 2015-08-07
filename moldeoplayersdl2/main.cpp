@@ -321,7 +321,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
 
         SDL_SetWindowFullscreen( displayWindow, 0 );
         SDL_SetWindowBordered( displayWindow, SDL_TRUE );
-        SDL_SetWindowPosition( displayWindow, 0, 0 );
+        SDL_SetWindowPosition( displayWindow, 40, 40 );
         screen_width = PLAYER_WINDOWED_WIDTH;
         screen_height = PLAYER_WINDOWED_HEIGHT;
         render_width = screen_width;
@@ -423,7 +423,7 @@ int main(int argc, char** argv) {
 
   if (mwindow!=moText("")) {
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
-      displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height,
+      displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, 40, screen_width, screen_height,
                                        SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       if (displayWindow==NULL) {
@@ -478,7 +478,7 @@ int main(int argc, char** argv) {
       }
   } else {
 
-      displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
+      displayWindow = SDL_CreateWindow(molproject, 40, 40, screen_width, screen_height,
                                        SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
