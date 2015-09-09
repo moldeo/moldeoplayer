@@ -379,10 +379,15 @@ int main(int argc, char** argv) {
     exit(1);
   }
 
-  //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3.0 );
-  //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1.2 );
+  //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 2.0 );
+  //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1.0 );
+  SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
+  SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
+  SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
+  SDL_GL_SetAttribute( SDL_GL_ALPHA_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-  SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 24 );
+  //SDL_GL_SetAttribute( SDL_GL_BUFFER_SIZE, 32 );
+  //SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
 
 #ifdef MO_WIN32
   freopen( "CON", "wt", stdout );
@@ -410,13 +415,8 @@ int main(int argc, char** argv) {
         presentationmode = "AUTOPLAY";
     }
   } else exit(1);
-
-  unsigned int major, minor, micro, nano;
-
-  gst_init(NULL,NULL);
-  gst_version (&major, &minor, &micro, &nano);
-  cout << "Gstreamer version " << major << "." << minor << "." << micro << "." << nano << endl;
-
+/*
+*/
   getcwd(app_path,1000);
 
 
@@ -499,6 +499,34 @@ int main(int argc, char** argv) {
   pIODeviceManager->Init(NULL);
   pIODeviceManager->SetWindows( displayWindow, previewWindow );
 
+  int r, g, b, a, bf, db, st, dp;
+  SDL_GL_GetAttribute(SDL_GL_RED_SIZE, &r);
+  SDL_GL_GetAttribute(SDL_GL_GREEN_SIZE, &g);
+  SDL_GL_GetAttribute(SDL_GL_BLUE_SIZE, &b);
+  SDL_GL_GetAttribute(SDL_GL_BLUE_SIZE, &a);
+  SDL_GL_GetAttribute(SDL_GL_BUFFER_SIZE, &bf);
+  SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &db);
+  SDL_GL_GetAttribute(SDL_GL_DEPTH_SIZE, &dp);
+  SDL_GL_GetAttribute(SDL_GL_STENCIL_SIZE, &st);
+
+
+  cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
+  cout << "sdl_error:" << SDL_GetError() << endl;
+
+  int loops = 10;
+
+  while(loops>0) {
+    loops--;
+    //delay(1);
+    SDL_GL_SwapWindow(displayWindow);
+  }
+
+  unsigned int gsmajor, gsminor, gsmicro, gsnano;
+
+  gst_init(NULL,NULL);
+  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
+  cout << "Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
+
   //pIODeviceManager = NULL;
 
   bool res = Moldeo.Init( app_path,
@@ -510,6 +538,7 @@ int main(int argc, char** argv) {
                           render_width,
                           render_height
                          );
+
 
   if (presentationmode!="") pIODeviceManager->m_ResizeNeeded = true;
 
@@ -530,6 +559,8 @@ int main(int argc, char** argv) {
   Moldeo.ConsolePlay();
   gpConsole = &Moldeo;
 
+  loops = 10;
+
   if (displayWindow) {
 
     while( Moldeo.Interaction()
@@ -541,6 +572,12 @@ int main(int argc, char** argv) {
         //if (Moldeo.GetResourceManager().GetRenderMan().FullScreen()) {
         //}
 
+        if (loops==0) {
+          Moldeo.GetResourceManager()->GetTextureMan()->RefreshAll();
+          loops = -1;//set to -1
+        } else if (loops>0) {
+          loops--;
+        }
 
 
         if ( pIODeviceManager->m_ResizeNeeded ) {
