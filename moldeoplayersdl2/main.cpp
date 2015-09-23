@@ -381,10 +381,12 @@ int main(int argc, char** argv) {
 
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 2.0 );
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1.0 );
+  /*
   SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_ALPHA_SIZE, 8 );
+  */
   SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
   //SDL_GL_SetAttribute( SDL_GL_BUFFER_SIZE, 32 );
   //SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
@@ -573,7 +575,7 @@ int main(int argc, char** argv) {
         //}
 
         if (loops==0) {
-          Moldeo.GetResourceManager()->GetTextureMan()->RefreshAll();
+          //Moldeo.GetResourceManager()->GetTextureMan()->RefreshAll();
           loops = -1;//set to -1
         } else if (loops>0) {
           loops--;
