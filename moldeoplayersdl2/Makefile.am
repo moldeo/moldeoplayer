@@ -7,8 +7,8 @@ cursorsdir = ${datadir}/cursors
 fontsdir = ${datadir}/fonts
 iconsdir = ${datadir}/icons
 
-AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
-AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
+AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive -DOPENGLESV2
+AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive -DOPENGLESV2
 
 bin_PROGRAMS = moldeoplayersdl2
 
@@ -20,15 +20,21 @@ moldeoplayersdl2_CPPFLAGS = \
 	${GTK2_CFLAGS} \
 	${BOOST_CPPFLAGS} \
 	${SDL2_CFLAGS} \
+	${EGL_CFLAGS} \
+	${GLESV2_CFLAGS} \
 	${LUA51_CFLAGS} \ 
     ${LIBMOLDEO_CFLAGS}
 
 #moldeoplayersdl2_LDFLAGS = -framework OpenGL -framework SDL2 -framework Cocoa
 
+moldeoplayersdl2_LDFLAGS = -L/opt/vc/lib
+
 moldeoplayersdl2_LDADD = \
    ${FT2_LIBS} \
 	${GTK2_LIBS} \
 	${SDL2_LIBS} \
+	${EGL_LIBS} \
+	${GLESV2_LIBS} \
 	${GL_LIBS} \
 	${GLEW_LIBS} \
 	${FTGL_LIBS} \

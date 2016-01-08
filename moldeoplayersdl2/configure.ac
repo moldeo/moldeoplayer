@@ -26,6 +26,8 @@ PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
 #LDFLAGS="$LDFLAGS -framework GLUT"
 
 PKG_CHECK_MODULES([SDL2], [sdl2] ,has_sdl2=yes)
+PKG_CHECK_MODULES([EGL], [egl] ,has_egl=yes)
+PKG_CHECK_MODULES([GLESV2], [glesv2] ,has_openglesv2=yes)
 
 dnl check for gstreamer
 GST_VERSION_MAJOR=0
