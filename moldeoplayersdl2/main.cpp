@@ -108,13 +108,14 @@ int previewWindowId = -1;
 SDL_GLContext context;
 SDL_GLContext context2;
 moPlayerStateWindow PlayerState = PLAYER_WINDOWED;
+bool arguments_ok = false;
 
 int processarguments( int argc, char** argv ) {
 
     if (argc<2) {
 			cout << "Missing arguments!!! usage: moldeoplayerglut [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
 			cout.flush();
-			exit(1);
+			return 0;
 		}
 
     moText argexe(argv[0]);
@@ -219,13 +220,14 @@ int processarguments( int argc, char** argv ) {
         } else if (  arglast == moText("--help") ) {
 
             cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
-
+            return 0;
         } else {
           cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
-          exit(0);
+          //exit(0);
+          return 0;
         }
     }
-	return 0;
+	return 1;
 }
 
 
@@ -398,11 +400,11 @@ int main(int argc, char** argv) {
 
   cout << "Processing arguments. n: " << argc << endl;
 
-  processarguments( argc, argv );
+  arguments_ok = processarguments( argc, argv );
 
   moConfig checkConfig;
-
-  if (checkConfig.LoadConfig( molproject )==MO_CONFIG_OK) {
+  bool config_ok = checkConfig.LoadConfig( molproject )==MO_CONFIG_OK;
+  if (config_ok) {
     moText rw = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
     moText rh = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 1 ).ToText();
     moText outputmode = checkConfig.GetParam( moText("outputmode") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
@@ -416,7 +418,10 @@ int main(int argc, char** argv) {
     if (outputmode.Length() && outputmode=="AUTOPLAY" ) {
         presentationmode = "AUTOPLAY";
     }
-  } else exit(1);
+  } else {
+    //test mode
+    //exit(1);
+  }
 /*
 */
   getcwd(app_path,1000);
@@ -515,12 +520,20 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error:" << SDL_GetError() << endl;
 
-  int loops = 10;
+  int loops = 100;
 
   while(loops>0) {
     loops--;
     //delay(1);
+    Moldeo.TestScreen();
     SDL_GL_SwapWindow(displayWindow);
+  }
+
+  if (!config_ok || !arguments_ok) {
+    Moldeo.Finish();
+    SDL_DestroyWindow(displayWindow);
+    SDL_Quit();
+    return 0;
   }
 
   unsigned int gsmajor, gsminor, gsmicro, gsnano;
@@ -689,7 +702,7 @@ int main(int argc, char** argv) {
     }
   }
 
-  exit(0);
+  //exit(0);
 
   Moldeo.Finish();
 
