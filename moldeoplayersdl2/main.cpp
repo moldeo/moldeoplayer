@@ -25,6 +25,8 @@ void delay(int secs) {
 #include "gst/gst.h"
 #include "moldeo.h"
 
+#define MO_SDL_WINDOW_SHOWN 0
+
 moConsole* gpConsole = NULL;
 //#define RENDERMODE RENDERMANAGER_MODE_FRAMEBUFFER
 #define RENDERMODE RENDERMANAGER_MODE_NORMAL
@@ -212,7 +214,6 @@ int processarguments( int argc, char** argv ) {
                   render_width = screen_width;
                   render_height = screen_height;
               }
-
               moText display = pmode[2];
               */
           }
@@ -281,7 +282,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         SDL_ShowCursor(SDL_DISABLE);
         /*
         displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
-                           SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                           SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
         */
         break;
       case PLAYER_GAMEMODE:
@@ -297,7 +298,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
                                         PLAYER_PREVIEW_HEIGHT,
                                         SDL_WINDOW_OPENGL
                                         |SDL_WINDOW_RESIZABLE
-                                        |SDL_WINDOW_SHOWN );
+                                        |MO_SDL_WINDOW_SHOWN );
           context2 = SDL_GL_CreateContext( displayWindow );
         }
         SDL_ShowCursor(SDL_DISABLE);
@@ -315,7 +316,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         SDL_SetWindowSize( displayWindow, screen_width, screen_height );
         /*
         displayWindow = SDL_CreateWindow(molproject, screen_left, screen_top, screen_width, screen_height,
-                           SDL_WINDOW_OPENGL|SDL_WINDOW_BORDERLESS|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                           SDL_WINDOW_OPENGL|SDL_WINDOW_BORDERLESS|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
         */
         break;
       case PLAYER_PRESENTATION:
@@ -342,7 +343,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         }
         /*
         displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
-                           SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                           SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
         */
         break;
       default:
@@ -383,13 +384,15 @@ int main(int argc, char** argv) {
 
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 2.0 );
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1.0 );
-  /*
+#ifdef OPENGLESV2
+
   SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
   SDL_GL_SetAttribute( SDL_GL_ALPHA_SIZE, 8 );
-  */
-  SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+
+#endif
+  //SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
   //SDL_GL_SetAttribute( SDL_GL_BUFFER_SIZE, 32 );
   //SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
 
@@ -404,6 +407,7 @@ int main(int argc, char** argv) {
 
   moConfig checkConfig;
   bool config_ok = checkConfig.LoadConfig( molproject )==MO_CONFIG_OK;
+
   if (config_ok) {
     moText rw = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
     moText rh = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 1 ).ToText();
@@ -431,7 +435,7 @@ int main(int argc, char** argv) {
   if (mwindow!=moText("")) {
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
       displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, 40, screen_width, screen_height,
-                                       SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                                       SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       if (displayWindow==NULL) {
         cout << "Couldn't set SDL_SetVideoMode to window mode (resizable) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
@@ -442,7 +446,7 @@ int main(int argc, char** argv) {
 
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_FULLSCREEN ) == NULL) {
       displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height,
-                                       SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                                       SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN_DESKTOP|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_GAMEMODE;
       if (displayWindow==NULL) {
         cout << "Couldn't set SDL_SetVideoMode to gamemode (fullscreen) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
@@ -461,7 +465,7 @@ int main(int argc, char** argv) {
                                        |SDL_WINDOW_BORDERLESS
                                        /*|SDL_WINDOW_FULLSCREEN_DESKTOP*/
                                        /*|SDL_WINDOW_RESIZABLE*/
-                                       |SDL_WINDOW_SHOWN
+                                       |MO_SDL_WINDOW_SHOWN
                                        |SDL_WINDOW_MOUSE_FOCUS );
       context = SDL_GL_CreateContext(displayWindow);
 
@@ -475,7 +479,7 @@ int main(int argc, char** argv) {
                                         PLAYER_PREVIEW_HEIGHT,
                                         SDL_WINDOW_OPENGL
                                         |SDL_WINDOW_RESIZABLE
-                                        |SDL_WINDOW_SHOWN );
+                                        |MO_SDL_WINDOW_SHOWN );
       context2 = SDL_GL_CreateContext( displayWindow );
 
       PlayerState = PLAYER_PRESENTATION;
@@ -520,13 +524,35 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error:" << SDL_GetError() << endl;
 
-  int loops = 100;
+  int loops = 60;
+  moDisplay DisplayInfo( screen_width, screen_height);
 
   while(loops>0) {
     loops--;
     //delay(1);
-    Moldeo.TestScreen();
+    glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    Moldeo.TestScreen(DisplayInfo);
+#ifndef MODEBUG
     SDL_GL_SwapWindow(displayWindow);
+#endif
+  }
+  glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+#ifndef MODEBUG
+  SDL_GL_SwapWindow(displayWindow);
+#endif
+  glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+#ifndef MODEBUG
+  SDL_GL_SwapWindow(displayWindow);
+#endif
+
+  if (!config_ok || !arguments_ok) {
+    Moldeo.Finish();
+    SDL_DestroyWindow(displayWindow);
+    SDL_Quit();
+    return 0;
   }
 
   if (!config_ok || !arguments_ok) {
@@ -542,12 +568,14 @@ int main(int argc, char** argv) {
   gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
   cout << "Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
 
+
+
   //pIODeviceManager = NULL;
 
   bool res = Moldeo.Init( app_path,
                           molfolder, molproject,
-                          pIODeviceManager /*IODeviceManager*/, NULL/*ResourceManager*/,
-                          RENDERMODE /*render mode*/,
+                          pIODeviceManager , NULL,
+                          RENDERMODE ,
                           screen_width,
                           screen_height,
                           render_width,
@@ -568,6 +596,8 @@ int main(int argc, char** argv) {
 
   if (!res) {
     cout << "error couldnt init console" << endl;
+    SDL_DestroyWindow(displayWindow);
+    SDL_Quit();
     exit(1);
   }
 
@@ -636,8 +666,7 @@ int main(int argc, char** argv) {
           Moldeo.Draw();
 
           if (previewWindow
-             /* &&
-              (SDL_GetWindowFlags(previewWindow)&SDL_WINDOW_SHOWN ) */
+
               ) {
             glBindTexture(GL_TEXTURE_2D, glidprev );
             if (!GL_TEXTURE_NON_POWER_OF_TWO) {
@@ -650,8 +679,7 @@ int main(int argc, char** argv) {
         }
 
         if (previewWindow
-            /*&&
-              (SDL_GetWindowFlags(previewWindow)&SDL_WINDOW_SHOWN )*/
+
             ) {
 
 
@@ -672,13 +700,16 @@ int main(int argc, char** argv) {
 
           ///Moldeo.GetResourceManager()->GetRenderMan()->DrawTexture( 400, 300, MO_SCREEN_TEX );
           glEnable( GL_TEXTURE_2D );
+#ifndef OPENGLESV2
           glDisable(GL_DEPTH);
+#endif
           glDisable(GL_DEPTH_TEST);
 //          Moldeo.GetResourceManager()->GetRenderMan()->DrawTexture( 400, 300, MO_SCREEN_TEX );
           ///glBindTexture(GL_TEXTURE_2D, Moldeo.GetResourceManager()->GetRenderMan()->RenderTexGLId(MO_RENDER_TEX));
           glBindTexture( GL_TEXTURE_2D, glidprev );
 
           glColor4f( 1.0, 1.0, 1.0, 1.0);
+#ifndef OPENGLESV2
           glBegin(GL_QUADS);
             glTexCoord2f(0, 0.0);
             glVertex2f(0, 0);
@@ -692,9 +723,11 @@ int main(int argc, char** argv) {
             glTexCoord2f(0, 1.0);
             glVertex2f(0.0f, preview_height);
           glEnd();
+#endif
 
-
+#ifndef MODEBUG
           SDL_GL_SwapWindow( previewWindow);
+#endif
           SDL_GL_MakeCurrent( displayWindow, context );
 
         }

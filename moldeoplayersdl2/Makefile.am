@@ -1,5 +1,11 @@
 ACLOCAL_AMFLAGS=-I m4
 
+if DEBUG
+DFLAGS = -g3 -O0 -fpermissive -DMODEBUG
+else
+DFLAGS = -O2 -fpermissive
+endif
+
 datadir = ${prefix}/share/moldeoplayer
 modulesdir = ${libdir}/moldeoplayer
 docdir = ${prefix}/share/doc/moldeoplayer
@@ -7,8 +13,9 @@ cursorsdir = ${datadir}/cursors
 fontsdir = ${datadir}/fonts
 iconsdir = ${datadir}/icons
 
-AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
-AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
+AM_CPPFLAGS = ${DFLAGS} ${HOSTCFLAGS} $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" 
+AM_CXXFLAGS = ${AM_CPPFLAGS}
+AM_LDFLAGS = ${HOSTLDFLAGS}
 
 bin_PROGRAMS = moldeoplayersdl2
 
@@ -20,6 +27,7 @@ moldeoplayersdl2_CPPFLAGS = \
 	${GTK2_CFLAGS} \
 	${BOOST_CPPFLAGS} \
 	${SDL2_CFLAGS} \
+	${GL_CFLAGS} \
 	${LUA51_CFLAGS} \ 
     ${LIBMOLDEO_CFLAGS}
 
@@ -30,7 +38,6 @@ moldeoplayersdl2_LDADD = \
 	${GTK2_LIBS} \
 	${SDL2_LIBS} \
 	${GL_LIBS} \
-	${GLEW_LIBS} \
 	${FTGL_LIBS} \
 	${GLUT_LIBS} \
 	${GLU_LIBS} \
