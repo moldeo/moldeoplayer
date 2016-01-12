@@ -525,17 +525,23 @@ int main(int argc, char** argv) {
   cout << "sdl_error:" << SDL_GetError() << endl;
 
   int loops = 60;
+  moDisplay DisplayInfo( screen_width, screen_height);
 
   while(loops>0) {
     loops--;
     //delay(1);
     glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    Moldeo.TestScreen();
+    Moldeo.TestScreen(DisplayInfo);
 #ifndef MODEBUG
     SDL_GL_SwapWindow(displayWindow);
 #endif
   }
+  glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+#ifndef MODEBUG
+  SDL_GL_SwapWindow(displayWindow);
+#endif
   glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 #ifndef MODEBUG
@@ -653,7 +659,7 @@ int main(int argc, char** argv) {
           Moldeo.Draw();
 
           if (previewWindow
-             
+
               ) {
             glBindTexture(GL_TEXTURE_2D, glidprev );
             if (!GL_TEXTURE_NON_POWER_OF_TWO) {
@@ -666,7 +672,7 @@ int main(int argc, char** argv) {
         }
 
         if (previewWindow
-         
+
             ) {
 
 
