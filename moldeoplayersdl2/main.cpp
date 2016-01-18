@@ -25,7 +25,6 @@ void delay(int secs) {
 #include "gst/gst.h"
 #include "moldeo.h"
 
-#define MO_SDL_WINDOW_SHOWN 0
 
 moConsole* gpConsole = NULL;
 //#define RENDERMODE RENDERMANAGER_MODE_FRAMEBUFFER
@@ -84,6 +83,11 @@ enum moPlayerStateWindow {
   PLAYER_PRESENTATION=2 /** SECOND DISPLAY IF AVAILABLE OR FULLSCREEN ON FIRST DISPLAY */
 };
 
+#ifdef OPENGLESV2
+#define MO_SDL_WINDOW_SHOWN 0
+#else
+#define MO_SDL_WINDOW_SHOWN SDL_WINDOW_SHOWN
+#endif // OPENGLESV2
 #define PLAYER_WINDOWED_WIDTH 640
 #define PLAYER_WINDOWED_HEIGHT 360
 #define PLAYER_PREVIEW_WIDTH 400
@@ -523,15 +527,14 @@ int main(int argc, char** argv) {
 
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error:" << SDL_GetError() << endl;
-
-  int loops = 60;
+  int maxloops = 360;
+  int loops = maxloops;
   moDisplay DisplayInfo( screen_width, screen_height);
 
   while(loops>0) {
     loops--;
     //delay(1);
-    glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
     Moldeo.TestScreen(DisplayInfo);
 #ifndef MODEBUG
     SDL_GL_SwapWindow(displayWindow);
