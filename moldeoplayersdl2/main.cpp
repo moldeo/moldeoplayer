@@ -7,7 +7,7 @@
 
 //sdl 2.0 support (multiwindow)
 #define SDL_2
-
+#undef MODEBUG
 
 #include <unistd.h>
 #include <stdio.h>
