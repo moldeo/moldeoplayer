@@ -523,10 +523,11 @@ int main(int argc, char** argv) {
   SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &db);
   SDL_GL_GetAttribute(SDL_GL_DEPTH_SIZE, &dp);
   SDL_GL_GetAttribute(SDL_GL_STENCIL_SIZE, &st);
-
+  SDL_GetWindowSize( displayWindow, &screen_width, &screen_height );
 
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
-  cout << "sdl_error:" << SDL_GetError() << endl;
+  cout << "sdl_error?:" << SDL_GetError() << endl;
+  cout << "screen_width:" << screen_width << " screen_height:" << screen_height << endl;
   int maxloops = 360;
   int loops = maxloops;
   moDisplay DisplayInfo( screen_width, screen_height);
