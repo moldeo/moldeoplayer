@@ -528,7 +528,7 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error?:" << SDL_GetError() << endl;
   cout << "screen_width:" << screen_width << " screen_height:" << screen_height << endl;
-  int maxloops = 360;
+  int maxloops = 120;
   int loops = maxloops;
   moDisplay DisplayInfo( screen_width, screen_height);
 
@@ -541,12 +541,14 @@ int main(int argc, char** argv) {
     SDL_GL_SwapWindow(displayWindow);
 #endif
   }
-  glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+  moResetTicksAbsoluteStep();
+
+  glClearColor( 0.0, 0.0, 0.0, 1.0 );
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 #ifndef MODEBUG
   SDL_GL_SwapWindow(displayWindow);
 #endif
-  glClearColor( 0.0, 0.0, 1.0*(loops/60.0f), 1.0 );
+  glClearColor( 0.0, 0.0, 0.0, 1.0 );
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 #ifndef MODEBUG
   SDL_GL_SwapWindow(displayWindow);
