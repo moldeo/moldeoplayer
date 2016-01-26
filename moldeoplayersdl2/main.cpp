@@ -702,7 +702,7 @@ int main(int argc, char** argv) {
           glClearColor(0.5,0.0,0.0,0.0);
           glClear( GL_COLOR_BUFFER_BIT );
 
-          Moldeo.GetResourceManager()->GetGLMan()->SetOrthographicView(preview_width, preview_height);
+          Moldeo.GetResourceManager()->GetGLMan()->SetOrthographicView(preview_width, preview_height, 0, preview_width, 0, preview_height, -1, 1 );
 
           ///Moldeo.GetResourceManager()->GetRenderMan()->DrawTexture( 400, 300, MO_SCREEN_TEX );
           glEnable( GL_TEXTURE_2D );
