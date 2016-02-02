@@ -532,6 +532,16 @@ int main(int argc, char** argv) {
   int loops = maxloops;
   moDisplay DisplayInfo( screen_width, screen_height);
 
+  moGLManager GL;
+  GL.Init();
+  SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
+                           "OpenGL HARDWARE",
+                           moText("OpenGL Version: ") + IntToStr( GL.GetGLMajorVersion() ) + "." + IntToStr( GL.GetGLMinorVersion() )
+                           + moText(" / Hardware: ") + GL.GetGPUVendorString()
+                           + moText(" / Model: ")+ GL.GetGPURendererString(),
+                           NULL);
+
+
   while(loops>0) {
     loops--;
     //delay(1);
