@@ -17,39 +17,37 @@ AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_CXX_C_O
 
-CPPFLAGS='-I/opt/local/include'
-LDFLAGS='-L/opt/local/lib'
-
 #dnl check for libmoldeo
 PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
-#LDFLAGS="$LDFLAGS -framework OpenGL -framework Cocoa"
-#LDFLAGS="$LDFLAGS -framework GLUT"
 
 PKG_CHECK_MODULES([SDL2], [sdl2] ,has_sdl2=yes)
 
+dnl check for opengl
 AC_ARG_WITH( [gles],
 AS_HELP_STRING([--with-gles],
 [use open gl es 2, default: no]),
-[with_gles=check])
+[with_gles=yes])
 
-
-AS_IF([test "x$with_gles" != xno],
-[PKG_CHECK_MODULES([GL], [glesv2, egl] ,has_glesv2=yes)],
-[PKG_CHECK_MODULES([GL], [gl, glew] ,has_gl=yes)])
+host_name="default"
 
 AC_ARG_ENABLE(host,
 [--enable-host[=host name] Specify the host os name:
 			64: 64 bit linux os [default]
 			86: 32 bits linux os
-                        raspbian: RASPBIAN/debian 8 32 bits],
+            raspbian: RASPBIAN/debian 8 32 bits
+            xosx: Mac OSX with mac ports],
 [ if test "x$enableval" = "x86" ; then
-	host_name=86
+	host_name="86"
   elif test "x$enableval" = "x64" ; then
-	host_name=64
+	host_name="64"
   elif test "x$enableval" = "xraspbian" ; then
 	host_name="raspbian"
 	host_cflags="-I/opt/vc/include -DOPENGLESV2"
 	host_ldflags="-L/opt/vc/lib"
+  elif test "x$enableval" = "xosx" ; then
+    host_name="osx"
+	host_cflags="-I/opt/local/include "
+	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa"
   else
 	echo 
 	echo "Error!"
@@ -57,11 +55,33 @@ AC_ARG_ENABLE(host,
 	exit -1
   fi
 ])
-
-
-
 AC_SUBST([HOSTCFLAGS],$host_cflags)
 AC_SUBST([HOSTLDFLAGS],$host_ldflags)
+
+if test "x$host_name" = "xosx" ; then
+    PKG_CHECK_MODULES([LUA51], [lua-5.1] ,has_lua51=yes)
+    AC_SUBST([GLUT_LIBS], [])
+    AC_SUBST([GL_LIBS], [])
+    AC_SUBST([GLE_LIBS], [])
+
+    dnl check for glew
+    AC_CHECK_HEADER(GL/glew.h, , AC_MSG_ERROR([glew header not found.]))
+    AC_CHECK_LIB(GLEW, glewInit, AC_SUBST([GL_LIBS], [-lGLEW]), AC_MSG_ERROR([glew not found.]) )
+
+else
+    PKG_CHECK_MODULES([LUA51], [lua5.1] ,has_lua51=yes)
+    AS_IF([test "x$with_gles" = "xyes"],
+        [PKG_CHECK_MODULES([GL], [glesv2, egl] ,has_glesv2=yes)],
+        [PKG_CHECK_MODULES([GL], [gl, glew] ,has_gl=yes)])
+
+    dnl check for glut
+    AC_CHECK_HEADER(GL/glut.h, , AC_MSG_ERROR([glut header not found.]))
+    AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
+fi
+
+dnl check for freeimage
+AC_CHECK_HEADER(FreeImage.h, , AC_MSG_ERROR([FreeImage header not found.]))
+AC_CHECK_LIB(freeimage, FreeImage_GetVersion, AC_SUBST([FREEIMAGE_LIBS], [-lfreeimage]), AC_MSG_ERROR([FreeImage not found.]), )
 
 dnl check for gstreamer
 GST_VERSION_MAJOR=0
