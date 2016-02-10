@@ -536,7 +536,7 @@ int main(int argc, char** argv) {
   GL.Init();
   SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
                            "OpenGL HARDWARE",
-                           moText("OpenGL Version: ") + IntToStr( GL.GetGLMajorVersion() ) + "." + IntToStr( GL.GetGLMinorVersion() )
+                           moText("OpenGL Version: ") + GL.GetGLVersion()
                            + moText(" / Hardware: ") + GL.GetGPUVendorString()
                            + moText(" / Model: ")+ GL.GetGPURendererString(),
                            NULL);
