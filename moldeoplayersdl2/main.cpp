@@ -528,19 +528,29 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error?:" << SDL_GetError() << endl;
   cout << "screen_width:" << screen_width << " screen_height:" << screen_height << endl;
+  unsigned int gsmajor, gsminor, gsmicro, gsnano;
+
+  gst_init(NULL,NULL);
+  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
+  cout << "Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
+
   int maxloops = 120;
   int loops = maxloops;
   moDisplay DisplayInfo( screen_width, screen_height);
 
   moGLManager GL;
   GL.Init();
+
+  if (gsmajor<2) {
   SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
                            "OpenGL HARDWARE",
                            moText("OpenGL Version: ") + GL.GetGLVersion()
-                           + moText(" / Hardware: ") + GL.GetGPUVendorString()
-                           + moText(" / Model: ")+ GL.GetGPURendererString(),
+                           + moText("\nHardware: ") + GL.GetGPUVendorString()
+                           + moText("\nModel: ")+ GL.GetGPURendererString()
+                           + moText("\nGstreamer Version: ")+IntToStr(gsmajor)+moText(".")
+                                                              +IntToStr(gsminor),
                            NULL);
-
+  }
 
   while(loops>0) {
     loops--;
@@ -577,13 +587,6 @@ int main(int argc, char** argv) {
     SDL_Quit();
     return 0;
   }
-
-  unsigned int gsmajor, gsminor, gsmicro, gsnano;
-
-  gst_init(NULL,NULL);
-  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
-  cout << "Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
-
 
 
   //pIODeviceManager = NULL;
