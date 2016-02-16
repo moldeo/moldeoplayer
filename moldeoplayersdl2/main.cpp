@@ -80,7 +80,8 @@ void MoldeoDisplay() {
 enum moPlayerStateWindow {
   PLAYER_WINDOWED=0,    /** WINDOWED ON FIRST DISPLAY */
   PLAYER_GAMEMODE=1,    /** FULLSCREEN ON FIRST DISPLAY */
-  PLAYER_PRESENTATION=2 /** SECOND DISPLAY IF AVAILABLE OR FULLSCREEN ON FIRST DISPLAY */
+  PLAYER_PRESENTATION=2, /** SECOND DISPLAY IF AVAILABLE OR FULLSCREEN ON FIRST DISPLAY */
+  PLAYER_FULLSCREEN=3
 };
 
 #ifdef OPENGLESV2
@@ -103,6 +104,7 @@ moText molproject("");
 moText molproject_preview = molproject+" Preview";
 moText molfolder("");
 moText gamemode("");
+moText fullscreenmode("");
 moText presentationmode("");
 moText mwindow("");
 moText windowtitle("");
@@ -110,6 +112,7 @@ SDL_Window* displayWindow = NULL;
 SDL_Window* previewWindow = NULL;
 int displayWindowId = -1;
 int previewWindowId = -1;
+bool cmdresolution = false;
 
 SDL_GLContext context;
 SDL_GLContext context2;
@@ -176,6 +179,7 @@ int processarguments( int argc, char** argv ) {
                     screen_height = atoi((char*)resolution[1]);
                     render_width = screen_width;
                     render_height = screen_height;
+                    cmdresolution = true;
                 }
                 --argc;
 
@@ -192,6 +196,34 @@ int processarguments( int argc, char** argv ) {
                         screen_height = atoi((char*)resolution[1]);
                         render_width = screen_width;
                         render_height = screen_height;
+                        cmdresolution = true;
+                    }
+                }
+                --argc;
+        } else if (  argprev == moText("-fullscreen") ) {
+
+            fullscreenmode = moText( arglast );
+                cout << "Fullscreen mode -fullscreen found! : " << fullscreenmode << endl;
+                moTextArray fmode = fullscreenmode.Explode( moText(":") );
+                if (fmode.Count()>1) {
+                    moText resolutions = fmode[0];
+                    moTextArray resolution = resolutions.Explode( moText("x") );
+                    if (resolution.Count()>1) {
+                        screen_width = atoi((char*)resolution[0]);
+                        screen_height = atoi((char*)resolution[1]);
+                        render_width = screen_width;
+                        render_height = screen_height;
+                        cmdresolution = true;
+                    }
+                } else {
+                    moText resolutions = arglast;
+                    moTextArray resolution = resolutions.Explode( moText("x") );
+                    if (resolution.Count()>1) {
+                        screen_width = atoi((char*)resolution[0]);
+                        screen_height = atoi((char*)resolution[1]);
+                        render_width = screen_width;
+                        render_height = screen_height;
+                        cmdresolution = true;
                     }
                 }
                 --argc;
@@ -208,6 +240,7 @@ int processarguments( int argc, char** argv ) {
                   screen_height = atoi((char*)resolution[1]);
                   render_width = screen_width;
                   render_height = screen_height;
+                  cmdresolution = true;
               }
               /**
               moText positions = pmode[1];
@@ -324,6 +357,15 @@ void SwitchPresentation( moConsole& Moldeo ) {
         */
         break;
       case PLAYER_PRESENTATION:
+        PlayerState = PLAYER_FULLSCREEN;
+        //SDL_SetWindowBordered( displayWindow, SDL_FALSE );
+        //SDL_SetWindowPosition( displayWindow, 0, 0 );
+        //SDL_SetWindowSize( displayWindow, screen_width, screen_height );
+        SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN );
+        SDL_ShowCursor(SDL_DISABLE);
+        break;
+
+     case PLAYER_FULLSCREEN:
         PlayerState = PLAYER_WINDOWED;
 
         SDL_SetWindowFullscreen( displayWindow, 0 );
@@ -370,7 +412,7 @@ int main(int argc, char** argv) {
   char app_path[1000];
 
 
-  cout << "Console output: " << fileno(stdout) << endl;
+  //cout << "Console output: " << fileno(stdout) << endl;
   cout << "MoldeoPlayer SDL2 version 1.0, libmoldeo version: " << (char*)moGetVersionStr() << endl;
 
 
@@ -416,7 +458,7 @@ int main(int argc, char** argv) {
     moText rw = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
     moText rh = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 1 ).ToText();
     moText outputmode = checkConfig.GetParam( moText("outputmode") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
-    if (rw.Length()) {
+    if (rw.Length() && !cmdresolution ) {
       screen_width = atoi( rw );
       screen_height = atoi( rh );
       render_width = screen_width;
@@ -445,6 +487,20 @@ int main(int argc, char** argv) {
         cout << "Couldn't set SDL_SetVideoMode to window mode (resizable) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
         exit(1);
       }
+      context = SDL_GL_CreateContext(displayWindow);
+      //default mode
+  } else if (fullscreenmode!=moText("")) {
+      //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
+      displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, 40, screen_width, screen_height,
+                                       SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+      PlayerState = PLAYER_FULLSCREEN;
+      if (displayWindow==NULL) {
+        cout << "Couldn't set SDL_SetVideoMode to window mode (resizable) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
+        exit(1);
+      }
+      context = SDL_GL_CreateContext(displayWindow);
+
+      //SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN );
       //default mode
   } else if (gamemode!=moText("")) {
 
@@ -456,6 +512,7 @@ int main(int argc, char** argv) {
         cout << "Couldn't set SDL_SetVideoMode to gamemode (fullscreen) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
         exit(1);
       }
+      context = SDL_GL_CreateContext(displayWindow);
   } else if (presentationmode!=moText("")) {
       SetScreenDisplay(-1);
 
@@ -528,7 +585,6 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error?:" << SDL_GetError() << endl;
   cout << "screen_width:" << screen_width << " screen_height:" << screen_height << endl;
-
   unsigned int gsmajor, gsminor, gsmicro, gsnano;
 
   gst_init(NULL,NULL);
@@ -541,6 +597,8 @@ int main(int argc, char** argv) {
 
   moGLManager GL;
   GL.Init();
+
+  if (GL.GetGLMajorVersion()<2) {
   SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
                            "OpenGL HARDWARE",
                            moText("OpenGL Version: ") + GL.GetGLVersion()
@@ -549,7 +607,7 @@ int main(int argc, char** argv) {
                            + moText("\nGstreamer Version: ")+IntToStr(gsmajor)+moText(".")
                                                               +IntToStr(gsminor),
                            NULL);
-
+  }
 
   while(loops>0) {
     loops--;
@@ -586,6 +644,7 @@ int main(int argc, char** argv) {
     SDL_Quit();
     return 0;
   }
+
 
   //pIODeviceManager = NULL;
 
