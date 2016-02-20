@@ -56,6 +56,8 @@ AC_ARG_ENABLE(host,
 AC_SUBST([HOSTCFLAGS],$host_cflags)
 AC_SUBST([HOSTLDFLAGS],$host_ldflags)
 
+AC_CHECK_HEADER(SDL/SDL_keysym.h, , AC_MSG_ERROR([SDL_keysym.h header not found.]))
+
 if test "x$host_name" = "xosx" ; then
     PKG_CHECK_MODULES([LUA51], [lua-5.1] ,has_lua51=yes)
     AC_SUBST([GLUT_LIBS], [])
