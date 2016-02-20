@@ -9,7 +9,7 @@
     #include "SDL/SDL_keysym.h"
 #endif
 
-#ifndef SDL_KEYDOWN
+#ifndef SDL_BUTTON_LEFT
 enum { SDL_NOEVENT = 0,			/* Unused (do not remove) */
        SDL_ACTIVEEVENT,			/* Application loses/gains visibility */
        SDL_KEYDOWN,			/* Keys pressed */
