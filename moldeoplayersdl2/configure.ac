@@ -49,7 +49,7 @@ AC_ARG_ENABLE(host,
 	host_cflags="-I/opt/local/include "
 	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa"
   else
-	echo 
+	echo
 	echo "Error!"
 	echo "Unknown host name"
 	exit -1
@@ -79,10 +79,6 @@ else
     AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
 fi
 
-dnl check for freeimage
-AC_CHECK_HEADER(FreeImage.h, , AC_MSG_ERROR([FreeImage header not found.]))
-AC_CHECK_LIB(freeimage, FreeImage_GetVersion, AC_SUBST([FREEIMAGE_LIBS], [-lfreeimage]), AC_MSG_ERROR([FreeImage not found.]), )
-
 dnl check for gstreamer
 GST_VERSION_MAJOR=1
 GST_VERSION_MINOR=0
@@ -96,10 +92,6 @@ PKG_CHECK_MODULES(GST, gstreamer-$GST_MAJORMINOR >= $GSTREAMER_REQ,
   HAVE_GSTREAMER=yes)
 AC_SUBST(GST_CFLAGS)
 AC_SUBST(GST_LIBS)
-#GST_CFLAGS='-I/Library/Frameworks/GStreamer.framework/Headers'
-#GST_LIBS='-framework GStreamer'
-#AC_SUBST(GST_CFLAGS)
-#AC_SUBST(GST_LIBS)
 
 
 AC_SUBST(CPPFLAGS)

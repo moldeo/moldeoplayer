@@ -304,7 +304,7 @@ if (1==2) {
 /***********************************************/
    char app_path[1000];
 
-    getcwd(app_path,1000);
+   if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
 
    moX11_IODeviceManager* pIODeviceManager = new moX11_IODeviceManager();
 

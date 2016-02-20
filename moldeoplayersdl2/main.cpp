@@ -474,7 +474,7 @@ int main(int argc, char** argv) {
   }
 /*
 */
-  getcwd(app_path,1000);
+  if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
 
 
 

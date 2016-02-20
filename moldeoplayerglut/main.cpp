@@ -272,7 +272,7 @@ int main(int argc, char** argv) {
   cout << "Gstreamer version " << major << "." << minor << "." << micro << "." << nano << endl;
 #endif
 
-  getcwd(app_path,1000);
+  if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
 
 #ifndef DONTUSEGLUT
   glutInit(&argc, argv);                 // Initialize GLUT
