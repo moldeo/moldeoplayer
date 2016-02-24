@@ -608,18 +608,31 @@ int main(int argc, char** argv) {
                                                               +IntToStr(gsminor),
                            NULL);
   }
+    loops = 20;
+    while(loops>0) {
+        loops--;
+        glClearColor( 0.0, 0.0, ((float) loops )/20.0f, 1.0 );
+        glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+#ifndef MODEBUG
+        SDL_GL_SwapWindow(displayWindow);
+#endif
+    }
 
+    loops = maxloops;
   while(loops>0) {
     loops--;
     //delay(1);
 
     Moldeo.TestScreen(DisplayInfo);
+
 #ifndef MODEBUG
     SDL_GL_SwapWindow(displayWindow);
+      //cout << loops << endl;
 #endif
   }
   moResetTicksAbsoluteStep();
 
+    
   glClearColor( 0.0, 0.0, 0.0, 1.0 );
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 #ifndef MODEBUG
@@ -630,13 +643,6 @@ int main(int argc, char** argv) {
 #ifndef MODEBUG
   SDL_GL_SwapWindow(displayWindow);
 #endif
-
-  if (!config_ok || !arguments_ok) {
-    Moldeo.Finish();
-    SDL_DestroyWindow(displayWindow);
-    SDL_Quit();
-    return 0;
-  }
 
   if (!config_ok || !arguments_ok) {
     Moldeo.Finish();
@@ -692,6 +698,7 @@ int main(int argc, char** argv) {
         //SDL_GL_SwapBuffers();
         //if (Moldeo.GetResourceManager().GetRenderMan().FullScreen()) {
         //}
+        //cout << "frame" << endl;
 
         if (loops==0) {
           //Moldeo.GetResourceManager()->GetTextureMan()->RefreshAll();
