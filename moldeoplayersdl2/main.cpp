@@ -541,7 +541,7 @@ int main(int argc, char** argv) {
   moGLManager GL;
   GL.Init();
 
-  if (gsmajor<2) {
+  if (GL.GetGLMajorVersion()<2) {
   SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
                            "OpenGL HARDWARE",
                            moText("OpenGL Version: ") + GL.GetGLVersion()
