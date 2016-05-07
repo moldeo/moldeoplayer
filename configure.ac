@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Players], [1.0.0.0], [info@moldeointeractive.com.ar], [moldeoplayers])
+AC_INIT([Moldeo Player], [1.0.0.160], [info@moldeointeractive.com.ar], [moldeoplayer])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
@@ -15,7 +15,6 @@ AM_PROG_LIBTOOL
 AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_CXX_C_O
-
 
 dnl Set install paths.
 if test "x$prefix" = "xNONE" ; then
@@ -55,6 +54,7 @@ case "$host" in
                 AC_DEFINE(ARCH_X86_64, 1, [Architecture is x86-64])
                 ARCH_SPECIFIC_CFLAGS="-DUSE_ADDR64"
                 ARCH_STRING="X86-64"
+                with_boost_libdir="/usr/lib/x86_64-linux-gnu"
                 libdir=$prefix"/lib"
                 ;;
         ppc-* | powerpc-*)
@@ -72,8 +72,8 @@ AC_CONFIG_SUBDIRS(
 	moldeoplayerglut
 	moldeoplayersdl
 	moldeoplayersdl2
-	#moldeoplayerx11
 )
+# moldeoplayerx11
 
 dnl autoscan results
 AC_CHECK_FUNCS([floor])
@@ -107,6 +107,18 @@ AC_PROG_MAKE_SET
 LT_INIT
 AC_STRUCT_TM
 AC_TYPE_SIZE_T
+
+AC_ARG_ENABLE(debug,
+AS_HELP_STRING([--enable-debug],
+               [enable debugging, default: no]),
+[case "${enableval}" in
+             yes) debug=true ;;
+             no)  debug=false ;;
+             *)   AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
+esac],
+[debug=false])
+
+AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
 
 dnl Makefile outputs
 AC_OUTPUT(Makefile)
