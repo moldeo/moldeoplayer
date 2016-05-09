@@ -1,5 +1,8 @@
 AC_INIT([Moldeo Player], [1.0.0.160], [info@moldeointeractive.com.ar], [moldeoplayer])
 
+AC_CANONICAL_HOST
+AC_CANONICAL_BUILD
+AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 AM_CONFIG_HEADER(config.h)
@@ -54,6 +57,10 @@ case "$host" in
                 AC_DEFINE(ARCH_X86_64, 1, [Architecture is x86-64])
                 ARCH_SPECIFIC_CFLAGS="-DUSE_ADDR64"
                 ARCH_STRING="X86-64"
+<<<<<<< HEAD
+=======
+                with_boost_libdir="/usr/lib/x86_64-linux-gnu"
+>>>>>>> rc1gst1
                 libdir=$prefix"/lib"
                 ;;
         ppc-* | powerpc-*)

@@ -9,7 +9,7 @@
     #include "SDL/SDL_keysym.h"
 #endif
 
-
+#ifndef SDL_BUTTON_LEFT
 enum { SDL_NOEVENT = 0,			/* Unused (do not remove) */
        SDL_ACTIVEEVENT,			/* Application loses/gains visibility */
        SDL_KEYDOWN,			/* Keys pressed */
@@ -61,6 +61,7 @@ typedef struct SDL_keysym {
 #define SDL_NLK_CAPS 0x01
 #define SDL_NLK_NUM  0x02
 
+#endif //NOSDL
 
 class moGLUT_IODeviceManager : public moIODeviceManager {
 

@@ -13,7 +13,7 @@ cursorsdir = ${datadir}/cursors
 fontsdir = ${datadir}/fonts
 iconsdir = ${datadir}/icons
 
-AM_CPPFLAGS = ${DFLAGS} ${HOSTCFLAGS} $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" 
+AM_CPPFLAGS = ${DFLAGS} ${HOSTCFLAGS} $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\"
 AM_CXXFLAGS = ${AM_CPPFLAGS}
 AM_LDFLAGS = ${HOSTLDFLAGS}
 
@@ -22,25 +22,18 @@ bin_PROGRAMS = moldeoplayersdl2
 moldeoplayersdl2_SOURCES = main.cpp moSDL_IODeviceManager.h
 
 moldeoplayersdl2_CPPFLAGS = \
-    ${FT2_CFLAGS} \
 	${GST_CFLAGS} \
-	${GTK2_CFLAGS} \
-	${BOOST_CPPFLAGS} \
 	${SDL2_CFLAGS} \
 	${GL_CFLAGS} \
-	${LUA51_CFLAGS} \ 
+	${LUA51_CFLAGS} \
     ${LIBMOLDEO_CFLAGS}
 
 #moldeoplayersdl2_LDFLAGS = -framework OpenGL -framework SDL2 -framework Cocoa
 
 moldeoplayersdl2_LDADD = \
-   ${FT2_LIBS} \
-	${GTK2_LIBS} \
 	${SDL2_LIBS} \
 	${GL_LIBS} \
-	${FTGL_LIBS} \
 	${GLUT_LIBS} \
-	${GLU_LIBS} \
 	${LUA51_LIBS} \
 	${GST_LIBS} \
     ${LIBMOLDEO_LIBS}

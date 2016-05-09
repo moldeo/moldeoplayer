@@ -1,5 +1,11 @@
 ACLOCAL_AMFLAGS=-I m4
 
+if DEBUG
+DFLAGS = -g3 -O0 -fpermissive -DMODEBUG
+else
+DFLAGS = -O2 -fpermissive
+endif
+
 datadir = ${prefix}/share/moldeoplayer
 modulesdir = ${libdir}/moldeoplayer
 docdir = ${prefix}/share/doc/moldeoplayer
@@ -7,8 +13,9 @@ cursorsdir = ${datadir}/cursors
 fontsdir = ${datadir}/fonts
 iconsdir = ${datadir}/icons
 
-AM_CPPFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
-AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\" -fpermissive
+AM_CPPFLAGS = ${DFLAGS} ${HOSTCFLAGS} $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(modulesdir)\"
+AM_CXXFLAGS = ${AM_CPPFLAGS}
+AM_LDFLAGS = ${HOSTLDFLAGS}
 
 bin_PROGRAMS = moldeoplayersdl
 
@@ -20,7 +27,7 @@ moldeoplayersdl_CPPFLAGS = \
 	${GTK2_CFLAGS} \
 	${MUPARSER_CFLAGS} \
 	${SDL_CFLAGS} \
-	${LUA51_CFLAGS} \ 
+	${LUA51_CFLAGS} \
     ${LIBMOLDEO_CFLAGS}
 
 #moldeoplayersdl_LDFLAGS = -framework OpenGL -framework SDL -framework Cocoa

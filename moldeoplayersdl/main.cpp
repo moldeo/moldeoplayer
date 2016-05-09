@@ -197,8 +197,8 @@ int main(int argc, char** argv) {
     exit(1);
   }
 
-  freopen( "CON", "wt", stdout );
-  freopen( "CON", "wt", stderr );
+  if ( freopen( "CON", "wt", stdout ) == NULL ) cerr << "Cannot reopen console stdout" << endl;
+  if ( freopen( "CON", "wt", stderr ) == NULL )  cerr << "Cannot reopen console stderr" << endl;
 
 
   processarguments( argc, argv );
@@ -227,7 +227,7 @@ moConfig checkConfig;
   gst_version (&major, &minor, &micro, &nano);
   cout << "Gstreamer version " << major << "." << minor << "." << micro << "." << nano << endl;
 
-  getcwd(app_path,1000);
+  if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
 
 
 
