@@ -598,16 +598,18 @@ int main(int argc, char** argv) {
   moGLManager GL;
   GL.Init();
 
-  if (GL.GetGLMajorVersion()<2) {
+  //if (GL.GetGLMajorVersion()<2) {
   SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
                            "OpenGL HARDWARE",
                            moText("OpenGL Version: ") + GL.GetGLVersion()
                            + moText("\nHardware: ") + GL.GetGPUVendorString()
                            + moText("\nModel: ")+ GL.GetGPURendererString()
+                           + moText("\nDataDir: ") + moDataManager::GetDataDir()
+                           + moText("\nModulesDir: ") + moDataManager::GetModulesDir()
                            + moText("\nGstreamer Version: ")+IntToStr(gsmajor)+moText(".")
                                                               +IntToStr(gsminor),
                            NULL);
-  }
+  //}
     loops = 20;
     while(loops>0) {
         loops--;
