@@ -23,7 +23,8 @@ PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
 PKG_CHECK_MODULES([SDL2], [sdl2] ,has_sdl2=yes)
 
 host_name="default"
-
+host_cflags=""
+host_ldflags=""
 AC_ARG_ENABLE(host,
 [--enable-host[=host name] Specify the host os name:
 			64: 64 bit linux os [default]
@@ -48,15 +49,28 @@ AC_ARG_ENABLE(host,
 	echo "Unknown host name"
   fi
 ])
-AC_SUBST([HOSTCFLAGS],$host_cflags)
-AC_SUBST([HOSTLDFLAGS],$host_ldflags)
 
-
-dnl check for gstreamer
 GST_VERSION_MAJOR=0
 GST_VERSION_MINOR=10
 GST_VERSION_RELEASE=19
 GSTPLUG_VERSION_RELEASE=7
+
+AC_ARG_ENABLE(gstreamer,
+[--enable-gstreamer[=gstreamer version] Specify the gstreamer version:
+			0.10: Gstreamer version 0.10 [default]
+			1.0: Gstreamer version 1.0],
+[ if test "x$enableval" = "x1.0" ; then
+    GST_VERSION_MAJOR=1
+    GST_VERSION_MINOR=0
+    GST_VERSION_RELEASE=0
+    GSTPLUG_VERSION_RELEASE=0
+    host_cflags="$host_cflags -DGSTVERSION"
+  fi
+])
+
+AC_SUBST([HOSTCFLAGS],$host_cflags)
+AC_SUBST([HOSTLDFLAGS],$host_ldflags)
+
 GSTREAMER_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GST_VERSION_RELEASE
 GSTPLUGINS_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GSTPLUG_VERSION_RELEASE
 GST_MAJORMINOR=$GST_VERSION_MAJOR.$GST_VERSION_MINOR
@@ -74,11 +88,6 @@ PKG_CHECK_MODULES(GST, gstreamer-$GST_MAJORMINOR >= $GSTREAMER_REQ,
   HAVE_GSTREAMER=yes)
 AC_SUBST(GST_CFLAGS)
 AC_SUBST(GST_LIBS)
-
-PKG_CHECK_MODULES(GST_INTERFACES, gstreamer-interfaces-$GST_MAJORMINOR >= $GSTREAMER_REQ,
-  HAVE_GSTREAMER_INTERFACES=yes)
-AC_SUBST(GST_INTERFACES_CFLAGS)
-AC_SUBST(GST_INTERFACES_LIBS)
 
 fi
 
@@ -136,6 +145,10 @@ esac],
 [debug=false])
 
 AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
+
+echo "GSTREAMER VERSION: $GST_MAJORMINOR > $GSTREAMER_REQ"
+echo "HOSTCFLAGS: $HOSTCFLAGS"
+echo "HOSTLDFLAGS: $HOSTLDFLAGS"
 
 dnl Makefile outputs
 AC_OUTPUT([
