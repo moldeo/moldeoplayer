@@ -46,20 +46,27 @@ class moSDL_IODeviceManager : public moIODeviceManager {
          //SDL_MOUSEMOTION,		// Mouse moved
          //SDL_MOUSEBUTTONDOWN,	// Mouse button pressed
          //SDL_MOUSEBUTTONUP,		// Mouse button released
+         //cout << "SDL PollEvent" << endl;
 
       while(SDL_PollEvent(&event)) {
         switch(event.type) {
 
           case SDL_WINDOWEVENT:
+              cout << "SDL_WINDOWEVENT PollEvent" << endl;
                 switch (event.window.event) {
 
                   case SDL_WINDOWEVENT_RESIZED:
+                  cout << "SDL_WINDOWEVENT_RESIZED PollEvent" << endl;
+                  cout << "event.window.windowID: " << event.window.windowID << endl;
+                  cout << "m_displayWindowId: " << m_displayWindowId << endl;
+                  cout << "m_previewWindowId: " << m_previewWindowId << endl;
                     if (event.window.windowID==m_displayWindowId)
                       m_ResizeNeeded = true;
                     if (event.window.windowID==m_previewWindowId)
                       m_ResizeNeededForPreview = true;
                     break;
                   case SDL_WINDOWEVENT_CLOSE:
+                  cout << "SDL_WINDOWEVENT_CLOSE PollEvent" << endl;
                     if (event.window.windowID==m_displayWindowId)
                       m_CloseNeeded = true;
                     if (event.window.windowID==m_previewWindowId)

@@ -404,6 +404,10 @@ void SwitchPresentation( moConsole& Moldeo ) {
 
     if (displayWindow)
       displayWindowId = SDL_GetWindowID(displayWindow);
+    if (previewWindow)
+      previewWindowId = SDL_GetWindowID(previewWindow);
+
+
 }
 
 /* Main function:  */
@@ -632,7 +636,7 @@ int main(int argc, char** argv) {
   }
   moResetTicksAbsoluteStep();
 
-    
+
   glClearColor( 0.0, 0.0, 0.0, 1.0 );
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 #ifndef MODEBUG
@@ -728,6 +732,8 @@ int main(int argc, char** argv) {
             if (event->devicecode == SDL_KEYDOWN || event->devicecode==0) {
               if ( event->reservedvalue0 == SDLK_ESCAPE || event->reservedvalue3 == MO_MESSAGE ) {
                 SwitchPresentation( Moldeo );
+                pIODeviceManager->m_displayWindowId = displayWindowId;
+                pIODeviceManager->m_previewWindowId = previewWindowId;
               }
             }
           }
