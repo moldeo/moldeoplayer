@@ -29,7 +29,8 @@ AS_HELP_STRING([--with-gles],
 [with_gles=yes])
 
 host_name="default"
-
+host_cflags=""
+host_ldflags=""
 AC_ARG_ENABLE(host,
 [--enable-host[=host name] Specify the host os name:
 			64: 64 bit linux os [default]
@@ -42,7 +43,7 @@ AC_ARG_ENABLE(host,
 	host_name="64"
   elif test "x$enableval" = "xraspbian" ; then
 	host_name="raspbian"
-	host_cflags="-I/opt/vc/include -DOPENGLESV2"
+	host_cflags="-I/opt/vc/include"
 	host_ldflags="-L/opt/vc/lib"
   elif test "x$enableval" = "xosx" ; then
     host_name="osx"
@@ -52,46 +53,48 @@ AC_ARG_ENABLE(host,
 	echo
 	echo "Error!"
 	echo "Unknown host name"
-	exit -1
   fi
 ])
+GST_VERSION_MAJOR=0
+GST_VERSION_MINOR=10
+GST_VERSION_RELEASE=19
+GSTPLUG_VERSION_RELEASE=7
+
+AC_ARG_ENABLE(gstreamer,
+[--enable-gstreamer[=gstreamer version] Specify the gstreamer version:
+			0.10: Gstreamer version 0.10 [default]
+			1.0: Gstreamer version 1.0],
+[ if test "x$enableval" = "x1.0" ; then
+    GST_VERSION_MAJOR=1
+    GST_VERSION_MINOR=0
+    GST_VERSION_RELEASE=0
+    GSTPLUG_VERSION_RELEASE=0
+    host_cflags="$host_cflags -DGSTVERSION"
+  fi
+])
+
 AC_SUBST([HOSTCFLAGS],$host_cflags)
 AC_SUBST([HOSTLDFLAGS],$host_ldflags)
 
-if test "x$host_name" = "xosx" ; then
-    PKG_CHECK_MODULES([LUA51], [lua-5.1] ,has_lua51=yes)
-    AC_SUBST([GLUT_LIBS], [])
-    AC_SUBST([GL_LIBS], [])
-    AC_SUBST([GLE_LIBS], [])
-
-    dnl check for glew
-    AC_CHECK_HEADER(GL/glew.h, , AC_MSG_ERROR([glew header not found.]))
-    AC_CHECK_LIB(GLEW, glewInit, AC_SUBST([GL_LIBS], [-lGLEW]), AC_MSG_ERROR([glew not found.]) )
-
-else
-    PKG_CHECK_MODULES([LUA51], [lua5.1] ,has_lua51=yes)
-    AS_IF([test "x$with_gles" = "xyes"],
-        [PKG_CHECK_MODULES([GL], [glesv2, egl] ,has_glesv2=yes)],
-        [PKG_CHECK_MODULES([GL], [gl, glew] ,has_gl=yes)])
-
-    dnl check for glut
-    AC_CHECK_HEADER(GL/glut.h, , AC_MSG_ERROR([glut header not found.]))
-    AC_CHECK_LIB(glut, glutMainLoop, AC_SUBST([GLUT_LIBS], [-lglut]), AC_MSG_ERROR([glut not found.]), )
-fi
-
-dnl check for gstreamer
-GST_VERSION_MAJOR=1
-GST_VERSION_MINOR=0
-GST_VERSION_RELEASE=0
-GSTPLUG_VERSION_RELEASE=7
 GSTREAMER_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GST_VERSION_RELEASE
 GSTPLUGINS_REQ=$GST_VERSION_MAJOR.$GST_VERSION_MINOR.$GSTPLUG_VERSION_RELEASE
 GST_MAJORMINOR=$GST_VERSION_MAJOR.$GST_VERSION_MINOR
+
+#PKG_CHECK_MODULES(GST, gstreamer-$GST_MAJORMINOR >= $GSTREAMER_REQ,
+#  HAVE_GSTREAMER=yes)
+if test "x$host_name" = "xosx" ; then
+
+AC_SUBST(GST_CFLAGS,"-I/Library/Frameworks/GStreamer.framework/Versions/1.0/Headers")
+AC_SUBST(GST_LIBS,"-framework GStreamer")
+
+else
 
 PKG_CHECK_MODULES(GST, gstreamer-$GST_MAJORMINOR >= $GSTREAMER_REQ,
   HAVE_GSTREAMER=yes)
 AC_SUBST(GST_CFLAGS)
 AC_SUBST(GST_LIBS)
+
+fi
 
 
 AC_SUBST(CPPFLAGS)
