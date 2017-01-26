@@ -42,7 +42,7 @@ AC_ARG_ENABLE(host,
   elif test "x$enableval" = "xosx" ; then
     host_name="osx"
 	host_cflags="-I/opt/local/include "
-	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa"
+	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa -framework GStreamer"
   else
 	echo
 	echo "Error!"
