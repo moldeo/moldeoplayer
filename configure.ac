@@ -70,6 +70,7 @@ case "$host" in
                 ;;
 esac
 
+
 AC_CONFIG_SUBDIRS(
 	moldeoplayerglut
 	moldeoplayersdl

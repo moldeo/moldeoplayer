@@ -1,23 +1,13 @@
 Source: moldeoplayer
+Section: graphics
 Priority: optional
-Maintainer: Moldeo Interactive <info@moldeointeractive.com.ar>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, libmoldeo-dev, libsdl2-dev, libsdl1.2-dev, freeglut3-dev
-Standards-Version: 3.9.4
-Section: libs
+Maintainer: Moldeo Software <info@moldeo.org>
+Build-Depends: debhelper (>=9),autotools-dev, libmoldeo-dev, libsdl2-dev, libsdl1.2-dev, freeglut3-dev
+Standards-Version: 3.9.6
 Homepage: http:\\www.moldeo.org
-#Vcs-Git: git://git.debian.org/collab-maint/moldeoplugins.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/moldeoplugins.git;a=summary
-
-Package: moldeoplayer-dev
-Section: libdevel
-Architecture: amd64
-Depends: moldeoplayer (= ${binary:Version}), libmoldeo-dev, libsdl2-dev, libsdl1.2-dev, freeglut3-dev
-Description: Moldeo Plugins Headers
- Moldeo Plugins Headers
 
 Package: moldeoplayer
-Section: libs
 Architecture: amd64
-Depends: ${shlibs:Depends}, ${misc:Depends}, libmoldeo, libsdl2-2.0-0, libsdl1.2debian
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmoldeo, libsdl2-2.0-0, libsdl1.2debian, freeglut3, moldeoplugins
 Description: Moldeo Player
- Moldeo Player
+ Moldeo Player for Moldeo Software Platform

@@ -60,7 +60,7 @@ echo "extracting..."
 }
 
 cd deb/moldeoplayer-*
-dh_make -m -e info@moldeointeractive.com.ar -p moldeoplayer
+dh_make -s -e info@moldeo.org -p moldeoplayer -c gpl3
 gedit ../../control.amd64.11.10 debian/control ../../moldeoplayer.dirs debian/moldeoplayer.dirs ../../moldeoplayer.install debian/moldeoplayer.install ../../moldeoplayer-dev.dirs debian/moldeoplayer-dev.dirs ../../moldeoplayer-dev.install debian/moldeoplayer-dev.install debian/changelog
 
 echo " 
