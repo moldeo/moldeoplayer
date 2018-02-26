@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Moldeo Player 1.0
+GenericName=Moldeo Player - Player for Moldeo Multimedia Interactive Software Platform
+Version=1.0.0.160
+Comment=Mix and animate videos, images, colors, 3d effects. Play and compose Moldeo's multimedia interactive projects.
+Exec=moldeoplayer -mol %f
+Icon=/usr/share/moldeo/data/icons/moldeologo.png
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;AudioVideo;Video;Graphics;Player
+StartupNotify=true
