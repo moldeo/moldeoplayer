@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player], [1.0.0.160], [info@moldeointeractive.com.ar], [moldeoplayer])
+AC_INIT([Moldeo Player], [1.1.0.0], [info@moldeointeractive.com.ar], [moldeoplayer])
 
 AC_CANONICAL_HOST
 AC_CANONICAL_BUILD
@@ -135,5 +135,5 @@ AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
 dnl Makefile outputs
 AC_OUTPUT(
 Makefile
-moldeoplayer.desktop 
+moldeoplayer.desktop
 )

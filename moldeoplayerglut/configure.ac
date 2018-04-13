@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player GLUT], [1.0.0.0], [info@moldeointeractive.com.ar], [moldeoplayerglut])
+AC_INIT([Moldeo Player GLUT], [1.1.0.0], [info@moldeointeractive.com.ar], [moldeoplayerglut])
 
 AC_CANONICAL_HOST
 AC_CANONICAL_BUILD
@@ -160,4 +160,3 @@ dnl Makefile outputs
 AC_OUTPUT([
 Makefile
 ])
-

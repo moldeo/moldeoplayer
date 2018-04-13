@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player Sdl], [1.0.0.0], [info@moldeointeractive.com.ar], [moldeoplayersdl])
+AC_INIT([Moldeo Player Sdl], [1.1.0.0], [info@moldeointeractive.com.ar], [moldeoplayersdl])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
@@ -155,4 +155,3 @@ dnl Makefile outputs
 AC_OUTPUT([
 Makefile
 ])
-

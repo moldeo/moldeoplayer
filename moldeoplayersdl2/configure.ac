@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player Sdl2], [1.0.0.0], [info@moldeointeractive.com.ar], [moldeoplayersdl2])
+AC_INIT([Moldeo Player Sdl2], [1.1.0.0], [info@moldeointeractive.com.ar], [moldeoplayersdl2])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
@@ -53,7 +53,7 @@ AC_ARG_ENABLE(host,
 GST_VERSION_MAJOR=1
 GST_VERSION_MINOR=0
 GST_VERSION_RELEASE=0
-GSTPLUG_VERSION_RELEASE=0    
+GSTPLUG_VERSION_RELEASE=0
 
 AC_ARG_ENABLE(gstreamer,
 [--enable-gstreamer[=gstreamer version] Specify the gstreamer version:
@@ -162,4 +162,3 @@ dnl Makefile outputs
 AC_OUTPUT([
 Makefile
 ])
-
