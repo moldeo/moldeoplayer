@@ -99,6 +99,8 @@ int screen_display = 0;
 int render_width, render_height ,screen_width, screen_height;
 int preview_width  = PLAYER_PREVIEW_WIDTH, preview_height = PLAYER_PREVIEW_HEIGHT;
 
+Uint32 window_resizable = SDL_WINDOW_RESIZABLE;
+
 moText config("");
 moText molproject("");
 moText molproject_preview = molproject+" Preview";
@@ -121,8 +123,12 @@ bool arguments_ok = false;
 
 int processarguments( int argc, char** argv ) {
 
+    string player_manual = "moldeoplayersdl2 -mol moldeoprojectfilename.mol [-verbose] [-window 640x480] [-gamemode 1024x768:32] [-fullscreen] [-presentationmode]";
+
     if (argc<2) {
-			cout << "Missing arguments!!! usage: moldeoplayerglut [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+			cout << "Missing arguments!" << endl;
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
 			cout.flush();
 			return 0;
 		}
@@ -255,12 +261,19 @@ int processarguments( int argc, char** argv ) {
               */
           }
           --argc;
+        } else if (  arglast == moText("-noresize") ) {
+          window_resizable = 0;
         } else if (  arglast == moText("--help") ) {
 
-            cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
+			cout.flush();
             return 0;
         } else {
-          cout << "Usage: " << moText(arg0) << " [-mol ../../sample.mol ] [-window 640x480] [-gamemode 1024x768:32]" << endl;
+			cout << "Missing arguments!" << endl;
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
+			cout.flush();
           //exit(0);
           return 0;
         }
@@ -328,13 +341,13 @@ void SwitchPresentation( moConsole& Moldeo ) {
           SDL_ShowWindow( previewWindow );
         } else {
           SDL_GL_SetAttribute(SDL_GL_SHARE_WITH_CURRENT_CONTEXT, 1);
-          previewWindow = SDL_CreateWindow( molproject+" Preview",
+          previewWindow = SDL_CreateWindow( "Preview "+molproject,
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
-                                        PLAYER_PREVIEW_WIDTH,
-                                        PLAYER_PREVIEW_HEIGHT,
+                                        preview_width,
+                                        preview_height,
                                         SDL_WINDOW_OPENGL
-                                        |SDL_WINDOW_RESIZABLE
+                                        |window_resizable
                                         |MO_SDL_WINDOW_SHOWN );
           context2 = SDL_GL_CreateContext( displayWindow );
         }
@@ -389,7 +402,7 @@ void SwitchPresentation( moConsole& Moldeo ) {
         }
         /*
         displayWindow = SDL_CreateWindow(molproject, 0, 0, screen_width, screen_height,
-                           SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                           SDL_WINDOW_OPENGL|window_resizable|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
         */
         break;
       default:
@@ -414,11 +427,14 @@ void SwitchPresentation( moConsole& Moldeo ) {
 int main(int argc, char** argv) {
 
   char app_path[1000];
+  unsigned int gsmajor, gsminor, gsmicro, gsnano;
 
+  gst_init(NULL,NULL);
+  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
 
   //cout << "Console output: " << fileno(stdout) << endl;
-  cout << "MoldeoPlayer SDL2 version 1.0, libmoldeo version: " << (char*)moGetVersionStr() << endl;
-
+  cout << "MoldeoPlayer SDL2 version 1.0, libmoldeo version: " << (char*)moGetVersionStr()
+  << " Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
 
   moConsole   Moldeo;
   /*Initialization default*/
@@ -467,6 +483,10 @@ int main(int argc, char** argv) {
       screen_height = atoi( rh );
       render_width = screen_width;
       render_height = screen_height;
+      if (screen_width>0)
+        preview_width = max( screen_width/2, PLAYER_PREVIEW_WIDTH);
+      if (screen_height>0)
+       preview_height = max( screen_height/2, (preview_width* screen_height) / screen_width );
     }
 
     if (outputmode.Length() && outputmode=="AUTOPLAY" ) {
@@ -485,7 +505,7 @@ int main(int argc, char** argv) {
   if (mwindow!=moText("")) {
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
       displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, 40, screen_width, screen_height,
-                                       SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                                       SDL_WINDOW_OPENGL|window_resizable|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       if (displayWindow==NULL) {
         cout << "Couldn't set SDL_SetVideoMode to window mode (resizable) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
@@ -496,7 +516,7 @@ int main(int argc, char** argv) {
   } else if (fullscreenmode!=moText("")) {
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
       displayWindow = SDL_CreateWindow(molproject, SDL_WINDOWPOS_CENTERED, 40, screen_width, screen_height,
-                                       SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN|SDL_WINDOW_RESIZABLE|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                                       SDL_WINDOW_OPENGL|SDL_WINDOW_FULLSCREEN|window_resizable|MO_SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_FULLSCREEN;
       if (displayWindow==NULL) {
         cout << "Couldn't set SDL_SetVideoMode to window mode (resizable) " << screen_width << "x" << screen_height << " in 32 bits mode " << endl;
@@ -529,7 +549,7 @@ int main(int argc, char** argv) {
                                        SDL_WINDOW_OPENGL
                                        |SDL_WINDOW_BORDERLESS
                                        /*|SDL_WINDOW_FULLSCREEN_DESKTOP*/
-                                       /*|SDL_WINDOW_RESIZABLE*/
+                                       /*|window_resizable*/
                                        |MO_SDL_WINDOW_SHOWN
                                        |SDL_WINDOW_MOUSE_FOCUS );
       context = SDL_GL_CreateContext(displayWindow);
@@ -540,10 +560,10 @@ int main(int argc, char** argv) {
       previewWindow = SDL_CreateWindow( molproject_preview,
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
-                                        PLAYER_PREVIEW_WIDTH,
-                                        PLAYER_PREVIEW_HEIGHT,
+                                        preview_width,
+                                        preview_height,
                                         SDL_WINDOW_OPENGL
-                                        |SDL_WINDOW_RESIZABLE
+                                        |window_resizable
                                         |MO_SDL_WINDOW_SHOWN );
       context2 = SDL_GL_CreateContext( displayWindow );
 
@@ -555,7 +575,8 @@ int main(int argc, char** argv) {
   } else {
 
       displayWindow = SDL_CreateWindow(molproject, 40, 40, screen_width, screen_height,
-                                       SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+                                             SDL_WINDOW_OPENGL|window_resizable|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
+//                                       SDL_WINDOW_OPENGL|window_resizable|SDL_WINDOW_SHOWN|SDL_WINDOW_MOUSE_FOCUS );
       PlayerState = PLAYER_WINDOWED;
       //if ( SDL_SetVideoMode( screen_width, screen_height, 32, SDL_OPENGL|SDL_DOUBLEBUF|SDL_RESIZABLE ) == NULL) {
       if (displayWindow==NULL) {
@@ -589,11 +610,7 @@ int main(int argc, char** argv) {
   cout << "r:" << r << " g:" << g << " b:" << b << " a:" << a << " buffer size:" << bf << " double buf:" << db << " depth:" << dp << " stencil:" << st << endl;
   cout << "sdl_error?:" << SDL_GetError() << endl;
   cout << "screen_width:" << screen_width << " screen_height:" << screen_height << endl;
-  unsigned int gsmajor, gsminor, gsmicro, gsnano;
 
-  gst_init(NULL,NULL);
-  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
-  cout << "Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
 
   int maxloops = 120;
   int loops = maxloops;

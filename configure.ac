@@ -76,7 +76,10 @@ case "$host" in
                 ;;
 esac
 
+moldeoplayerexe=${prefix}/bin/moldeoplayersdl2
+AC_SUBST([moldeoplayerexe],$moldeoplayerexe)
 
+AC_CONFIG_FILES([moldeoplayer], [chmod +x moldeoplayer])
 AC_CONFIG_SUBDIRS(
 	moldeoplayerglut
 	moldeoplayersdl
@@ -130,5 +133,7 @@ esac],
 AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
 
 dnl Makefile outputs
-AC_OUTPUT(Makefile)
-
+AC_OUTPUT(
+Makefile
+moldeoplayer.desktop 
+)
