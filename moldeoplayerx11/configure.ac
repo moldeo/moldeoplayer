@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player Sdl2], [1.1.0.1], [info@moldeointeractive.com.ar], [moldeoplayersdl2])
+AC_INIT([Moldeo Player X11], [1.1.0.1], [info@moldeointeractive.com.ar], [moldeoplayerx11])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
@@ -20,7 +20,9 @@ AC_PROG_CXX_C_O
 #dnl check for libmoldeo
 PKG_CHECK_MODULES([LIBMOLDEO], [libmoldeo] ,has_libmoldeo=yes)
 
-PKG_CHECK_MODULES([SDL2], [sdl2] ,has_sdl2=yes)
+PKG_CHECK_MODULES([X11], [x11] ,has_x11=yes)
+PKG_CHECK_MODULES([XINERAMA], [xinerama] ,has_xinerama=yes)
+PKG_CHECK_MODULES([XINPUT], [xi] ,has_xi=yes)
 
 host_name="default"
 host_cflags=""
@@ -103,6 +105,9 @@ AC_SUBST(LIBS)
 
 WX_GTK2_CFLAGS=
 WX_GTK2_LIBS=
+
+#X11_CFLAGS=
+#X11_LIBS=
 
 
 dnl autoscan results

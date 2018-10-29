@@ -428,13 +428,10 @@ int main(int argc, char** argv) {
 
   char app_path[1000];
   unsigned int gsmajor, gsminor, gsmicro, gsnano;
+  SDL_SysWMinfo info;
 
   gst_init(NULL,NULL);
   gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
-
-  //cout << "Console output: " << fileno(stdout) << endl;
-  cout << "MoldeoPlayer SDL2 version 1.0, libmoldeo version: " << (char*)moGetVersionStr()
-  << " Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
 
   moConsole   Moldeo;
   /*Initialization default*/
@@ -448,6 +445,10 @@ int main(int argc, char** argv) {
     exit(1);
   }
 
+  SDL_VERSION(&info.version);
+
+  cout << "MoldeoPlayer, compiled with SDL version " << (int)(info.version.major) << "; libmoldeo version: " << (char*)moGetVersionStr()
+  << "; Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 2.0 );
   //SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1.0 );
 #ifdef OPENGLESV2
@@ -665,13 +666,55 @@ int main(int argc, char** argv) {
   SDL_GL_SwapWindow(displayWindow);
 #endif
 
+  MO_HANDLE _WINDOW_HANDLE;
+  MO_DISPLAY _DISPLAY = NULL;
+  /** https://wiki.libsdl.org/SDL_SysWMinfo */
+  if(SDL_GetWindowWMInfo(displayWindow,&info)) { /* the call returns true on success */
+    /* success */
+    const char *subsystem = "an unknown system!";
+    switch(info.subsystem) {
+      case SDL_SYSWM_UNKNOWN:   break;
+#ifdef MO_WIN32
+      case SDL_SYSWM_WINDOWS:   subsystem = "Microsoft Windows(TM)"; _WINDOW_HANDLE = info.info.win.window; _DISPLAY = info.info.win.hdc;  break;
+#if SDL_VERSION_ATLEAST(2, 0, 3)
+      case SDL_SYSWM_WINRT:     subsystem = "WinRT";                  break;
+#endif
+#endif // MO_WIN32
+#ifdef MO_LINUX
+      case SDL_SYSWM_X11:       subsystem = "X Window System"; _WINDOW_HANDLE = info.info.x11.window; _DISPLAY = info.info.x11.display;        break;
+#endif
+      case SDL_SYSWM_DIRECTFB:  subsystem = "DirectFB";               break;
+      case SDL_SYSWM_COCOA:     subsystem = "Apple OS X";             break;
+      case SDL_SYSWM_UIKIT:     subsystem = "UIKit";                  break;
+#if SDL_VERSION_ATLEAST(2, 0, 2)
+      case SDL_SYSWM_WAYLAND:   subsystem = "Wayland";                break;
+      case SDL_SYSWM_MIR:       subsystem = "Mir";                    break;
+#endif
+#if SDL_VERSION_ATLEAST(2, 0, 4)
+      case SDL_SYSWM_ANDROID:   subsystem = "Android";                break;
+#endif
+#if SDL_VERSION_ATLEAST(2, 0, 5)
+      case SDL_SYSWM_VIVANTE:   subsystem = "Vivante";                break;
+#endif
+    }
+
+    cout << "This program is running SDL version "
+    << (int)info.version.major
+    << "." << (int)info.version.minor
+    << "." <<  (int)(info.version.patch)
+    << " " << subsystem << endl;
+  } else {
+    /* call failed */
+    cout << "SDL ERROR: Couldn't get window information: " << SDL_GetError() << endl;
+  }
+
+
   if (!config_ok || !arguments_ok) {
     Moldeo.Finish();
     SDL_DestroyWindow(displayWindow);
     SDL_Quit();
     return 0;
   }
-
 
   //pIODeviceManager = NULL;
 
@@ -682,7 +725,9 @@ int main(int argc, char** argv) {
                           screen_width,
                           screen_height,
                           render_width,
-                          render_height
+                          render_height,
+                          _WINDOW_HANDLE,
+                          _DISPLAY
                          );
 
 

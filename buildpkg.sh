@@ -88,9 +88,9 @@ sed -i -e 's/Initial release (Closes: #nnnn)  <nnnn is the bug number of your IT
 #sed -i -e 's///g' debian/control
 
 
-#echo "debian/moldeoplayer/usr/bin/*" > debian/moldeoplayer.install
+echo "debian/moldeoplayer/usr/bin/*" > debian/moldeoplayer.install
 
-#echo "usr/bin" > debian/moldeoplayer.dirs
+echo "usr/bin" > debian/moldeoplayer.dirs
 
 #echo "usr/lib" > debian/moldeoplayer.dirs
 

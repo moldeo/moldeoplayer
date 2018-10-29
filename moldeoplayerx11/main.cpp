@@ -4,6 +4,7 @@
  */
 
 
+#include "gst/gst.h"
 #include <moldeo.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -15,6 +16,8 @@
 #include <X11/X.h>    /* X11 constant (e.g. TrueColor) */
 #include <X11/XKBlib.h>
 #include <X11/keysym.h>
+#include <X11/Xatom.h>
+#include <X11/cursorfont.h>
 
 #ifdef MO_WIN32
   #include "SDL.h"
@@ -27,9 +30,11 @@
   #include <X11/extensions/xf86vmode.h>
 #endif
 
+moConsole* gpConsole = NULL;
+#define RENDERMODE RENDERMANAGER_MODE_NORMAL
+
 #include "moX11_IODeviceManager.h"
 
-moConsole* gpConsole = NULL;
 
 static int snglBuf[] = {GLX_RGBA, GLX_DEPTH_SIZE, 16, None};
 static int dblBuf[]  = {GLX_RGBA, GLX_DEPTH_SIZE, 16, GLX_DOUBLEBUFFER, None};
@@ -39,11 +44,230 @@ Display   *dpy;
 Window     win;
 Window     win2;
 
-int twoscreens = true;
+int twoscreens = false;
 int swapped = false;
 
 GLfloat    xAngle = 42.0, yAngle = 82.0, zAngle = 112.0;
 GLboolean  doubleBuffer = GL_TRUE;
+
+
+enum moPlayerStateWindow {
+  PLAYER_WINDOWED=0,    /** WINDOWED ON FIRST DISPLAY */
+  PLAYER_GAMEMODE=1,    /** FULLSCREEN ON FIRST DISPLAY */
+  PLAYER_PRESENTATION=2, /** SECOND DISPLAY IF AVAILABLE OR FULLSCREEN ON FIRST DISPLAY */
+  PLAYER_FULLSCREEN=3
+};
+
+#ifdef OPENGLESV2
+//#define MO_SDL_WINDOW_SHOWN 0
+#else
+//#define MO_SDL_WINDOW_SHOWN SDL_WINDOW_SHOWN
+#endif // OPENGLESV2
+#define PLAYER_WINDOWED_WIDTH 640
+#define PLAYER_WINDOWED_HEIGHT 360
+#define PLAYER_PREVIEW_WIDTH 400
+#define PLAYER_PREVIEW_HEIGHT 220
+
+int screen_left = 0, screen_top = 0;
+int screen_display = 0;
+int render_width, render_height ,screen_width, screen_height;
+int preview_width  = PLAYER_PREVIEW_WIDTH, preview_height = PLAYER_PREVIEW_HEIGHT;
+
+//TODO: migrate to X11
+//Uint32 window_resizable = SDL_WINDOW_RESIZABLE;
+int window_resizable = 1;
+
+moText config("");
+moText molproject("");
+moText molproject_preview = molproject+" Preview";
+moText molfolder("");
+moText gamemode("");
+moText fullscreenmode("");
+moText presentationmode("");
+moText mwindow("");
+moText windowtitle("");
+Display* displayWindow = NULL;
+Window previewWindow = NULL;
+int displayWindowId = -1;
+int previewWindowId = -1;
+bool cmdresolution = false;
+
+moPlayerStateWindow PlayerState = PLAYER_WINDOWED;
+bool arguments_ok = false;
+
+int processarguments( int argc, char** argv ) {
+
+    string player_manual = "moldeoplayersdl2 -mol moldeoprojectfilename.mol [-verbose] [-window 640x480] [-gamemode 1024x768:32] [-fullscreen] [-presentationmode]";
+
+    if (argc<2) {
+			cout << "Missing arguments!" << endl;
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
+			cout.flush();
+			return 0;
+		}
+
+    moText argexe(argv[0]);
+
+    if (argc==2) {
+      moText argMol(argv[1]);
+
+      cout <<  "Argument [0] exe: " << argexe << endl;
+      cout <<  "Argument [1] mol: " << argMol << endl;
+
+
+      molproject = moText( argMol );
+      moFile file( molproject );
+      molfolder = file.GetPath();
+      cout << "Argument -mol is: " << molproject << " in folder: " << molfolder << endl;
+      argc = 0;
+      return 0;
+    }
+
+
+    while( argc >= 2 ) {
+        --argc;
+
+        moText arglast(argv[argc]);
+        moText argprev;
+
+        if (argc>0) argprev = argv[argc-1];
+
+        moText  arg0(argv[0]);
+
+        cout <<  "Argument [" << (argc) << "] : " << moText(arglast) << endl;
+
+        moFile molFile( arglast );
+
+        if( argprev == moText("-mol")
+           || molFile.GetExtension() == moText(".mol") ) {
+
+            molproject = moText( arglast );
+                moFile file( molproject );
+                molfolder = file.GetPath();
+            cout << "Argument -mol is: " << molproject << " in folder: " << molfolder << endl;
+
+          if ( argprev == moText("-mol") ) --argc;
+
+        } else if (  argprev == moText("-window") ) {
+
+            mwindow = moText( arglast );
+                cout << "Windowed mode -window found! : " << mwindow << endl;
+                moTextArray resolution = mwindow.Explode( moText("x") );
+                if (resolution.Count()>1) {
+                    screen_width = atoi((char*)resolution[0]);
+                    screen_height = atoi((char*)resolution[1]);
+                    render_width = screen_width;
+                    render_height = screen_height;
+                    cmdresolution = true;
+                }
+                --argc;
+
+        } else if (  argprev == moText("-gamemode") ) {
+
+            gamemode = moText( arglast );
+                cout << "Game mode -gamemode found! : " << gamemode << endl;
+                moTextArray gmode = gamemode.Explode( moText(":") );
+                if (gmode.Count()>1) {
+                    moText resolutions = gmode[0];
+                    moTextArray resolution = resolutions.Explode( moText("x") );
+                    if (resolution.Count()>1) {
+                        screen_width = atoi((char*)resolution[0]);
+                        screen_height = atoi((char*)resolution[1]);
+                        render_width = screen_width;
+                        render_height = screen_height;
+                        cmdresolution = true;
+                    }
+                }
+                --argc;
+        } else if (  argprev == moText("-fullscreen") ) {
+
+            fullscreenmode = moText( arglast );
+                cout << "Fullscreen mode -fullscreen found! : " << fullscreenmode << endl;
+                moTextArray fmode = fullscreenmode.Explode( moText(":") );
+                if (fmode.Count()>1) {
+                    moText resolutions = fmode[0];
+                    moTextArray resolution = resolutions.Explode( moText("x") );
+                    if (resolution.Count()>1) {
+                        screen_width = atoi((char*)resolution[0]);
+                        screen_height = atoi((char*)resolution[1]);
+                        render_width = screen_width;
+                        render_height = screen_height;
+                        cmdresolution = true;
+                    }
+                } else {
+                    moText resolutions = arglast;
+                    moTextArray resolution = resolutions.Explode( moText("x") );
+                    if (resolution.Count()>1) {
+                        screen_width = atoi((char*)resolution[0]);
+                        screen_height = atoi((char*)resolution[1]);
+                        render_width = screen_width;
+                        render_height = screen_height;
+                        cmdresolution = true;
+                    }
+                }
+                --argc;
+        } else if (  argprev == moText("-presentationmode") ) {
+          presentationmode = moText( arglast );
+          cout << "Presentation mode -presentationmode found! : " << presentationmode << endl;
+          moTextArray pmode = presentationmode.Explode( moText(":") );
+          if (pmode.Count()>1) {
+
+              moText resolutions = pmode[0];
+              moTextArray resolution = resolutions.Explode( moText("x") );
+              if (resolution.Count()>1) {
+                  screen_width = atoi((char*)resolution[0]);
+                  screen_height = atoi((char*)resolution[1]);
+                  render_width = screen_width;
+                  render_height = screen_height;
+                  cmdresolution = true;
+              }
+              /**
+              moText positions = pmode[1];
+              moTextArray position = positions.Explode( moText(",") );
+              if (position.Count()>1) {
+                  screen_width = atoi((char*)resolution[0]);
+                  screen_height = atoi((char*)resolution[1]);
+                  render_width = screen_width;
+                  render_height = screen_height;
+              }
+              moText display = pmode[2];
+              */
+          }
+          --argc;
+        } else if (  arglast == moText("-noresize") ) {
+          window_resizable = 0;
+        } else if (  arglast == moText("--help") ) {
+
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
+			cout.flush();
+            return 0;
+        } else {
+			cout << "Missing arguments!" << endl;
+			cout << "MoldeoPlayer Manual:" << endl;
+			cout << player_manual << endl;
+			cout.flush();
+          //exit(0);
+          return 0;
+        }
+    }
+	return 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void fatalError(char *message)
 {
@@ -110,9 +334,15 @@ void redraw(void)
 
 int main(int argc, char **argv)
 {
+  char app_path[1000];
+  unsigned int gsmajor, gsminor, gsmicro, gsnano;
+  gst_init(NULL,NULL);
+  gst_version (&gsmajor, &gsminor, &gsmicro, &gsnano);
+
   XEvent			xev;
   GC          gc;
-  moConsole   MoldeoConsole;
+  moConsole   Moldeo;
+  gpConsole = &Moldeo;
 
   XineramaScreenInfo *m_screens;
 
@@ -143,7 +373,7 @@ int main(int argc, char **argv)
   int                  dummy;
   int                  screen_numbers;
 
-  twoscreens = true;
+  twoscreens = false;
 
   // 640x400 : 800x500
   render_width = 512;
@@ -157,6 +387,39 @@ int main(int argc, char **argv)
   interface_height = 90*5;
 
   /*** (1) open a connection to the X server ***/
+  cout << "MoldeoPlayer, compiled with X11 support " << "; libmoldeo version: " << (char*)moGetVersionStr()
+    << "; Gstreamer version " << gsmajor << "." << gsminor << "." << gsmicro << "." << gsnano << endl;
+
+
+  cout << "Processing arguments. n: " << argc << endl;
+
+  arguments_ok = processarguments( argc, argv );
+
+  moConfig checkConfig;
+  bool config_ok = checkConfig.LoadConfig( molproject )==MO_CONFIG_OK;
+
+  if (config_ok) {
+    moText rw = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
+    moText rh = checkConfig.GetParam( moText("outputresolution") ).GetValue( 0 ).GetSubValue( 1 ).ToText();
+    moText outputmode = checkConfig.GetParam( moText("outputmode") ).GetValue( 0 ).GetSubValue( 0 ).ToText();
+    if (rw.Length() && !cmdresolution ) {
+      screen_width = atoi( rw );
+      screen_height = atoi( rh );
+      render_width = screen_width;
+      render_height = screen_height;
+      if (screen_width>0)
+        preview_width = max( screen_width/2, PLAYER_PREVIEW_WIDTH);
+      if (screen_height>0)
+       preview_height = max( screen_height/2, (preview_width* screen_height) / screen_width );
+    }
+
+    if (outputmode.Length() && outputmode=="AUTOPLAY" ) {
+        presentationmode = "AUTOPLAY";
+    }
+  } else {
+    //test mode
+    //exit(1);
+  }
 
 
   dpy = XOpenDisplay(NULL);
@@ -176,6 +439,7 @@ int main(int argc, char **argv)
 
   XineramaScreenInfo &screen_info = m_screens[ screen_output ];
   cout << "Using screen :" << screen_output << " x_org:" << screen_info.x_org << " y_org:" << screen_info.y_org << " width:" << screen_info.width << " height:" << screen_info.height << endl;
+
 
 
   /*** (2) make sure OpenGL's GLX extension supported ***/
@@ -249,24 +513,47 @@ if (1==2) {
   /*** (5) create an X window with the selected visual ***/
 
   /* create an X colormap since probably not using default visual */
+/*
+SDL2 X11
+https://github.com/davidsiaw/SDL2/blob/b90a1cdaa54f998e759debae15f2479de610918a/src/video/x11/SDL_x11window.c
+  */
 
   cmap = XCreateColormap(dpy, RootWindow(dpy, vi->screen), vi->visual, AllocNone);
   swa.colormap = cmap;
   swa.border_pixel = 0;
-  swa.event_mask = KeyPressMask;
+  swa.override_redirect = false;//((window->flags & SDL_WINDOW_TOOLTIP) || (window->flags & SDL_WINDOW_POPUP_MENU)) ? True : False;
+  swa.background_pixmap = None;
+  swa.border_pixel = 0;
+  //swa.event_mask = ExposureMask | StructureNotifyMask;
+  //swa.event_mask = KeyPressMask;
+  //swa.override_redirect = true;
 
-  screen_width = screen_info.width;
-  screen_height = screen_info.height;
+  //screen_width = screen_info.width;
+  //screen_height = screen_info.height;
+  //XSetWindowAttributes attr = { 0 };
 
   win = XCreateWindow(dpy, RootWindow(dpy, vi->screen), screen_info.x_org, screen_info.y_org,
                       screen_width, screen_height, 0, vi->depth, InputOutput, vi->visual,
-                      CWColormap | CWEventMask, &swa);
+                      CWOverrideRedirect | CWBackPixmap | CWBorderPixel | CWColormap /* | CWOverrideRedirect*/, &swa);
 
-  XSetStandardProperties(dpy, win, "main", "main", None,
+
+  XSetStandardProperties(dpy, win, molproject, molproject, None,
                          argv, argc, NULL);
 
+/*
+   Atom wm_state   = XInternAtom (dpy, "_NET_WM_STATE", true );
+   Atom wm_fullscreen = XInternAtom (dpy, "_NET_WM_STATE_FULLSCREEN", true );
 
+   XChangeProperty(dpy, win, wm_state, XA_ATOM, 32,
+                   PropModeReplace, (unsigned char *)&wm_fullscreen, 1);
+  */
   /*** (6) bind the rendering context to the window ***/
+
+  int cursor_shape = XC_arrow;
+  Cursor cursor;
+  cursor = XCreateFontCursor(dpy, cursor_shape);
+  XDefineCursor(dpy, win, cursor);
+
 
   glXMakeCurrent(dpy, win, cx);
 
@@ -299,82 +586,128 @@ if (1==2) {
     //if (!gc)  fatalError("could not create graphic context on win2");
   }
 
-/***********************************************/
-/**   INITIALIZING MOLDEO CONSOLE */
-/***********************************************/
-   char app_path[1000];
+  /***********************************************/
+  /**   INITIALIZING MOLDEO CONSOLE */
+  /***********************************************/
+  int maxloops = 120;
+    int loops = maxloops;
+    moDisplay DisplayInfo( screen_width, screen_height);
 
-   if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
+    moGLManager GL;
+    GL.Init();
 
-   moX11_IODeviceManager* pIODeviceManager = new moX11_IODeviceManager();
-
-   pIODeviceManager->Init( dpy, win, win2 );
-
-   if ( 1==1 &&
-
-        MoldeoConsole.Init( app_path,
-/*
-                            moText("SimpleProject"),
-                            moText("SimpleProject/simple_project.mol"),
-*/
-                            moText("ChannelControl2"),
-                            moText("ChannelControl2/channelcontrol2.mol"),
-
-                            (moIODeviceManager*)pIODeviceManager /*IODeviceManager*/,
-                              NULL/*ResourceManager*/,
-                              RENDERMANAGER_MODE_NORMAL /*render mode*/,
-                              screen_width, screen_height,
-                              render_width,render_height
-                           )
-       ) {
-      moDebugManager::Message("moldeoplayer::main > MoldeoConsole Initialized successfully ! ");
-
-      /** getting rendering gl contexts and displays */
-
-      pResourceMan = MoldeoConsole.GetResourceManager();
-      if (pResourceMan) {
-        pRenderMan = pResourceMan->GetRenderMan();
-        pGLMan = pResourceMan->GetGLMan();
-
-        /** **************************************************/
-        /** CHANGE WINDOW SIZE IF CONFIG DID IT!!!! */
-        /** **************************************************/
-        /*
-        render_width = pRenderMan->RenderWidth();
-        render_height = pRenderMan->RenderHeight();
-        screen_width = pRenderMan->ScreenWidth();
-        screen_height = pRenderMan->ScreenHeight();
-        */
-        //dpy = (Display*) pGLMan->GetDisplayServer();
-        //moldeocx = (GLXContext) pGLMan->GetContext();
+    /*if (GL.GetGLMajorVersion()<2) {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_COLOR_TEXT,
+                             "OpenGL HARDWARE",
+                             moText("OpenGL Version: ") + GL.GetGLVersion()
+                             + moText("\nHardware: ") + GL.GetGPUVendorString()
+                             + moText("\nModel: ")+ GL.GetGPURendererString()
+                             + moText("\nGstreamer Version: ")+IntToStr(gsmajor)+moText(".")
+                                                                +IntToStr(gsminor),
+                             NULL);
+    }*/
+      loops = 20;
+      while(loops>0) {
+          loops--;
+          glClearColor( 0.0, 0.0, ((float) loops )/20.0f, 1.0 );
+          glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+          glXSwapBuffers(dpy, win);
       }
 
-      MoldeoConsole.ConsolePlay();
-      gpConsole = &MoldeoConsole;
+      loops = maxloops;
+    while(loops>0) {
+      loops--;
+      //delay(1);
 
-    } else {
-      moDebugManager::Error("moldeoplayer::main > MoldeoConsole Initialization with errors. ");
-      //exit(1);
+      Moldeo.TestScreen(DisplayInfo);
+      glXSwapBuffers(dpy, win);
     }
-/***********************************************/
-/***********************************************/
-/*
-    // Inicializamos en primer lugar
-    if ( MoldeoConsole.Init( moText("test"),
-                            moText("test.mol") ) ) {
+    moResetTicksAbsoluteStep();
 
-        // Ciclo principal
-        // Mientras interactuamos
-        while( MoldeoConsole.Interaction() ) {
+  MO_HANDLE _WINDOW_HANDLE;
+  MO_DISPLAY _DISPLAY = NULL;
 
-            //Actualizamos
-            MoldeoConsole.Update();
+ if (getcwd(app_path,1000)==NULL) cerr << "Cannot retreive working path!" << endl;
 
-            //Dibujamos
-            MoldeoConsole.Draw();
-        }
-     }
-*/
+ moX11_IODeviceManager* pIODeviceManager = new moX11_IODeviceManager();
+
+ pIODeviceManager->Init( dpy, win, win2 );
+
+ if (!config_ok || !arguments_ok) {
+    Moldeo.Finish();
+    exit(-1);
+  }
+
+  _DISPLAY = dpy;
+  _WINDOW_HANDLE = win;
+
+ if ( 1==1 &&
+
+      Moldeo.Init( app_path,
+        /*
+                                    moText("SimpleProject"),
+                                    moText("SimpleProject/simple_project.mol"),
+        */
+        /*                            moText("ChannelControl2"),
+                                    moText("ChannelControl2/channelcontrol2.mol"),
+        */
+                          molfolder, molproject,
+                          pIODeviceManager /*IODeviceManager*/,
+                            NULL/*ResourceManager*/,
+                            RENDERMANAGER_MODE_NORMAL /*render mode*/,
+                            screen_width, screen_height,
+                            render_width,render_height,
+                            _WINDOW_HANDLE,
+                            _DISPLAY
+                         )
+     ) {
+    moDebugManager::Message("moldeoplayer::main > Moldeo Initialized successfully ! ");
+
+    /** getting rendering gl contexts and displays */
+
+    pResourceMan = Moldeo.GetResourceManager();
+    if (pResourceMan) {
+      pRenderMan = pResourceMan->GetRenderMan();
+      pGLMan = pResourceMan->GetGLMan();
+
+      /** **************************************************/
+      /** CHANGE WINDOW SIZE IF CONFIG DID IT!!!! */
+      /** **************************************************/
+      /*
+      render_width = pRenderMan->RenderWidth();
+      render_height = pRenderMan->RenderHeight();
+      screen_width = pRenderMan->ScreenWidth();
+      screen_height = pRenderMan->ScreenHeight();
+      */
+      //dpy = (Display*) pGLMan->GetDisplayServer();
+      //moldeocx = (GLXContext) pGLMan->GetContext();
+    }
+
+    Moldeo.ConsolePlay();
+
+  } else {
+    moDebugManager::Error("moldeoplayer::main > Moldeo Initialization with errors. ");
+    //exit(1);
+  }
+  /***********************************************/
+  /***********************************************/
+  /*
+      // Inicializamos en primer lugar
+      if ( Moldeo.Init( moText("test"),
+                              moText("test.mol") ) ) {
+
+          // Ciclo principal
+          // Mientras interactuamos
+          while( Moldeo.Interaction() ) {
+
+              //Actualizamos
+              Moldeo.Update();
+
+              //Dibujamos
+              Moldeo.Draw();
+          }
+       }
+  */
 
 
   //glXMakeContextCurrent( dpy, win, win, moldeocx );
@@ -404,16 +737,44 @@ if (1==2) {
 */
   /*** (9) dispatch X events ***/
   usleep( 2000 );
-  while (1)
+  while ( Moldeo.Interaction()
+          && pIODeviceManager
+          && !pIODeviceManager->m_CloseNeeded
+          && !pIODeviceManager->m_CloseNeededForPreview )
   {
+
       /** RENDER OUTPUT */
-
       glXMakeCurrent(dpy, win, cx);
-      MoldeoConsole.Interaction();
-      MoldeoConsole.Update();
-      MoldeoConsole.Draw();
-
+      Moldeo.Update();
+      Moldeo.Draw();
       glXSwapBuffers(dpy, win);
+
+      moEvent* event = pIODeviceManager->GetEvents()->First;
+      moMessage* newMessage = NULL;
+      while(event!=NULL) {
+        if ( event->deviceid == MO_IODEVICE_KEYBOARD || event->deviceid==999 ) {
+          if (event->devicecode == SDL_KEYDOWN || event->devicecode==0) {
+            if ( event->reservedvalue0 == SDLK_ESCAPE || event->reservedvalue3 == MO_MESSAGE ) {
+              if (event->reservedvalue0 == SDLK_ESCAPE) {
+
+              }
+              //SwitchPresentation( Moldeo );
+              //pIODeviceManager->m_displayWindowId = displayWindowId;
+              //pIODeviceManager->m_previewWindowId = previewWindowId;
+            }
+          }
+        }
+
+        if (event->deviceid==999) {
+            newMessage = (moMessage*) event;
+        }
+
+        event = event->next;
+      }
+
+      if ( newMessage )
+        pIODeviceManager->GetEvents()->Delete(newMessage);
+
 
       /** RENDER INTERFACE */
       if (twoscreens) {
@@ -423,7 +784,7 @@ if (1==2) {
           glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
           pRenderMan->DrawTexture( pRenderMan->InterfaceWidth(), pRenderMan->InterfaceHeight(), MO_FINAL_TEX );
-          MoldeoConsole.DrawMasterEffects(0,0);
+          Moldeo.DrawMasterEffects(0,0);
           if (!swapped) {
             glXSwapBuffers(dpy, win2);
             swapped=true;
@@ -454,6 +815,8 @@ if (1==2) {
     }
 */
   }
+
+  Moldeo.Finish();
 
   XFree(m_screens);
 

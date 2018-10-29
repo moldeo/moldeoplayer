@@ -2,18 +2,44 @@
 #ifndef _MO_X11_IODEVICEMANAGER_H__
 #define _MO_X11_IODEVICEMANAGER_H__
 
+#define EASYTAB_IMPLEMENTATION
+#include "EasyTab/easytab.h"
+
+
 #define SDL_NLK_CAPS 0x01
 #define SDL_NLK_NUM  0x02
 
 class moX11_IODeviceManager : public moIODeviceManager {
 
   public:
+    Display   *m_Dpy;
+    Window     m_Win;
+    Window     m_Win2;
+
+    SDLKey ODD_keymap[256];
+    SDLKey MISC_keymap[256];
+
+    SDLMod    SDL_ModState;
+    Uint8 SDL_NoLockKeys;
+    int   m_SDL_DISABLE_LOCK_KEYS;
+
+    int   m_MouseX;
+    int   m_MouseY;
+    bool m_ResizeNeeded;
+    bool m_CloseNeeded;
+
+    bool m_ResizeNeededForPreview;
+    bool m_CloseNeededForPreview;
 
     moX11_IODeviceManager() : moIODeviceManager() {
 
       m_Dpy = NULL;
       m_Win = NULL;
       m_Win2 = NULL;
+      m_ResizeNeeded = false;
+      m_CloseNeeded = false;
+      m_ResizeNeededForPreview = false;
+      m_CloseNeededForPreview = false;
     }
 
     virtual ~moX11_IODeviceManager() {
@@ -25,6 +51,13 @@ class moX11_IODeviceManager : public moIODeviceManager {
       m_Win = win;
       m_Win2 = win2;
       SDL_ModState = KMOD_NONE;
+
+      if (EasyTab_Load(dpy, win) != EASYTAB_OK)                   // Load
+      {
+        moDebugManager::Message("moTablet::Init > Tablet init failed. \n");
+      } else {
+        moDebugManager::Message("moTablet::Init > Tablet init OK! \n");
+      }
 
       if (m_Dpy && m_Win) XSelectInput(m_Dpy, m_Win,  KeyPressMask |
                                                       KeyReleaseMask |
@@ -69,7 +102,19 @@ class moX11_IODeviceManager : public moIODeviceManager {
       m_MouseY = 0;
 
 
+
+      moIODeviceManager::Init();
       return (m_bInitialized=true);
+    }
+
+    void SetWindows( Window* displayWin, Window* previewWin ) {
+/*
+        if (displayWin)
+          m_displayWindowId = displayWin;
+
+        if (previewWin)
+          m_previewWindowId = SDL_GetWindowID(previewWin);
+*/
     }
 
     void X11_InitKeymap(void) {
@@ -96,20 +141,20 @@ class moX11_IODeviceManager : public moIODeviceManager {
       ODD_keymap[XK_dead_voiced_sound&0xFF] = SDLK_COMPOSE;
       ODD_keymap[XK_dead_semivoiced_sound&0xFF] = SDLK_COMPOSE;
       ODD_keymap[XK_dead_belowdot&0xFF] = SDLK_COMPOSE;
-    #ifdef XK_dead_hook
+      #ifdef XK_dead_hook
       ODD_keymap[XK_dead_hook&0xFF] = SDLK_COMPOSE;
-    #endif
-    #ifdef XK_dead_horn
+      #endif
+      #ifdef XK_dead_horn
       ODD_keymap[XK_dead_horn&0xFF] = SDLK_COMPOSE;
-    #endif
+      #endif
 
-    #ifdef XK_dead_circumflex
+      #ifdef XK_dead_circumflex
       /* These X keysyms have 0xFE as the high byte */
       ODD_keymap[XK_dead_circumflex&0xFF] = SDLK_CARET;
-    #endif
-    #ifdef XK_ISO_Level3_Shift
+      #endif
+      #ifdef XK_ISO_Level3_Shift
       ODD_keymap[XK_ISO_Level3_Shift&0xFF] = SDLK_MODE; /* "Alt Gr" key */
-    #endif
+      #endif
 
       /* Map the miscellaneous keys */
       for ( i=0; i<SDL_arraysize(MISC_keymap); ++i )
@@ -209,21 +254,21 @@ class moX11_IODeviceManager : public moIODeviceManager {
       SDLKey key;
 
       xsym = XKeycodeToKeysym(display, kc, 0);
-    #ifdef DEBUG_KEYS
+      #ifdef DEBUG_KEYS
       fprintf(stderr, "Translating key code %d -> 0x%.4x\n", kc, xsym);
-    #endif
+      #endif
       key = SDLK_UNKNOWN;
       if ( xsym ) {
         switch (xsym>>8) {
             case 0x1005FF:
-    #ifdef SunXK_F36
+            #ifdef SunXK_F36
           if ( xsym == SunXK_F36 )
             key = SDLK_F11;
-    #endif
-    #ifdef SunXK_F37
+            #endif
+            #ifdef SunXK_F37
           if ( xsym == SunXK_F37 )
             key = SDLK_F12;
-    #endif
+            #endif
           break;
             case 0x00:	/* Latin 1 */
           key = (SDLKey)(xsym & 0xFF);
@@ -442,8 +487,9 @@ class moX11_IODeviceManager : public moIODeviceManager {
     virtual void PollEvents() {
 
       XEvent			xev;
-      char buffer[20];
-      int bufsize = 20;
+      moEventList				*Events = GetEvents();
+      char buffer[200];
+      int bufsize = 200;
       KeySym xkeysym;
       XComposeStatus compose;
       int charcount;
@@ -457,6 +503,8 @@ class moX11_IODeviceManager : public moIODeviceManager {
       int pending;
       char	*key_string1;
 
+      if (Events==NULL)
+        return moDebugManager::Error("BADDDD");
 
       pending = 0;
       while ( X11_Pending(m_Dpy) ) {
@@ -464,7 +512,7 @@ class moX11_IODeviceManager : public moIODeviceManager {
         //X11_DispatchEvent(this);
         XNextEvent(m_Dpy, &xev);
 
-        moDebugManager::Message( "X Event :" + IntToStr( xev.type ) );
+        moDebugManager::Message( "X Event type:" + IntToStr( xev.type ) );
 
         if ( xev.type == KeyRelease
              && X11_KeyRepeat( m_Dpy, &xev) ) {
@@ -500,14 +548,25 @@ class moX11_IODeviceManager : public moIODeviceManager {
               /** RESIZE EVENTS*/
               case ResizeRequest:
                 if (xev.xresizerequest.display==m_Dpy) {
-
+                  m_ResizeNeeded = true;
                   if (xev.xresizerequest.window==m_Win && gpConsole) {
+                    gpConsole->GetResourceManager()->GetRenderMan()->Finish();
+                    gpConsole->GetResourceManager()->GetRenderMan()->Init( RENDERMODE,
+                                                                      xev.xresizerequest.width, xev.xresizerequest.height,
+                                                                      xev.xresizerequest.width, xev.xresizerequest.height );
                     gpConsole->GetResourceManager()->GetRenderMan()->SetView( xev.xresizerequest.width, xev.xresizerequest.height );
                     moDebugManager::Message( "X Event ResizeRequest m_Win width:" + IntToStr(xev.xresizerequest.width) + " height:" + IntToStr(xev.xresizerequest.height) );
+                    //XFlush(m_Dpy);
+
                   }
 
                   if (xev.xresizerequest.window==m_Win2 && gpConsole) {
-                    gpConsole->GetResourceManager()->GetRenderMan()->SetInterfaceView( xev.xresizerequest.width, xev.xresizerequest.height );
+                    //gpConsole->GetResourceManager()->GetRenderMan()->SetInterfaceView( xev.xresizerequest.width, xev.xresizerequest.height );
+                    gpConsole->GetResourceManager()->GetRenderMan()->Finish();
+                    gpConsole->GetResourceManager()->GetRenderMan()->Init( RENDERMODE,
+                                                                      xev.xresizerequest.width, xev.xresizerequest.height,
+                                                                      xev.xresizerequest.width, xev.xresizerequest.height );
+
                     moDebugManager::Message( "X Event ResizeRequest m_Win2 width:" + IntToStr(xev.xresizerequest.width) + " height:" + IntToStr(xev.xresizerequest.height) );
                   }
 
@@ -516,19 +575,19 @@ class moX11_IODeviceManager : public moIODeviceManager {
 
               /** MOUSE */
               case MotionNotify:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION,  xev.xmotion.x - m_MouseX, xev.xmotion.y - m_MouseY );
+                Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION,  xev.xmotion.x - m_MouseX, xev.xmotion.y - m_MouseY );
                 m_MouseX = xev.xmotion.x;
                 m_MouseY = xev.xmotion.y;
                 moDebugManager::Message( "X Event MotionNotify X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
                 break;
               case ButtonPress:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
+                Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
                 m_MouseX = xev.xbutton.x;
                 m_MouseY = xev.xbutton.y;
                 moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
                 break;
               case ButtonRelease:
-                GetEvents()->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
+                Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
                 m_MouseX = xev.xbutton.x;
                 m_MouseY = xev.xbutton.y;
                 moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
@@ -549,9 +608,54 @@ class moX11_IODeviceManager : public moIODeviceManager {
                 X11_CheckModState( xev.type, &sdl_keysym );
 
                 moDebugManager::Message( " Mod:" + IntToStr(sdl_keysym.mod) );
+                if (xev.xkey.keycode==9 && sdl_keysym.sym==27) {
+                  m_CloseNeeded = true;
+                  moDebugManager::Message(" Escape > Close needed");
+                } else if (sdl_keysym.sym==32) {
+                  /*
+                  Atom wm_state   = XInternAtom (m_Dpy, "_NET_WM_STATE", true );
+                  Atom wm_fullscreen = XInternAtom (m_Dpy, "_NET_WM_STATE_FULLSCREEN", true );
 
+                  XChangeProperty(m_Dpy, m_Win, wm_state, XA_ATOM, 32,
+                                  PropModeReplace, (unsigned char *)&wm_fullscreen, 1);*/
+/*
+                                  XEvent e;
+                                  e.xclient.type         = ClientMessage;
+                                  e.xclient.window       = m_Win;
+                                  e.xclient.message_type = XInternAtom(m_Dpy, "_NET_WM_STATE", 1);;
+                                  e.xclient.format = 32;
+                                  e.xclient.data.l[0] = 2;    // _NET_WM_STATE_TOGGLE
+                                  e.xclient.data.l[1] = XInternAtom(m_Dpy, "_NET_WM_STATE_FULLSCREEN", True);
+                                  e.xclient.data.l[2] = 0;    // no second property to toggle
+                                  e.xclient.data.l[3] = 1;
+                                  e.xclient.data.l[4] = 0;
+
+                                  XSendEvent(m_Dpy, DefaultRootWindow(m_Dpy), False, SubstructureRedirectMask | SubstructureNotifyMask, &e);
+                                  XMoveResizeWindow(m_Dpy, m_Win, 0, 0, 1920, 1080);
+*/
+                                  Atom wm_state   = XInternAtom (m_Dpy, "_NET_WM_STATE", true );
+                                  Atom wm_fullscreen = XInternAtom (m_Dpy, "_NET_WM_STATE_FULLSCREEN", true );
+
+                                  XChangeProperty(m_Dpy, m_Win, wm_state, XA_ATOM, 32,
+                                                  PropModeReplace, (unsigned char *)&wm_fullscreen, 1);
+
+
+                }
                 //Events->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, event.key.keysym.sym, event.key.keysym.mod,0,0);
-                (xev.type == KeyPress ) ? GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, sdl_keysym.sym, /*mod*/sdl_keysym.mod,0,0) : GetEvents()->Add(MO_IODEVICE_KEYBOARD,SDL_KEYUP, sdl_keysym.sym, /*mod*/sdl_keysym.mod,0,0);
+                (xev.type == KeyPress ) ? Events->Add(MO_IODEVICE_KEYBOARD,SDL_KEYDOWN, sdl_keysym.sym, /*mod*/sdl_keysym.mod,0,0) : Events->Add(MO_IODEVICE_KEYBOARD,SDL_KEYUP, sdl_keysym.sym, /*mod*/sdl_keysym.mod,0,0);
+                break;
+
+              default:
+                if (EasyTab_HandleEvent(&xev) == EASYTAB_OK)          // Event
+                {
+                  XDeviceMotionEvent* MotionEvent = (XDeviceMotionEvent*)(&xev);
+                  moDebugManager::Message( "Easy tab handle event ok." );
+                  if (MotionEvent) {
+                    moDebugManager::Message( "Stylus type:" + IntToStr(xev.type) + " pressure: " + IntToStr(MotionEvent->axis_data[2])  );
+                    Events->Add( MO_IODEVICE_TABLET, SDL_MOUSEMOTION, MotionEvent->x, MotionEvent->y,MotionEvent->axis_data[2],0);
+                  }
+
+                }
                 break;
 
             }
@@ -563,31 +667,19 @@ class moX11_IODeviceManager : public moIODeviceManager {
 
         ++pending;
       }
-  /*
-      while(XCheckTypedWindowEvent( m_Dpy, m_Win, KeyRelease, &xev)) {
-      //while(XCheckWindowEvent( m_Dpy, m_Win, 0xFF, &xev)) {
+        /*
+            while(XCheckTypedWindowEvent( m_Dpy, m_Win, KeyRelease, &xev)) {
+            //while(XCheckWindowEvent( m_Dpy, m_Win, 0xFF, &xev)) {
 
-        char	*key_string1 = XKeysymToString(XkbKeycodeToKeysym(m_Dpy, xev.xkey.keycode, 0, 0));
+              char	*key_string1 = XKeysymToString(XkbKeycodeToKeysym(m_Dpy, xev.xkey.keycode, 0, 0));
 
-        moDebugManager::Message( "Win1: keysim: " + moText(key_string1) + " keycode: " + IntToStr(xev.xkey.keycode) );
-      }
-  */
+              moDebugManager::Message( "Win1: keysim: " + moText(key_string1) + " keycode: " + IntToStr(xev.xkey.keycode) );
+            }
+        */
 
     }
 
-    Display   *m_Dpy;
-    Window     m_Win;
-    Window     m_Win2;
 
-    SDLKey ODD_keymap[256];
-    SDLKey MISC_keymap[256];
-
-    SDLMod    SDL_ModState;
-    Uint8 SDL_NoLockKeys;
-    int   m_SDL_DISABLE_LOCK_KEYS;
-
-    int   m_MouseX;
-    int   m_MouseY;
 };
 
 

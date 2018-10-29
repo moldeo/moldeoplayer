@@ -2,6 +2,10 @@
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+#define EASYTAB_IMPLEMENTATION
+#include "EasyTab/easytab.h"
+
 static void error_callback(int error, const char* description)
 {
 fputs(description, stderr);
@@ -13,16 +17,31 @@ glfwSetWindowShouldClose(window, GL_TRUE);
 }
 int main(void)
 {
+	Display* Disp;
+	Window   Win;
 GLFWwindow* window;
+GLFWmonitor* monitor;
+
+
 glfwSetErrorCallback(error_callback);
 if (!glfwInit())
 exit(EXIT_FAILURE);
+
+monitor = glfwGetPrimaryMonitor();
+
 window = glfwCreateWindow(640, 480, "Simple example", NULL, NULL);
 if (!window)
 {
 glfwTerminate();
 exit(EXIT_FAILURE);
 }
+/*
+if (EasyTab_Load(Disp, Win) != EASYTAB_OK)                   // Load
+{
+		printf("Tablet init failed\n");
+}*/
+
+
 glfwMakeContextCurrent(window);
 glfwSetKeyCallback(window, key_callback);
 while (!glfwWindowShouldClose(window))

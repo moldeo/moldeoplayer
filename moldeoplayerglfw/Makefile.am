@@ -12,7 +12,7 @@ AM_CXXFLAGS = $(all_includes) -DMOLDEODATADIR=\"$(datadir)\" -DMODULESDIR=\"$(mo
 
 bin_PROGRAMS = moldeoplayerglfw
 
-moldeoplayerglfw_SOURCES = main.cpp
+moldeoplayerglfw_SOURCES = main.cpp EasyTab/easytab.h
 
 moldeoplayerglfw_CPPFLAGS = \
     ${GLFW3_CFLAGS} \
@@ -22,7 +22,7 @@ moldeoplayerglfw_CPPFLAGS = \
 	${MUPARSER_CFLAGS} \
 	${BOOST_CPPFLAGS} \
 	${SDL_CFLAGS} \
-	${LUA51_CFLAGS} \ 
+	${LUA51_CFLAGS} \
     ${LIBMOLDEO_CFLAGS}
 
 #moldeoplayerglfw_LDFLAGS = -framework OpenGL -framework GLUT -framework Cocoa
@@ -49,7 +49,3 @@ moldeoplayerglfw_LDADD = \
 	${LUA51_LIBS} \
 	${GST_LIBS} \
     ${LIBMOLDEO_LIBS}
-
-
-
-
