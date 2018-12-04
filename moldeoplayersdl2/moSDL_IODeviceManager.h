@@ -247,7 +247,7 @@ class moSDL_IODeviceManager : public moIODeviceManager {
         }
       }
       if (ei>nevents) {
-        cout << endl;
+        //cout << endl;
       }
 
     }

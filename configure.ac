@@ -82,6 +82,7 @@ AC_SUBST([moldeoplayerexe],$moldeoplayerexe)
 AC_CONFIG_FILES([moldeoplayer], [chmod +x moldeoplayer])
 AC_CONFIG_SUBDIRS(
 	moldeoplayersdl2
+	moldeoplayerx11
 )
 # moldeoplayerx11
 
