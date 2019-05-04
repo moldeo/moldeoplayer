@@ -513,11 +513,11 @@ class moX11_IODeviceManager : public moIODeviceManager {
         //X11_DispatchEvent(this);
         XNextEvent(m_Dpy, &xev);
 
-        moDebugManager::Message( "X Event type:" + IntToStr( xev.type ) );
+        //moDebugManager::Message( "X Event type:" + IntToStr( xev.type ) );
 
         if ( xev.type == KeyRelease
              && X11_KeyRepeat( m_Dpy, &xev) ) {
-            moDebugManager::Message( "X Event type KeyRelease");
+            //moDebugManager::Message( "X Event type KeyRelease");
         } else {
 
             sdl_keysym.mod = KMOD_NONE;
@@ -535,12 +535,12 @@ class moX11_IODeviceManager : public moIODeviceManager {
                   if (xev.xconfigure.window==m_Win && gpConsole) {
                     gpConsole->GetResourceManager()->GetRenderMan()->SetView( xev.xconfigure.width, xev.xconfigure.height );
                     m_ResizeNeeded = true;
-                    moDebugManager::Message( "X Event ConfigureNotify m_Win width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
+                    //moDebugManager::Message( "X Event ConfigureNotify m_Win width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
                   }
 
                   if (xev.xconfigure.window==m_Win2 && gpConsole) {
                     gpConsole->GetResourceManager()->GetRenderMan()->SetInterfaceView( xev.xconfigure.width, xev.xconfigure.height );
-                    moDebugManager::Message( "X Event ConfigureNotify m_Win2 width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
+                    //moDebugManager::Message( "X Event ConfigureNotify m_Win2 width:" + IntToStr(xev.xconfigure.width) + " height:" + IntToStr(xev.xconfigure.height) );
                   }
 
                 }
@@ -551,7 +551,7 @@ class moX11_IODeviceManager : public moIODeviceManager {
               case ConfigureRequest:
                 {
                 XConfigureRequestEvent* ConfigureRequestEvent = (XConfigureRequestEvent*)(&xev);
-                moDebugManager::Message( "X Event ConfigureRequest:" + IntToStr(ConfigureRequestEvent->x) + " height:" + IntToStr(ConfigureRequestEvent->width) );
+                //moDebugManager::Message( "X Event ConfigureRequest:" + IntToStr(ConfigureRequestEvent->x) + " height:" + IntToStr(ConfigureRequestEvent->width) );
                 }
                 break;
 
@@ -571,23 +571,23 @@ class moX11_IODeviceManager : public moIODeviceManager {
                 Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
                 m_MouseX = xev.xbutton.x;
                 m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
+                //moDebugManager::Message( "ButtonPress button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
                 break;
 
               case ButtonRelease:
                 Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONUP,  xev.xbutton.button, xev.xbutton.x, xev.xbutton.y );
                 m_MouseX = xev.xbutton.x;
                 m_MouseY = xev.xbutton.y;
-                moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
+                //moDebugManager::Message( "ButtonRelease button: " + IntToStr( xev.xbutton.button ) + " X: " + IntToStr( m_MouseX ) + " Y: " + IntToStr( m_MouseY )  );
                 break;
 
               /** KEYBOARD */
               case KeyPress:
-                moDebugManager::Message( "KeyPress" );
+                //moDebugManager::Message( "KeyPress" );
                 break;
 
               case KeyRelease:
-                moDebugManager::Message( "KeyRelease" );
+                //moDebugManager::Message( "KeyRelease" );
                 sdl_keysym.scancode = xev.xkey.keycode;
                 sdl_keysym.sym = X11_TranslateKeycode( m_Dpy, xev.xkey.keycode );
 
@@ -598,12 +598,12 @@ class moX11_IODeviceManager : public moIODeviceManager {
 
                 X11_CheckModState( xev.type, &sdl_keysym );
 
-                moDebugManager::Message( " Mod:" + IntToStr(sdl_keysym.mod) );
+                //moDebugManager::Message( " Mod:" + IntToStr(sdl_keysym.mod) );
                 if (xev.xkey.keycode==9 && sdl_keysym.sym==27) {
                   m_CloseNeeded = true;
                   //moDebugManager::Message(" Escape > Close needed");
                 } else if (sdl_keysym.sym==32) {
-                  cout << "Pressed SPACE" << endl;
+                  //cout << "Pressed SPACE" << endl;
                   /*
                   Atom wm_state   = XInternAtom (m_Dpy, "_NET_WM_STATE", true );
                   Atom wm_fullscreen = XInternAtom (m_Dpy, "_NET_WM_STATE_FULLSCREEN", true );
@@ -662,14 +662,24 @@ class moX11_IODeviceManager : public moIODeviceManager {
                 break;
 
               default:
-                if (EasyTab_HandleEvent(&xev) == EASYTAB_OK)          // Event
+                if (EasyTab_HandleEvent(&xev) == EASYTAB_OK)          // Tablet Event
                 {
                   XDeviceMotionEvent* MotionEvent = (XDeviceMotionEvent*)(&xev);
                   //moDebugManager::Message( "Easy tab handle event ok." );
                   if (MotionEvent) {
-                    /*moDebugManager::Message( "Stylus type:" + IntToStr(xev.type) + " pressure: " + IntToStr(MotionEvent->axis_data[2])+
-                  " X:" + IntToStr(MotionEvent->x) + " Y:" + IntToStr(MotionEvent->y)  );*/
-                    Events->Add( MO_IODEVICE_TABLET, SDL_MOUSEMOTION, MotionEvent->x, MotionEvent->y,MotionEvent->axis_data[2],0);
+                    /*moDebugManager::Message( "Stylus type:" + IntToStr(xev.type)
+                                            +" ID:" + IntToStr(xev.xmapping.first_keycode)
+                                            +" ID2:" + IntToStr(xev.xmapping.request)
+                                            + " pressure: " + IntToStr(MotionEvent->axis_data[2])
+                                            + " X:" + IntToStr(MotionEvent->x) + " Y:" + IntToStr(MotionEvent->y)  );
+                    */
+                    int dev_number = 1;
+                    //if (xev.xmapping.request<=15) {
+                    //  dev_number = 1;
+                    //} else {
+                    //  dev_number = 2;
+                    //}
+                    Events->Add( MO_IODEVICE_TABLET*dev_number, SDL_MOUSEMOTION, MotionEvent->x, MotionEvent->y,MotionEvent->axis_data[2],0);
                   }
 
                 }

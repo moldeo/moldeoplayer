@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player], [1.1.0.1], [info@moldeointeractive.com.ar], [moldeoplayer])
+AC_INIT([Moldeo Player], [1.1.0.4], [info@moldeointeractive.com.ar], [moldeoplayer])
 
 AC_CANONICAL_HOST
 AC_CANONICAL_BUILD
