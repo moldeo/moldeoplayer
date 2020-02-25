@@ -31,8 +31,8 @@ moldeoplayersdl2_CPPFLAGS = \
 #moldeoplayersdl2_LDFLAGS = -framework OpenGL -framework SDL2 -framework Cocoa
 
 moldeoplayersdl2_LDADD = \
-	${SDL2_LIBS} \
 	${GL_LIBS} \
+        ${SDL2_LIBS} \
 	${GLUT_LIBS} \
 	${LUA51_LIBS} \
 	${GST_LIBS} \
