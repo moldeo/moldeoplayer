@@ -14,7 +14,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
-				<Option parameters='-mol &quot;C:\Users\fabricio\Desktop\Efusion\0_cuerpo_luz\CuerpoLuz.mol&quot;' />
+				<Option parameters='-mol &quot;C:\RESET_mapping_01\RESET_mapping_01.mol&quot;' />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />

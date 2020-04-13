@@ -44,6 +44,8 @@ moConsole* gpConsole = NULL;
     #define GL_TEXTURE_NON_POWER_OF_TWO !Moldeo.GetResourceManager()->GetRenderMan()->IsTextureNonPowerOf2Disabled()
 #endif
 
+#include "SDL_syswm.h"
+
 #include "moSDL_IODeviceManager.h"
 moSDL_IODeviceManager* pIODeviceManager = NULL;
 
@@ -683,9 +685,11 @@ int main(int argc, char** argv) {
 #ifdef MO_LINUX
       case SDL_SYSWM_X11:       subsystem = "X Window System"; _WINDOW_HANDLE = info.info.x11.window; _DISPLAY = info.info.x11.display;        break;
 #endif
+#ifndef MO_WIN32
       case SDL_SYSWM_DIRECTFB:  subsystem = "DirectFB";               break;
       case SDL_SYSWM_COCOA:     subsystem = "Apple OS X";             break;
       case SDL_SYSWM_UIKIT:     subsystem = "UIKit";                  break;
+#endif // MO_WIN32
 #if SDL_VERSION_ATLEAST(2, 0, 2)
       case SDL_SYSWM_WAYLAND:   subsystem = "Wayland";                break;
       case SDL_SYSWM_MIR:       subsystem = "Mir";                    break;

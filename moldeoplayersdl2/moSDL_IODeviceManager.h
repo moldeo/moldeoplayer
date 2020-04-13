@@ -199,6 +199,7 @@ class moSDL_IODeviceManager : public moIODeviceManager {
               cout << "Joystick event" << endl;
               break;
             case SDL_SYSWMEVENT:
+            #ifndef MO_WIN32
               XEvent xev;
               SDL_SysWMmsg* sysm;
               if (event.syswm.msg) {
@@ -241,6 +242,7 @@ class moSDL_IODeviceManager : public moIODeviceManager {
                   }
                 }
               }
+              #endif
               break;
             default:
               break;
