@@ -7,7 +7,7 @@
     #include "SDL.h"
 #else
     #include "SDL.h"
-    #include "/usr/include/SDL2/SDL_syswm.h"
+    #include "SDL2/SDL_syswm.h"
     #include "X11/X.h"
 /**
 XEvent.type
@@ -200,6 +200,7 @@ class moSDL_IODeviceManager : public moIODeviceManager {
               break;
             case SDL_SYSWMEVENT:
             #ifndef MO_WIN32
+              #ifndef MO_MACOSX
               XEvent xev;
               SDL_SysWMmsg* sysm;
               if (event.syswm.msg) {
@@ -242,7 +243,8 @@ class moSDL_IODeviceManager : public moIODeviceManager {
                   }
                 }
               }
-              #endif
+            #endif
+            {}
               break;
             default:
               break;
