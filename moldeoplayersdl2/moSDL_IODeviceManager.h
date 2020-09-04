@@ -244,6 +244,7 @@ class moSDL_IODeviceManager : public moIODeviceManager {
                 }
               }
             #endif
+            #endif
             {}
               break;
             default:
