@@ -442,8 +442,8 @@ int main(int argc, char** argv) {
   render_width = screen_width;
   render_height = screen_height;
 
-  if (SDL_Init( SDL_INIT_EVERYTHING )<0) {
-    cout << "Couldn't init SDL" << endl;
+  if (SDL_Init( SDL_INIT_EVERYTHING ) != 0) {
+    cout << "Couldn't init SDL: " << SDL_GetError() << endl;
     exit(1);
   }
 
