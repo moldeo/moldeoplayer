@@ -466,8 +466,8 @@ int main(int argc, char** argv) {
   //SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
 
 #ifdef MO_WIN32
-  freopen( "CON", "wt", stdout );
-  freopen( "CON", "wt", stderr );
+  //freopen( "CON", "wt", stdout );
+  //freopen( "CON", "wt", stderr );
 #endif
 
   cout << "Processing arguments. n: " << argc << endl;
