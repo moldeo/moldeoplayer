@@ -1,4 +1,4 @@
-AC_INIT([Moldeo Player Sdl2], [1.1.0.1], [info@moldeointeractive.com.ar], [moldeoplayersdl2])
+AC_INIT([Moldeo Player Sdl2], [1.4.0.2], [info@moldeointeractive.com.ar], [moldeoplayersdl2])
 
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])

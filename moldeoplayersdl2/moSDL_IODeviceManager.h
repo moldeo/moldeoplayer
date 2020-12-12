@@ -127,14 +127,17 @@ class moSDL_IODeviceManager : public moIODeviceManager {
 
 
 
-
+            case SDL_MOUSEWHEEL:
+              /*cout << " Mouse Wheel " << event.wheel.x << ", " << event.wheel.y << endl;*/
+              Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEWHEEL, event.wheel.x, event.wheel.y, event.motion.x, event.motion.y);
+              break;
             case SDL_MOUSEMOTION:
-              Events->Add(MO_IODEVICE_MOUSE,SDL_MOUSEMOTION, event.motion.xrel, event.motion.yrel, event.motion.x, event.motion.y);
+              Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEMOTION, event.motion.xrel, event.motion.yrel, event.motion.x, event.motion.y);
               //cout << ei << " Mouse motion: x:" << event.motion.x << " y:" << event.motion.y << endl;
               /*cout << ei << " Mouse motion" << endl;*/
               break;
             case SDL_MOUSEBUTTONDOWN:
-              Events->Add(MO_IODEVICE_MOUSE,SDL_MOUSEBUTTONDOWN, event.button.button, event.button.x, event.button.y);
+              Events->Add( MO_IODEVICE_MOUSE, SDL_MOUSEBUTTONDOWN, event.button.button, event.button.x, event.button.y);
               //cout << ei << " Mouse button down" << endl;
               break;
             case SDL_MOUSEBUTTONUP:
