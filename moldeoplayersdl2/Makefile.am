@@ -19,7 +19,7 @@ AM_LDFLAGS = ${HOSTLDFLAGS}
 
 bin_PROGRAMS = moldeoplayersdl2
 
-moldeoplayersdl2_SOURCES = main.cpp moSDL_IODeviceManager.h
+moldeoplayersdl2_SOURCES = AUTHORS README NEWS ChangeLog main.cpp moSDL_IODeviceManager.h
 
 moldeoplayersdl2_CPPFLAGS = \
 	${GST_CFLAGS} \

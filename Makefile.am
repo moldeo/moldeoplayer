@@ -5,7 +5,7 @@ SUBDIRS = ${subdirs}
 desktopdir = ${prefix}/share/applications
 bin_SCRIPTS = moldeoplayer
 CLEANFILES = $(bin_SCRIPTS)
-EXTRA_DIST = AUTHORS moldeoplayer.in configure.ac Makefile.am
+EXTRA_DIST = AUTHORS NEWS README ChangeLog moldeoplayer.in configure.ac Makefile.am
 
 
 dist_bin_SCRIPTS = moldeoplayer

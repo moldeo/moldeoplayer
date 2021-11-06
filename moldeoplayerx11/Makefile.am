@@ -19,7 +19,7 @@ AM_LDFLAGS = ${HOSTLDFLAGS}
 
 bin_PROGRAMS = moldeoplayerx11
 
-moldeoplayerx11_SOURCES = main.cpp moX11_IODeviceManager.h EasyTab/easytab.h
+moldeoplayerx11_SOURCES = AUTHORS README NEWS ChangeLog main.cpp moX11_IODeviceManager.h EasyTab/easytab.h
 
 moldeoplayerx11_CPPFLAGS = \
 	${GST_CFLAGS} \
