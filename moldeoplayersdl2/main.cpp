@@ -1,5 +1,6 @@
 /*
- *
+*  Transparent Window
+ * https://forums.libsdl.org/viewtopic.php?p=44939
  */
 
 //sdl 1.2 support
