@@ -42,7 +42,7 @@ AC_ARG_ENABLE(host,
   elif test "x$enableval" = "xosx" ; then
     host_name="osx"
 	host_cflags="-I/opt/local/include "
-	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa -framework GStreamer"
+	host_ldflags="-L/opt/local/lib -framework GLUT -framework OpenGL -framework Cocoa -L/Library/Frameworks/GStreamer.framework/Versions/1.0/lib -F/Library/Frameworks -framework GStreamer"
   else
 	echo
 	echo "Error!"
@@ -84,7 +84,7 @@ GST_MAJORMINOR=$GST_VERSION_MAJOR.$GST_VERSION_MINOR
 if test "x$host_name" = "xosx" ; then
 
 AC_SUBST(GST_CFLAGS,"-I/Library/Frameworks/GStreamer.framework/Versions/1.0/Headers")
-AC_SUBST(GST_LIBS,"-framework GStreamer")
+AC_SUBST(GST_LIBS,"-L/Library/Frameworks/GStreamer.framework/Versions/1.0/lib -F/Library/Frameworks -framework GStreamer")
 
 else
 
